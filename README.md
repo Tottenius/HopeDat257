@@ -1,10 +1,16 @@
 # HopeDat257
 Detta är repot för Hope gruppens projekt i kursen DAT257
 
-- Anton 'OakmanByte' Ekman
-- Carl 'TheFattest' Andersson
-- Emil 'Pettsson12' Pettersson
-- Joakim 'cjal95' Lönnerstedt
-- Jonathan 'jonathanl97' Lawrence
-- Thomas 'Publicguy' Solibi
-- Tor 'Tottenius' Clementz
+## Gruppmedlemmar
+- Anton Ekman (OakmanByte)
+- Carl Andersson (TheFattest)
+- Emil Pettersson (Pettsson12)
+- Joakim Lönnerstedt (cjal95)
+- Jonathan Lawrence (jonathanl97)
+- Thomas Solibi (Publicguy)
+- Tor Clementz (Tottenius)
+
+## Navigation
+#### personal_reflection
+Här samlas våra individuella reflektioner med en mapp per person
+
