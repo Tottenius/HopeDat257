@@ -1,27 +1,34 @@
 Social Contract - Grupp Hope (DAT257)
 
+Gruppens medlemmar: Carl Andersson, Tor Clementz, Anton Ekman, Jonathan Lawrence, Joakim Lönnerstedt, Emil Pettersson och Thomas Solibi. 
+
 Arbetsplan och mål:
-Just i nulägen har vi inte lagt upp en riktig plan över hur vi ska arbeta med vår applikation eftersom vi inte är riktigt hundra än på vad vi ska
-göra för app ännu men med tanke på att vi ska ha dagliga Scrum-möten så tror vi att det kommer lösa sig med arbetsbelastningen på alla team members.
+Målet är att utveckla någon form utav applikation vars syfte är att sträva efter att nå något utav de 17 FN mål för hållbar utveckling. 
+Vi som grupp har också som mål att genomföra projektet så att vi uppnår målen för kursen DAT257 och att utvecklas och lära oss under kursens gång. 
+Detta nås genom ett gemensamt ansvar för uppgiften och dagliga scrum möten.
 
 Arbetsbelastning och samarbete:
-Vi har även kommit överens att vi ska dagligen hålla koll om någon i teamet skulle behöva hjälp med något och försöka så gott det går att hjälpa 
-till så att ingen ska behöva bli stressad. 
-Vi ska alltid ha god ton mot varandra för att alla ska känna sig välkommna och inte behöva vara oroliga att komma med nya idéer.
-
-Vi är också medvetna om alla kanske inte har samma kunskaper inom programmering vilket kommer influera allas arbetsbelastningar så att alla ska 
-känna sig trygga och bekväma med vad de ska göra. 
+Vi har även kommit överens att vi ska dagligen hålla koll om någon i teamet skulle behöva hjälp med något och försöka så gott det går att hjälpa till så att ingen ska behöva bli stressad.
+Vi ska alltid ha god ton mot varandra för att alla ska känna sig välkomna och inte behöva vara oroliga att komma med nya idéer. 
+Varje gruppmedlem förväntas lägga runt 20 timmar per vecka på projektet.
+Vi är också medvetna om alla kanske inte har samma kunskaper inom programmering vilket kommer influera allas arbetsbelastningar så att alla ska känna sig trygga och bekväma med vad de ska göra.
 
 Kommunikation:
-Vi i gruppen har skapat en Discord-server vilket vi tänker använda som vårt huvudsakliga arbetsrum.
-Anledningen till att vi valde Discord som vårt primära kommunikationssätt är för att alla i teamet har använt Discord innan och är bekväma med att använda det. 
-Man kan även göra flera olika text kanaler där man kan sortera och enkelt samla information som är lättillgängligt för alla.
+Vi i gruppen har skapat en Discord-server vilket vi tänker använda som vårt huvudsakliga arbetsrum. 
+Anledningen till att vi valde Discord som vårt primära kommunikationssätt är för att alla i teamet har använt Discord innan och är bekväma med att använda det.
+Man kan även göra flera olika text kanaler där man kan sortera och enkelt samla information som är lättillgängligt för alla. 
 Det är också lätt att hoppa in i en röstkanal för att kommunicera med varandra och möjligheten att dela sin skärm.
+För scrum kommer vi använda oss utav Trello, en hemsida där man lätt kan organisera vad som är gjort och vad som behöver göras innan veckans slut.
 
 Kommunikationen mellan lagmedlemmarna går till så att man håller daglig kontakt via vår Discord server eller i nödfall på gruppens sida på Canvas. Vi kommer
 att försöka att se till att alla medlemmar ska vara med på alla möten men eftersom vi alla har olika kurser som, tyvärr, överlappar med den här kursen ibland så
-kan det hända att alla medlemmar inte kan närvara vid alla möten. Det är helt okej så länge man har meddelat i god tid innan ifall man inte kan närvara på ett bestämt
-möte.
+kan det hända att alla medlemmar inte kan närvara vid alla möten. 
+Det är helt okej så länge man har meddelat i god tid innan ifall man inte kan närvara på ett bestämt möte.
 
-Scrum-board:
-Vi använder oss också av Trello som vår Scrum-Board
+Förhållningsregler:
+Alla beslut tas som grupp och vid oenighet sker omröstning där alternativet med flest röster vinner.
+Medlemmarna i gruppen ska hålla god ton till varandra och vid eventuell konflikt ska individerna alternativt gruppen försöka lösa konflikten så snart som möjligt.
+Kommunikationen mellan gruppens medlemmar är viktig, framför allt saker som gäller projektet såsom förslag till ändringar i kod och kommunikation om problem eller svårigheter som uppstår.
+Gruppens medlemmar ska respektera tider för möten som avtalas.
+Respektera andras åsikter och låta alla komma till tals.
+
