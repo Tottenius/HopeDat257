@@ -20,8 +20,10 @@
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
+                  <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonClicked" text="Button" />
                   <Button mnemonicParsing="false" text="Button" />
                   <Button mnemonicParsing="false" text="Button" />
+                  <CheckBox mnemonicParsing="false" text="CheckBox" />
                </children></VBox>
          </content>
       </ScrollPane>
