@@ -13,6 +13,8 @@ Detta är repot för Hope gruppens projekt i kursen DAT257
 ## Navigation
 #### personal_reflection
 Här samlas våra individuella reflektioner med en mapp per person
+#### TeamReflections
+Här samlas teamets reflektioner
 
 #### Trello
 https://trello.com/b/kyad6viz/agile-sprint-board
