@@ -1,5 +1,5 @@
 # HopeDat257
-Detta är repot för Hope gruppens projekt i kursen DAT257
+Detta är repot för Hope gruppens projekt i kursen DAT257 HT-2020.
 
 ## Gruppmedlemmar
 - Anton Ekman (OakmanByte)
