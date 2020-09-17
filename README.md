@@ -14,6 +14,7 @@ Detta är repot för Hope gruppens projekt i kursen DAT257 HT-2020.
 ### Code
 Här ligger källkoden
 ### Documents
+Här samlas alla dokument som gruppen ska presterat under kursens gång
 #### personal_reflection
 Här samlas våra individuella reflektioner med en mapp per person
 #### TeamReflections
