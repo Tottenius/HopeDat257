@@ -2,15 +2,16 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class TestController {
 
     @FXML
-    private Button testButton;
+    private TextField breakfastTextField;
 
     @FXML
-    private void testButtonClicked(){
-        System.out.println("Scroll scroll");
+    private void breakfastTextFieldAction(){
+        System.out.println(this.breakfastTextField.getText());
     }
 
 }
