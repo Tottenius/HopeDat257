@@ -11,6 +11,9 @@ Detta är repot för Hope gruppens projekt i kursen DAT257 HT-2020.
 - Tor Clementz (Tottenius)
 
 ## Navigation
+###Code
+Här ligger källkoden
+###Documents
 #### personal_reflection
 Här samlas våra individuella reflektioner med en mapp per person
 #### TeamReflections
