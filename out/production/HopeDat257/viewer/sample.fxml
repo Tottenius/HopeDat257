@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
    <top>
       <Label text="Hope for Carbon Free Future" BorderPane.alignment="CENTER" />
    </top>
@@ -63,20 +54,17 @@
       </VBox>
    </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="363.0" prefWidth="447.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox>
+                  <VBox />
+                  <HBox prefHeight="138.0" prefWidth="232.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label prefHeight="42.0" prefWidth="67.0" text="Breakfast" />
-                              <TextField fx:id="breakfastTextField" onKeyTyped="#breakfastTextFieldAction" prefHeight="34.0" prefWidth="155.0" />
-                           </children>
-                        </HBox>
+                        <Label prefHeight="42.0" prefWidth="67.0" text="Breakfast" />
+                        <TextField fx:id="breakfastTextField" onKeyTyped="#breakfastTextFieldAction" prefHeight="34.0" prefWidth="155.0" />
                      </children>
-                  </VBox>
+                  </HBox>
                </children>
             </HBox>
          </children>
