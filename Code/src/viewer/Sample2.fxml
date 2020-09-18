@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
+   <top>
+      <VBox prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Settings">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox prefHeight="45.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="159.0" promptText="Username" />
+                  <TextField layoutX="10.0" layoutY="10.0" promptText="Password" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Login" />
+                  <Region prefHeight="37.0" prefWidth="196.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="28.0" prefWidth="965.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="40.0" text="Status" />
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <BorderPane prefHeight="676.0" prefWidth="241.0" BorderPane.alignment="CENTER">
+         <right>
+            <Slider orientation="VERTICAL" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <TreeView fx:id="treeviewID" prefHeight="613.0" prefWidth="186.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <HBox prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" text="Breakfast" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Lunch" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Dinner" />
+                  <Region prefHeight="25.0" prefWidth="37.0" />
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </left>
+   <center>
+      <LineChart prefHeight="676.0" prefWidth="593.0" title="Carbon emissions from your meal" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+   </center>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea prefHeight="655.0" prefWidth="200.0" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>
