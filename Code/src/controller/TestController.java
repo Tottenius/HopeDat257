@@ -28,14 +28,34 @@ public class TestController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //Treeviewer that can be used for longer list of food items etc.. //Anton
-        TreeItem<String> root = new TreeItem<>("Root");
 
-        TreeItem<String> nodeA = new TreeItem<>("Node A");
-        TreeItem<String> nodeB = new TreeItem<>("Node B");
-        TreeItem<String> nodeC = new TreeItem<>("Node C");
+        TreeItem<String> mainroot = new TreeItem<>("x");
 
+        TreeItem<String> root = new TreeItem<>("Meats");
+
+        TreeItem<String> nodeA = new TreeItem<>("Beef");
+        TreeItem<String> nodeB = new TreeItem<>("Chicken");
+        TreeItem<String> nodeC = new TreeItem<>("Lamb");
+
+        TreeItem<String> root2 = new TreeItem<>("Spices");
+
+        TreeItem<String> nodeA2 = new TreeItem<>("Salt");
+        TreeItem<String> nodeB2 = new TreeItem<>("Pepper");
+        TreeItem<String> nodeC2 = new TreeItem<>("Sugar");
+
+        TreeItem<String> root3 = new TreeItem<>("Carbs");
+
+        TreeItem<String> nodeA3 = new TreeItem<>("Pasta");
+        TreeItem<String> nodeB3 = new TreeItem<>("Rice");
+        TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
+
+        mainroot.getChildren().addAll(root,root2,root3);
         root.getChildren().addAll(nodeA,nodeB,nodeC);
-        treeviewID.setRoot(root);
+        root2.getChildren().addAll(nodeA2,nodeB2,nodeC2);
+        root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
+        treeviewID.setRoot(mainroot);
+        treeviewID.setShowRoot(false);
+
 
     }
 }
