@@ -27,6 +27,7 @@ public class TestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        //Treeviewer that can be used for longer list of food items etc.. //Anton
         TreeItem<String> root = new TreeItem<>("Root");
 
         TreeItem<String> nodeA = new TreeItem<>("Node A");
