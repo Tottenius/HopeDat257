@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -13,10 +14,17 @@ public class TestController implements Initializable {
 
     @FXML
     private TextField breakfastTextField;
+    @FXML
+    private Button drawGraphs;
 
     @FXML
     private void breakfastTextFieldAction() {
         System.out.println(this.breakfastTextField.getText());
+    }
+
+    @FXML
+    private void drawGraphMethod() {
+        System.out.println("Draw graph");
     }
 
 
