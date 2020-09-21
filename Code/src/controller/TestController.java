@@ -50,6 +50,8 @@ public class TestController implements Initializable {
         TreeItem<String> nodeA2 = new TreeItem<>("Salt");
         TreeItem<String> nodeB2 = new TreeItem<>("Pepper");
         TreeItem<String> nodeC2 = new TreeItem<>("Sugar");
+        TreeItem<String> nodeD2 = new TreeItem<>("Oregano");
+        TreeItem<String> nodeE2 = new TreeItem<>("Basil");
 
         TreeItem<String> root3 = new TreeItem<>("Carbs");
 
@@ -59,7 +61,7 @@ public class TestController implements Initializable {
 
         mainroot.getChildren().addAll(root,root2,root3);
         root.getChildren().addAll(nodeA,nodeB,nodeC);
-        root2.getChildren().addAll(nodeA2,nodeB2,nodeC2);
+        root2.getChildren().addAll(nodeA2,nodeB2,nodeC2,nodeD2,nodeE2);
         root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
