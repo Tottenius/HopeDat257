@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <?scenebuilder-stylesheet application.css?>
+
 
 <BorderPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
    <top>
@@ -41,6 +43,7 @@
                   <TextField layoutX="10.0" layoutY="10.0" promptText="Password" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Login" />
                   <Region prefHeight="37.0" prefWidth="196.0" />
+                  <Button fx:id="drawGraphs" mnemonicParsing="false" onAction="#drawGraphMethod" text="Draw Graphs" />
                </children>
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
@@ -76,16 +79,24 @@
          </top>
       </BorderPane>
    </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea prefHeight="655.0" prefWidth="200.0" />
+         </children>
+      </Pane>
+   </right>
    <center>
-      <LineChart prefHeight="676.0" prefWidth="593.0" title="Carbon emissions from your meal" BorderPane.alignment="CENTER">
+      <BarChart fx:id="barChartOne" BorderPane.alignment="CENTER">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
         </yAxis>
-      </LineChart>
+      </BarChart>
    </center>
+
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -96,4 +107,6 @@
     <stylesheets>
         <URL value ="@/main/application.css"/>
     </stylesheets>
+
+
 </BorderPane>
