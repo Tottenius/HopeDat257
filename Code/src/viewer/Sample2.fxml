@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -53,7 +53,7 @@
                   <TextField layoutX="10.0" layoutY="10.0" promptText="Password" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Login" />
                   <Region prefHeight="37.0" prefWidth="196.0" />
-                  <Button fx:id="drawGraphs" mnemonicParsing="false" onMouseClicked="#drawGraphMethod" text="Draw Graphs" />
+                  <Button fx:id="drawGraphs" mnemonicParsing="false" onAction="#drawGraphMethod" text="Draw Graphs" />
                </children>
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
@@ -89,16 +89,6 @@
          </top>
       </BorderPane>
    </left>
-   <center>
-      <LineChart prefHeight="676.0" prefWidth="593.0" title="Carbon emissions from your meal" BorderPane.alignment="CENTER">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-   </center>
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -106,4 +96,14 @@
          </children>
       </Pane>
    </right>
+   <center>
+      <BarChart fx:id="barChartOne" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </center>
 </BorderPane>
