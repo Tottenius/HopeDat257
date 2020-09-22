@@ -2,11 +2,15 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import main.BarChartExample;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,8 +18,6 @@ public class TestController implements Initializable {
 
     @FXML
     private TextField breakfastTextField;
-    @FXML
-    private Button drawGraphs;
 
     @FXML
     private void breakfastTextFieldAction() {
@@ -23,14 +25,18 @@ public class TestController implements Initializable {
     }
 
     @FXML
-    private void drawGraphMethod() {
-        System.out.println("Draw graph");
-    }
-
-
-    @FXML
     TreeView <String> treeviewID;
 
+    @FXML
+    private Button drawGraphs;
+
+    @FXML
+    private BarChart barChartOne;
+
+    @FXML
+    public void drawGraphsAction() {
+        new BarChartExample(barChartOne);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,13 +63,13 @@ public class TestController implements Initializable {
         TreeItem<String> nodeB3 = new TreeItem<>("Rice");
         TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
 
+        barChartOne.setTitle("Carbon emissions from your meal");
+
         mainroot.getChildren().addAll(root,root2,root3);
         root.getChildren().addAll(nodeA,nodeB,nodeC);
         root2.getChildren().addAll(nodeA2,nodeB2,nodeC2);
         root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
-
-
     }
 }
