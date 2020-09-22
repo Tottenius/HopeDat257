@@ -4,8 +4,10 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?scenebuilder-stylesheet application.css?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
+<BorderPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="965.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestController">
    <top>
       <VBox prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,7 +57,7 @@
       </HBox>
    </bottom>
    <left>
-      <BorderPane prefHeight="676.0" prefWidth="241.0" BorderPane.alignment="CENTER">
+      <BorderPane  prefHeight="676.0" prefWidth="241.0" BorderPane.alignment="CENTER">
          <right>
             <Slider orientation="VERTICAL" BorderPane.alignment="CENTER" />
          </right>
@@ -91,4 +93,7 @@
          </children>
       </Pane>
    </right>
+    <stylesheets>
+        <URL value ="@/main/application.css"/>
+    </stylesheets>
 </BorderPane>
