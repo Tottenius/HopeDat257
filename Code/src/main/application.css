@@ -1,3 +1,15 @@
 #fxml{
 	-fx-background-color: rgba(0, 0, 0, 0.6);
 }
+
+.menu-bar{
+	-fx-background-color: #1a936f;
+}
+
+#mainWindow{
+	-fx-background-color: #C6DABF;
+}
+
+.tree-cell{
+	-fx-background-color: #ffffff;
+}
