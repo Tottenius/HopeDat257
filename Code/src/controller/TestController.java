@@ -39,6 +39,7 @@ public class TestController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("init chart and menu");
 
         //Treeviewer that can be used for longer list of food items etc.. //Anton
 
