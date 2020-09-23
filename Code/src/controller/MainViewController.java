@@ -26,9 +26,7 @@ public class MainViewController {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c->{
-            return new FoodViewController();
-        });
+        loader.setControllerFactory( c-> new FoodViewController());
         // Load it in to the ScrollPane
         this.rightPane.setContent(loader.load());
     }
@@ -38,9 +36,7 @@ public class MainViewController {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/friendsView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c->{
-            return new FriendsViewController();
-        });
+        loader.setControllerFactory( c-> new FriendsViewController());
         // Load it in to the ScrollPane
         this.rightPane.setContent(loader.load());
     }
@@ -50,9 +46,7 @@ public class MainViewController {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/settingsView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c->{
-            return new SettingsViewController();
-        });
+        loader.setControllerFactory( c-> new SettingsViewController());
         // Load it in to the ScrollPane
         this.rightPane.setContent(loader.load());
     }
