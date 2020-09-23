@@ -17,10 +17,17 @@
 	-fx-background-color: #e5e5e5;
 -fx-text-fill: black;
 }
-
+.text-field{
+	-fx-pref-width: 66;
+	-fx-font-family: Arial;
+	-fx-font-size: 17;
+}
 .generalButton {
 	-fx-background-color: #1a936f;
+	/*
 	-fx-pref-width: 237px;
+	*/
+	-fx-pref-width: 88px;
 	-fx-border:1px  ;
     -fx-border-radius: none;
 	-fx-background-radius:none ;

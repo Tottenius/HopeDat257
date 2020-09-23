@@ -31,7 +31,30 @@ public class MainViewController {
         });
         // Load it in to the ScrollPane
         this.rightPane.setContent(loader.load());
+    }
 
+    @FXML
+    private void friendsClick() throws IOException {
+        //Load in the new fxml document
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/friendsView.fxml"));
+        //Set it's controller to the right one
+        loader.setControllerFactory( c->{
+            return new FriendsViewController();
+        });
+        // Load it in to the ScrollPane
+        this.rightPane.setContent(loader.load());
+    }
+
+    @FXML
+    private void settingsClick() throws IOException {
+        //Load in the new fxml document
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/settingsView.fxml"));
+        //Set it's controller to the right one
+        loader.setControllerFactory( c->{
+            return new SettingsViewController();
+        });
+        // Load it in to the ScrollPane
+        this.rightPane.setContent(loader.load());
     }
 
 }

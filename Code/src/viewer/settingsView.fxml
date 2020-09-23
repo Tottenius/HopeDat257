@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="mainWindow" prefHeight="400.0" prefWidth="600.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsViewController">
+   <children>
+      <Label layoutX="113.0" layoutY="105.0" prefHeight="191.0" prefWidth="462.0" text="Settings">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
