@@ -14,5 +14,8 @@ public class BarChartExample {
         series2.getData().add(new XYChart.Data("Dag 2", 8));
         barChartOne.getData().add(series1);
         barChartOne.getData().add(series2);
+
+        System.out.println("hej");
+
     }
 }
