@@ -2,7 +2,6 @@ package main;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         //Parent root = FXMLLoader.load(getClass().getResource("/viewer/sample.fxml"));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/sample2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/mainView.fxml"));
         Parent root = loader.load();
 
         primaryStage.setTitle("Hope");

@@ -14,7 +14,7 @@ import main.BarChartExample;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TestController implements Initializable {
+public class FoodViewController implements Initializable {
     @FXML
     private TextField breakfastTextField;
 
