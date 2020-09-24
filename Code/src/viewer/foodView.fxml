@@ -135,11 +135,7 @@
    </center>
 
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextArea layoutY="15.0" prefHeight="654.0" prefWidth="200.0" />
-         </children>
-      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </right>
 
 

@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
 
     // User
-    private UserData user = new UserData("Tor");
+    private UserData user = new UserData("Anton");
 
     //Right side
     @FXML
