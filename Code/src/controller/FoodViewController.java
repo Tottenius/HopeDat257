@@ -10,11 +10,41 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import main.BarChartExample;
+import model.BarChartEmissions;
+import model.UserData;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class FoodViewController implements Initializable {
+
+    public FoodViewController(UserData user){
+        this.user = user;
+    }
+
+    // Gives the date compared of today plus i in days
+    private Date getDate(int i) {
+        try {
+            return formatter.parse(formatter.format(new Date(this.date.getTime() + (1000 * 60 * 60 * 24) * i)));
+        }
+        catch (ParseException e){
+            System.out.println("Fel i parse av datum returnar dagens datum");
+        }
+        return this.date;
+    }
+
+    //Current user
+    private UserData user;
+    // Date
+    private Date date;
+    // Dateformat without time
+    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    // Barchart emission class
+    private BarChartEmissions barChartEmissions;
+
     @FXML
     private TextField breakfastTextField;
 
@@ -33,13 +63,53 @@ public class FoodViewController implements Initializable {
     private BarChart barChartOne;
 
     @FXML
-    public void drawGraphMethod() {
+    public void drawGraphMethod() throws ParseException {
+        // Add emissions today
+        Date today = this.getDate(0);
+        this.user.addToEmissions(45, today);
+        // Add emissions tomorrow
+        Date tomorrow = this.getDate(1);
+        this.user.addToEmissions(27, tomorrow);
+        // Paint to chart today
+        this.barChartEmissions.addToChart(today, this.user.getEmissions(today));
+        // Paint to chart tomorrow
+        this.barChartEmissions.addToChart(tomorrow, this.user.getEmissions(tomorrow));
+    }
+    /*public void drawGraphMethod() {
         new BarChartExample(barChartOne);
     }
+    */
+    private void updateBarChart(){
+        // get the map with values
+        Map hm = this.user.getEmissionsMap();
+        // Get the
+        Set keys = hm.keySet();
+        // Temp date
+        Date tempDate;
+        Iterator i = keys.iterator();
+        // Loop through map
+        while (i.hasNext()){
+            tempDate = (Date) i.next();
+            // paint the days that exist
+            this.barChartEmissions.addToChart(tempDate, this.user.getEmissions(tempDate));
+        }
 
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("init chart and menu");
+
+        // Set to today's date;
+        try {
+            this.date = formatter.parse(formatter.format(new Date()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong with the dateparsing");
+        }
+        //Connect our fxml barchart to the class for easier modifications
+        this.barChartEmissions = new BarChartEmissions(this.barChartOne);
+        // Update barchart with old values if there are any
+        this.updateBarChart();
 
         //Treeviewer that can be used for longer list of food items etc.. //Anton
 
