@@ -6,3 +6,5 @@ GRANT ALL ON SCHEMA public TO postgres;
 \set QUIET false
 
 \i tables.sql
+\i inserts.sql
+\i views.sql
