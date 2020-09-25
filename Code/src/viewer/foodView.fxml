@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
@@ -15,20 +7,19 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?scenebuilder-stylesheet application.css?>
 
-<BorderPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FoodViewController">
+<BorderPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FoodViewController">
    <top>
       <VBox prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -81,7 +72,7 @@
    <left>
       <BorderPane prefHeight="676.0" prefWidth="241.0" BorderPane.alignment="CENTER">
          <center>
-            <TreeView fx:id="treeviewID" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="649.0" prefWidth="235.0" BorderPane.alignment="CENTER">
+            <TreeView fx:id="treeviewID" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="465.0" prefWidth="235.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="1.0" />
                </BorderPane.margin></TreeView>
@@ -114,14 +105,13 @@
                </children>
             </HBox>
          </top>
+         <bottom>
+            <ListView fx:id="insertedItemsList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </left>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextArea prefHeight="655.0" prefWidth="200.0" />
-         </children>
-      </Pane>
+
    </right>
    <center>
       <BarChart fx:id="barChartOne" prefHeight="708.0" prefWidth="524.0" BorderPane.alignment="CENTER">
@@ -133,14 +123,6 @@
         </yAxis>
       </BarChart>
    </center>
-
-   <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextArea layoutY="15.0" prefHeight="654.0" prefWidth="200.0" />
-         </children>
-      </Pane>
-   </right>
 
 
 </BorderPane>

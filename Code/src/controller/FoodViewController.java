@@ -5,10 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import main.BarChartExample;
 import model.BarChartEmissions;
 import model.UserData;
@@ -118,7 +116,9 @@ public class FoodViewController implements Initializable {
         TreeItem<String> root = new TreeItem<>("Meats");
 
         TreeItem<String> nodeA = new TreeItem<>("Beef");
+        nodeA.setValue("0,0144");
         TreeItem<String> nodeB = new TreeItem<>("Chicken");
+        nodeB.setValue("0,0025");
         TreeItem<String> nodeC = new TreeItem<>("Lamb");
 
         TreeItem<String> root2 = new TreeItem<>("Spices");
@@ -135,6 +135,8 @@ public class FoodViewController implements Initializable {
         TreeItem<String> nodeB3 = new TreeItem<>("Rice");
         TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
 
+
+
         barChartOne.setTitle("Carbon emissions from your meal");
 
         mainroot.getChildren().addAll(root,root2,root3);
@@ -143,5 +145,39 @@ public class FoodViewController implements Initializable {
         root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
+
+        treeviewID.setCellFactory(e -> new CustomCell());
+
+        //foodView.getChildren().add(treeviewID);
     }
+}
+
+class CustomCell extends TreeCell<String> {
+    @Override
+    protected void updateItem(String item, boolean empty) {
+        super.updateItem(item, empty);
+
+        if (isEmpty()) {
+            setGraphic(null);
+            setText(null);
+        } else {
+            if (this.getTreeItem().isLeaf()) {
+                HBox cellBox = new HBox(10);
+
+                Label label = new Label(item);
+                Button button = new Button("+");
+
+                cellBox.getChildren().addAll(label, button);
+
+                setGraphic(cellBox);
+                setText(null);
+            } else {
+                setGraphic(null);
+                setText(item);
+            }
+        }
+    }
+
+
+
 }
