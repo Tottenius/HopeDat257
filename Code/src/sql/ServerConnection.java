@@ -25,16 +25,16 @@ public class ServerConnection {
         props.setProperty("password", password);
         conn = DriverManager.getConnection(database, props);
     }
-    // Register a student on a course, returns a tiny JSON document (as a String)
 
-    public String register(int id, String userName, String password){
+    // Register and add an user to the database, returns a tiny JSON document (as a String)
+
+    public String register(int userid, String userName, String password){
         try{
-            System.out.println("ÄR inne yo");
-            //PreparedStatement input = conn.prepareStatement("INSERT INTO users VALUES (1 '"+userName +"','" +password +"') ");
-            PreparedStatement input = conn.prepareStatement( "INSERT INTO Users VALUES ( 5, 'REEEEEEEEEEEEE', 'Password4') ");
-            System.out.println("Borde göra prepared statement yo");
+            PreparedStatement input = conn.prepareStatement("INSERT INTO Users VALUES ( ?, ?, ?) ");
+            input.setInt(1, userid);
+            input.setString(2, userName);
+            input.setString(3, password);
             input.executeUpdate();
-            System.out.println("Efter execute update");
             return("{\"success registration\":true}");
 
         } catch (SQLException e) {
