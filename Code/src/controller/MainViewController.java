@@ -6,9 +6,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import model.UserData;
+import sql.ServerConnection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
+
+      protected static ServerConnection c;
 
     // User
     private UserData user = new UserData("Anton");
@@ -66,11 +70,11 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/loginView.fxml"));
         try {
+            c = new ServerConnection();
             this.rightPane.setContent(loader.load());
-        } catch (IOException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
-
 
     }
 }

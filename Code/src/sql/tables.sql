@@ -9,7 +9,7 @@ CREATE TABLE Users(
 
 --Each user has emission data that stores their emission for each day.
 CREATE TABLE EmissionData(
-  	userID INTS,
+  	userID INT,
   	Date DATE,
     Emission VARCHAR(64),
     PRIMARY KEY( Date, userID),

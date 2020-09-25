@@ -4,11 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import main.RunMain;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginViewController implements Initializable {
+
+
 
     @FXML
     private Button loginButton;
@@ -27,9 +30,17 @@ public class LoginViewController implements Initializable {
         System.out.println(passwordTextField.getText());
     }
 
+    //When user presses register button, the selected name and password is stored in the database.
+
     @FXML
     private void registerClick(){
+
         System.out.println("Klickat på register");
+
+        MainViewController.c.register(1,userTextField.getText(), passwordTextField.getText());
+
+
+
     }
 
 
