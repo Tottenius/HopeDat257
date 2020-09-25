@@ -177,9 +177,7 @@ class CustomCell extends TreeCell<String> {
                         event -> {
                             WeightViewController weightView = new WeightViewController();
                             try {
-                                new WeightViewController();
                                 weightView.start(new Stage());
-                                System.out.println(weightView.weightInput);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

@@ -17,31 +17,26 @@ import java.util.ResourceBundle;
 
 public class WeightViewController extends Application {
 
-    Stage weightStage;
-
     @FXML
     TextField weightInput;
 
     @FXML
-    public int submitButton() {
+    public void submitButton() {
         String input = weightInput.getText();
-        return Integer.parseInt(input);
-
+        int value = Integer.parseInt(input);
+        calculator(value);
     }
 
     @Override
     public void start(Stage weightStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
         Parent weightRoot = loader.load();
+
         weightStage.setScene(new Scene(weightRoot));
-
-
-
         weightStage.show();
     }
 
-    public static void main (String[] args) {
-        launch(args);
+    public void calculator(int value) {
+        System.out.println(value);
     }
-
 }
