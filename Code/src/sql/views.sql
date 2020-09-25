@@ -13,4 +13,7 @@ CREATE VIEW FriendsView AS
     SELECT name, toUserID FROM Users
          JOIN Friends ON(Users.id = Friends.fromUserID);
 
+CREATE VIEW UserView AS
+    SELECT * FROM Users;
+
 SELECT * FROM FriendsView;

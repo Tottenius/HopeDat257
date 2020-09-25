@@ -1,7 +1,7 @@
 
 --Standard table for each user.
 CREATE TABLE Users(
-	id VARCHAR(64),
+	id INT,
    	name VARCHAR(64) UNIQUE NOT NULL,
    	password VARCHAR(64) NOT NULL,
 	PRIMARY KEY(id)
@@ -9,7 +9,7 @@ CREATE TABLE Users(
 
 --Each user has emission data that stores their emission for each day.
 CREATE TABLE EmissionData(
-  	userID VARCHAR(64),
+  	userID INTS,
   	Date DATE,
     Emission VARCHAR(64),
     PRIMARY KEY( Date, userID),
@@ -18,8 +18,10 @@ CREATE TABLE EmissionData(
 
 --Each user can have multiple friends.
 CREATE TABLE Friends(
-    fromUserID VARCHAR(64) REFERENCES Users,
-    toUserID VARCHAR(64) REFERENCES Users,
+    fromUserID INT REFERENCES Users,
+    toUserID INT REFERENCES Users,
     friendshipStatus BOOLEAN,
     PRIMARY KEY (fromUserId , toUserID )
 );
+
+

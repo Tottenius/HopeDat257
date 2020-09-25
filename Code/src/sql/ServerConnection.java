@@ -30,7 +30,7 @@ public class ServerConnection {
 
     public String register(int userid, String userName, String password){
         try{
-            PreparedStatement input = conn.prepareStatement("INSERT INTO Users VALUES ( ?, ?, ?) ");
+            PreparedStatement input = conn.prepareStatement("INSERT INTO users VALUES ( ?, ?, ?) ");
             input.setInt(1, userid);
             input.setString(2, userName);
             input.setString(3, password);

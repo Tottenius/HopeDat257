@@ -64,6 +64,13 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/loginView.fxml"));
+        try {
+            this.rightPane.setContent(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
