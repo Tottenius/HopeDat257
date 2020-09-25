@@ -30,9 +30,11 @@ public class ServerConnection {
     public String register(int id, String userName, String password){
         try{
             System.out.println("ÄR inne yo");
-            PreparedStatement input = conn.prepareStatement("INSERT INTO Users VALUES (id +'"+userName +"','" +password +"') ");
+            //PreparedStatement input = conn.prepareStatement("INSERT INTO users VALUES (1 '"+userName +"','" +password +"') ");
+            PreparedStatement input = conn.prepareStatement( "INSERT INTO Users VALUES ( 5, 'REEEEEEEEEEEEE', 'Password4') ");
             System.out.println("Borde göra prepared statement yo");
             input.executeUpdate();
+            System.out.println("Efter execute update");
             return("{\"success registration\":true}");
 
         } catch (SQLException e) {

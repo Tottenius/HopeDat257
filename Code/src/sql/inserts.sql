@@ -2,6 +2,7 @@ INSERT INTO Users VALUES ( 1, 'Tor', 'Password');
 INSERT INTO Users VALUES ( 2, 'Anton', 'Password2');
 INSERT INTO Users VALUES ( 3, 'Emil', 'Password3');
 INSERT INTO Users VALUES ( 4, 'Jonathan', 'Password4');
+INSERT INTO Users VALUES ( 6, 'Bilbo Baggins', 'Password4');
 
 INSERT INTO EmissionData VALUES (1, '2020-09-24', 78);
 INSERT INTO EmissionData VALUES (1, '2020-09-25', 58);
