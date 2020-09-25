@@ -1,21 +1,27 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 import main.BarChartExample;
 import model.BarChartEmissions;
 import model.UserData;
 
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javafx.scene.input.*;
 
 public class FoodViewController implements Initializable {
 
@@ -116,9 +122,9 @@ public class FoodViewController implements Initializable {
         TreeItem<String> root = new TreeItem<>("Meats");
 
         TreeItem<String> nodeA = new TreeItem<>("Beef");
-        nodeA.setValue("0,0144");
+        //nodeA.setValue("0,0144");
         TreeItem<String> nodeB = new TreeItem<>("Chicken");
-        nodeB.setValue("0,0025");
+        //nodeB.setValue("0,0025");
         TreeItem<String> nodeC = new TreeItem<>("Lamb");
 
         TreeItem<String> root2 = new TreeItem<>("Spices");
@@ -167,7 +173,20 @@ class CustomCell extends TreeCell<String> {
                 Label label = new Label(item);
                 Button button = new Button("+");
 
-                cellBox.getChildren().addAll(label, button);
+                button.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                        event -> {
+                            WeightViewController weightView = new WeightViewController();
+                            try {
+                                new WeightViewController();
+                                weightView.start(new Stage());
+                                System.out.println(weightView.weightInput);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                final Pane spacer = new Pane();
+                HBox.setHgrow(spacer, Priority.ALWAYS);
+                cellBox.getChildren().addAll(label, spacer, button);
 
                 setGraphic(cellBox);
                 setText(null);
