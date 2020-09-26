@@ -43,7 +43,6 @@ public class LoginViewController implements Initializable {
         }
         // Felmedelande
         else{
-            this.userTextField.setText("Wrong username or password");
             this.passwordTextField.setText("");
         }
     }

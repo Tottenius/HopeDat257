@@ -2,6 +2,7 @@ package sql;
 
 import org.postgresql.copy.CopyOut;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.Properties;
 
@@ -50,26 +51,19 @@ public class ServerConnection {
             //För debug
             System.out.println("Försöker logga in med " + userName + " " + password );
 
-            PreparedStatement input = conn.prepareStatement( "SELECT name, password FROM Users WHERE name = (?)");
+            PreparedStatement input = conn.prepareStatement( "SELECT *  FROM Users WHERE name = ? AND password = ? ");
             input.setString(1, userName);
+            input.setString(2, password);
 
             ResultSet rs = input.executeQuery();
 
-            while(rs.next()){
-                System.out.println(rs.getString("password"));
-                realPassword = rs.getString("password");
-                realName = rs.getString("name");
-            }
-            if(!realName.equals(userName)){
-                return false;
-            }
+            if(!rs.next()){
 
-           else if( realPassword.equals(password)){
-                return true;
-            }
-            else{
+                JOptionPane.showMessageDialog(null,"Wrong Username or Password","Error",JOptionPane.ERROR_MESSAGE);
                 return false;
             }
+            else
+                return true;
 
         } catch (SQLException e) {
             return false;

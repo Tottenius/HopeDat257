@@ -20,10 +20,10 @@ public class MainViewController implements Initializable {
     //Database on
     private boolean dbON = true;
 
-    // User
+    // Default User
     private UserData user = new UserData("Anton");
     //Change away static later
-    private static UserData userDB = new UserData("DEFAULT");
+    private static UserData userDATA = new UserData("DEFAULT");
 
     //Right side
     @FXML
@@ -43,8 +43,8 @@ public class MainViewController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodView.fxml"));
         //Set it's controller to the right one
         if(dbON){
-            if(userDB.getLoggedIn()) {
-                loader.setControllerFactory(c -> new FoodViewController(this.userDB));
+            if(userDATA.getLoggedIn()) {
+                loader.setControllerFactory(c -> new FoodViewController(this.userDATA));
                 this.rightPane.setContent(loader.load());
             }
         }
@@ -96,7 +96,7 @@ public class MainViewController implements Initializable {
     }
 
     public static void setUserData ( UserData d){
-        userDB = d;
+        userDATA = d;
         d.setLoggedIn(true);
 
     }
