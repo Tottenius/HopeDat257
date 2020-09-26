@@ -22,6 +22,7 @@ public class MainViewController implements Initializable {
 
     // User
     private UserData user = new UserData("Anton");
+    //Change away static later
     private static UserData userDB = new UserData("DEFAULT");
 
     //Right side
