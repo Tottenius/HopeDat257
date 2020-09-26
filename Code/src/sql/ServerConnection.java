@@ -41,6 +41,41 @@ public class ServerConnection {
             return "{\"success registration\":false, \"error\":\""+getError(e)+"\"}";
         }
     }
+    public boolean login( String userName, String password){
+        Statement stmt = null;
+        String realPassword = "";
+        String realName = "";
+
+        try{
+            //För debug
+            System.out.println("Försöker logga in med " + userName + " " + password );
+
+            PreparedStatement input = conn.prepareStatement( "SELECT name, password FROM Users WHERE name = (?)");
+            input.setString(1, userName);
+
+            ResultSet rs = input.executeQuery();
+
+            while(rs.next()){
+                System.out.println(rs.getString("password"));
+                realPassword = rs.getString("password");
+                realName = rs.getString("name");
+            }
+            if(!realName.equals(userName)){
+                return false;
+            }
+
+           else if( realPassword.equals(password)){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
 
     // This is a hack to turn an SQLException into a JSON string error message. No need to change.
     public static String getError(SQLException e){

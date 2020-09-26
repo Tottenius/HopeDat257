@@ -11,18 +11,18 @@ import sql.ServerConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-      protected static ServerConnection c;
+    protected static ServerConnection c;
+
+    //Database on
+    private boolean dbON = true;
 
     // User
     private UserData user = new UserData("Anton");
+    private static UserData userDB = new UserData("DEFAULT");
 
     //Right side
     @FXML
@@ -41,9 +41,19 @@ public class MainViewController implements Initializable {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c-> new FoodViewController(this.user));
+        if(dbON){
+            if(userDB.getLoggedIn()) {
+                loader.setControllerFactory(c -> new FoodViewController(this.userDB));
+                this.rightPane.setContent(loader.load());
+            }
+        }
+        else {
+            loader.setControllerFactory(c -> new FoodViewController(this.user));
+            this.rightPane.setContent(loader.load());
+
+        }
         // Load it in to the ScrollPane
-        this.rightPane.setContent(loader.load());
+
     }
 
     @FXML
@@ -53,6 +63,7 @@ public class MainViewController implements Initializable {
         //Set it's controller to the right one
         //loader.setControllerFactory( c-> new FriendsViewController());
         // Load it in to the ScrollPane
+        System.out.println("other user name: " + this.user.getUser());
         this.rightPane.setContent(loader.load());
     }
 
@@ -69,6 +80,10 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/loginView.fxml"));
+        // om databasen är på så skickar vi med användaren till login för att kunna skapa en ny
+        if(this.dbON) {
+            loader.setControllerFactory(c -> new LoginViewController());
+        }
         try {
             c = new ServerConnection();
             this.rightPane.setContent(loader.load());
@@ -76,5 +91,18 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
 
+
     }
+
+    public static void setUserData ( UserData d){
+        userDB = d;
+        d.setLoggedIn(true);
+
+    }
+
+    public UserData getUserData() {
+        return user;
+    }
+
+
 }
