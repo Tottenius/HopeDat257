@@ -9,8 +9,15 @@ import java.util.Map;
 
 public class UserData {
 
+    public UserData(String user) {
+        this.user = user;
+    }
+
     // Username
     private String user;
+
+    // Logged in?
+    private boolean loggedIn = false;
 
     // Dateformat without time
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -63,7 +70,17 @@ public class UserData {
         return this.emissions.get(date);
     }
 
-    public UserData(String user) {
-        this.user = user;
+    public String getUser(){
+        return this.user;
     }
+
+    public boolean getLoggedIn(){
+        return loggedIn;
+    }
+    public void setLoggedIn(boolean b){
+        this.loggedIn = b;
+    }
+
+
+
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginViewController">
+   <children>
+      <VBox prefHeight="804.0" prefWidth="1014.0">
+         <children>
+            <HBox prefHeight="152.0" prefWidth="1014.0" style="-fx-background-color: #C6DABF;" />
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #EFEFEF;" VBox.vgrow="ALWAYS">
+               <children>
+                  <GridPane alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="212.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="userTextField" pickOnBounds="false" prefHeight="52.0" prefWidth="300.0" promptText="Username" GridPane.columnSpan="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField fx:id="passwordTextField" prefHeight="55.0" prefWidth="300.0" promptText="Password" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </PasswordField>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#loginClick" prefHeight="25.0" prefWidth="101.0" text="Login">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <TextFlow prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="23.0" prefWidth="97.0" text="Forgot Password" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Button fx:id="registerButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#registerClick" prefHeight="39.0" prefWidth="115.0" text="Register">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <TextFlow prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Hyperlink prefHeight="23.0" prefWidth="100.0" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <Region prefHeight="460.0" prefWidth="35.0" />
+                  <ImageView fitHeight="301.0" fitWidth="291.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_1742031.jpg" />
+                     </image></ImageView>
+               </children></HBox>
+            <HBox layoutX="10.0" layoutY="110.0" prefHeight="115.0" prefWidth="1014.0" style="-fx-background-color: #C6DABF;" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

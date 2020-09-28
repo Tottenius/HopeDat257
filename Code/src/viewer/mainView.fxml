@@ -16,7 +16,7 @@
     <RowConstraints maxHeight="800.0" minHeight="10.0" prefHeight="697.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox prefHeight="800.0" prefWidth="202.0">
+      <VBox prefHeight="800.0" prefWidth="202.0" GridPane.hgrow="NEVER">
          <children>
             <Label prefHeight="44.0" prefWidth="69.0" text="Menu">
                <font>

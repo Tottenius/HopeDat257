@@ -24,15 +24,6 @@ public class Main extends Application {
 
     }
 
-    //Handle events such as button clicks etc...
-    public void handle(ActionEvent event){
-
-
-
-
-    }
-
-
     public static void main(String[] args) {
         System.out.println("Test");
         //Method that starts the program as a JavaFx application
