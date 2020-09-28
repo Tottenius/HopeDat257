@@ -1,7 +1,5 @@
 package sql;
 
-import org.postgresql.copy.CopyOut;
-
 import javax.swing.*;
 import java.sql.*;
 import java.util.Properties;
