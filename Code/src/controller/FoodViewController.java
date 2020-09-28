@@ -1,23 +1,28 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
 import main.BarChartExample;
 import model.BarChartEmissions;
+import model.CustomCell;
 import model.UserData;
 
+import java.awt.event.ActionListener;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javafx.scene.input.*;
 
 public class FoodViewController implements Initializable {
 
@@ -46,6 +51,9 @@ public class FoodViewController implements Initializable {
     private BarChartEmissions barChartEmissions;
 
     @FXML
+    private ListView insertedItemsList;
+
+    @FXML
     private TextField breakfastTextField;
 
     @FXML
@@ -64,6 +72,10 @@ public class FoodViewController implements Initializable {
 
     @FXML
     public void drawGraphMethod() throws ParseException {
+        this.updateBarChart();
+        // För test
+        this.addToList();
+        /*
         // Add emissions today
         Date today = this.getDate(0);
         this.user.addToEmissions(45, today);
@@ -74,6 +86,8 @@ public class FoodViewController implements Initializable {
         this.barChartEmissions.addToChart(today, this.user.getEmissions(today));
         // Paint to chart tomorrow
         this.barChartEmissions.addToChart(tomorrow, this.user.getEmissions(tomorrow));
+
+         */
     }
     /*public void drawGraphMethod() {
         new BarChartExample(barChartOne);
@@ -118,7 +132,9 @@ public class FoodViewController implements Initializable {
         TreeItem<String> root = new TreeItem<>("Meats");
 
         TreeItem<String> nodeA = new TreeItem<>("Beef");
+        //nodeA.setValue("0,0144");
         TreeItem<String> nodeB = new TreeItem<>("Chicken");
+        //nodeB.setValue("0,0025");
         TreeItem<String> nodeC = new TreeItem<>("Lamb");
 
         TreeItem<String> root2 = new TreeItem<>("Spices");
@@ -135,6 +151,8 @@ public class FoodViewController implements Initializable {
         TreeItem<String> nodeB3 = new TreeItem<>("Rice");
         TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
 
+
+
         barChartOne.setTitle("Carbon emissions from your meal");
 
         mainroot.getChildren().addAll(root,root2,root3);
@@ -143,5 +161,21 @@ public class FoodViewController implements Initializable {
         root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
+
+        treeviewID.setCellFactory(e -> new CustomCell(this.user));
+
+        //foodView.getChildren().add(treeviewID);
+    }
+    private void addToList(){
+       int emissions = this.user.getEmissionsMap().get(this.getDate(0));
+        insertedItemsList.getItems().add(emissions);
+    }
+
+    public UserData getUserData(){
+        return this.getUserData();
+    }
+
+    public void setUserData(UserData data){
+       this.user = data;
     }
 }
