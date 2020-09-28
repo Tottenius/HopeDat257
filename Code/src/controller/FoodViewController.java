@@ -13,6 +13,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import main.BarChartExample;
 import model.BarChartEmissions;
+import model.CustomCell;
 import model.UserData;
 
 import java.awt.event.ActionListener;
@@ -156,45 +157,4 @@ public class FoodViewController implements Initializable {
 
         //foodView.getChildren().add(treeviewID);
     }
-}
-
-class CustomCell extends TreeCell<String> {
-    @Override
-    protected void updateItem(String item, boolean empty) {
-        super.updateItem(item, empty);
-
-        if (isEmpty()) {
-            setGraphic(null);
-            setText(null);
-        } else {
-            if (this.getTreeItem().isLeaf()) {
-                HBox cellBox = new HBox(10);
-
-                Label label = new Label(item);
-                Button button = new Button("+");
-
-                button.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                        event -> {
-                            WeightViewController weightView = new WeightViewController();
-                            try {
-                                weightView.start(new Stage());
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        });
-                final Pane spacer = new Pane();
-                HBox.setHgrow(spacer, Priority.ALWAYS);
-                cellBox.getChildren().addAll(label, spacer, button);
-
-                setGraphic(cellBox);
-                setText(null);
-            } else {
-                setGraphic(null);
-                setText(item);
-            }
-        }
-    }
-
-
-
 }
