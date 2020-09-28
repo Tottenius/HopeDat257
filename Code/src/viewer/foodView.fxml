@@ -11,7 +11,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -49,11 +48,11 @@
             </MenuBar>
             <HBox prefHeight="45.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <TextField prefHeight="25.0" prefWidth="159.0" promptText="Username" />
-                  <TextField layoutX="10.0" layoutY="10.0" promptText="Password" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Login" />
                   <Region prefHeight="37.0" prefWidth="196.0" />
-                  <Button fx:id="drawGraphs" mnemonicParsing="false" onAction="#drawGraphMethod" text="Draw Graphs" />
+                  <Button fx:id="drawGraphs" mnemonicParsing="false" onAction="#drawGraphMethod" prefHeight="26.0" prefWidth="92.0" text="Draw Graphs">
+                     <HBox.margin>
+                        <Insets left="300.0" />
+                     </HBox.margin></Button>
                </children>
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
