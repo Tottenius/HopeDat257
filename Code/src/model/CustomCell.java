@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,6 +56,7 @@ public class CustomCell extends TreeCell<String> {
                             scene = new Scene(parent);
                             Stage stage = new Stage();
                             stage.setScene(scene);
+                            stage.initModality(Modality.APPLICATION_MODAL);
                             stage.show();
 
                         });

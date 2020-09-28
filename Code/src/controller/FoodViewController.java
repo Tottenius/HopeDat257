@@ -51,6 +51,9 @@ public class FoodViewController implements Initializable {
     private BarChartEmissions barChartEmissions;
 
     @FXML
+    private ListView insertedItemsList;
+
+    @FXML
     private TextField breakfastTextField;
 
     @FXML
@@ -70,6 +73,8 @@ public class FoodViewController implements Initializable {
     @FXML
     public void drawGraphMethod() throws ParseException {
         this.updateBarChart();
+        // För test
+        this.addToList();
         /*
         // Add emissions today
         Date today = this.getDate(0);
@@ -160,6 +165,10 @@ public class FoodViewController implements Initializable {
         treeviewID.setCellFactory(e -> new CustomCell(this.user));
 
         //foodView.getChildren().add(treeviewID);
+    }
+    private void addToList(){
+       int emissions = this.user.getEmissionsMap().get(this.getDate(0));
+        insertedItemsList.getItems().add(emissions);
     }
 
     public UserData getUserData(){
