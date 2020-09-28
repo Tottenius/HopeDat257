@@ -11,34 +11,43 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.UserData;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class WeightViewController extends Application {
 
-    private int calculatorValue;
+    private int calculatorValue = 0;
+    private UserData user;
 
-    public WeightViewController() {
+    public WeightViewController(UserData user) {
+        this.user = user;
     }
 
     @FXML
     TextField weightInput;
 
     @FXML
-    public void submitButton(ActionEvent actionEvent) throws ParseException {
+    public void submitButton(ActionEvent actionEvent) throws ParseException, IOException {
+        // Get the input
         String input = weightInput.getText();
+        // Parse the input
         int value = Integer.parseInt(input);
-        calculator(value);
-
-        //this.userData.addToEmissions(getCalculatorValue());
+        System.out.println("när vi klickar på knappen: " + value);
+        // Puts the value from the text field in the local variable
+        this.calculator(value);
+        this.user.addToEmissions(this.calculatorValue);
 
         Node  source = (Node)  actionEvent.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
-        stage.close();
+        if(value != 0) {
+         stage.close();
+        }
     }
 
     @Override
@@ -47,12 +56,14 @@ public class WeightViewController extends Application {
         Parent weightRoot = loader.load();
 
         weightStage.setScene(new Scene(weightRoot));
-        weightStage.show();
+        //weightStage.initOwner(weightStage);
+        weightStage.initModality(Modality.APPLICATION_MODAL);
+        weightStage.showAndWait();
     }
 
     public void calculator(int value) {
-        System.out.println(value);
-        calculatorValue = value;
+        System.out.println("i weightviewcontroller "+value);
+        this.calculatorValue = value;
     }
 
     public int getCalculatorValue() {

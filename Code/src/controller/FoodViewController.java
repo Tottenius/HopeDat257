@@ -69,6 +69,8 @@ public class FoodViewController implements Initializable {
 
     @FXML
     public void drawGraphMethod() throws ParseException {
+        this.updateBarChart();
+        /*
         // Add emissions today
         Date today = this.getDate(0);
         this.user.addToEmissions(45, today);
@@ -79,6 +81,8 @@ public class FoodViewController implements Initializable {
         this.barChartEmissions.addToChart(today, this.user.getEmissions(today));
         // Paint to chart tomorrow
         this.barChartEmissions.addToChart(tomorrow, this.user.getEmissions(tomorrow));
+
+         */
     }
     /*public void drawGraphMethod() {
         new BarChartExample(barChartOne);
@@ -153,8 +157,16 @@ public class FoodViewController implements Initializable {
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
 
-        treeviewID.setCellFactory(e -> new CustomCell());
+        treeviewID.setCellFactory(e -> new CustomCell(this.user));
 
         //foodView.getChildren().add(treeviewID);
+    }
+
+    public UserData getUserData(){
+        return this.getUserData();
+    }
+
+    public void setUserData(UserData data){
+       this.user = data;
     }
 }
