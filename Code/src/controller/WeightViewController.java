@@ -63,6 +63,8 @@ public class WeightViewController extends Application {
 
     public void calculator(int value) {
         System.out.println("i weightviewcontroller "+value);
+        int emission = 10;
+        value = value * emission;
         this.calculatorValue = value;
     }
 
