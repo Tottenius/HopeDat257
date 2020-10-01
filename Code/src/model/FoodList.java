@@ -28,6 +28,8 @@ public class FoodList {
     private void initFoodListNamesMeat() {
         FoodListNamesMeat = new HashMap<>();
 
+
+        //Double-värdet är utsläpp/gram
         FoodListNamesMeat.put(0.0144, FoodListEnumMeat.Beaf);
         FoodListNamesMeat.put(0.0025, FoodListEnumMeat.Chicken);
     }
