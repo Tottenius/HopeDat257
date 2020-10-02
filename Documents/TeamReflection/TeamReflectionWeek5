@@ -1,5 +1,6 @@
 Current Situation:
-Färdig mergat, hyfsat klar med databasen. Vi jobbar med en dataklass för mat. När det är klart ska vi fixa i databasen så man kan infoga mat/utsläpp för användarna där också.
+Färdig mergat, hyfsat klar med databasen. Vi jobbar med en dataklass för mat som ska hålla koll på hur mycket utsläpp maten genererar. 
+När det är klart ska vi fixa i databasen så man kan infoga mat/utsläpp för användarna där också.
 Vi kommit fram till att våran DoD vilket är att koden i mergead till main, funkar och är granskad av 2-3 personer i gruppen.
 
 What do we want the situation to be?
