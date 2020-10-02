@@ -1,13 +1,16 @@
 Current Situation:
-Färdig mergat, hyfsat klar med databasen
+Färdig mergat, hyfsat klar med databasen. Vi jobbar med en dataklass för mat. När det är klart ska vi fixa i databasen så man kan infoga mat/utsläpp för användarna där också.
+Vi kommit fram till att våran DoD vilket är att koden i mergead till main, funkar och är granskad av 2-3 personer i gruppen.
 
 What do we want the situation to be?
-Komma fram till vår DoD
+Vi vill ha våran databas och dataklass i synk så man kan börja spara data till användare
 
 Our plan:
-Få ihop databasen med vår foodlist, merge
+Vi ska jobba vidare med dataklassen för mat/utsläpp och databasen sepparat. När det är redo mergar vi ihop det.
 
 Application of scrum:
-
+Vi har haft möten varje dag, fyllt i våra KPIer och reflekterat kring våra beslut som grupp. 
 
 Customer Value and Scope:
+Det är viktigt som anbvändare att få dataklassen att fungera så man kan börja anbvända applikationen. Däremot är scopet ganska stort att få ihop det med 
+databasen. Så det viktigaste är att få klart dataklassen.
