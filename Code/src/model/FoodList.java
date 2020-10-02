@@ -7,7 +7,16 @@ import java.util.Map;
 public class FoodList {
 
     private enum FoodListEnum {
-        Meat, Spices, Carbs
+        Meat(5), Spices(1), Carbs(2);
+
+        private int em;
+
+        private FoodListEnum(int emission){
+            this.em = emission;
+        }
+        public int getEmission(){
+            return em;
+        }
     }
 
     private enum FoodListEnumMeat {
