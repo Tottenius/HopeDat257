@@ -2,10 +2,15 @@ package model;
 
 import model.FoodPackage.Foods;
 
+//import java.text.DateFormat;
+import java.sql.Date;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+//import java.util.*;
 
 public class UserData {
 
@@ -27,22 +32,28 @@ public class UserData {
 
 
 
-    public Map<Date, List<Foods>> userData = new HashMap<>();
+    public Map<String, List<Foods>> userData = new HashMap<>();
 
     public void addToUserData(Date date, Foods food) {
-        if (userData.get(date) == null) {
+        if (!userData.containsKey(date.toString())) {
             List<Foods> todaysList = new ArrayList<>();
             todaysList.add(food);
-            userData.put(date , todaysList);
+            userData.put(date.toString() , todaysList);
         } else {
-            List<Foods> todaysList = userData.get(date);
+            List<Foods> todaysList = userData.get(date.toString());
             todaysList.add(food);
-            userData.put(date, todaysList);
+            userData.put(date.toString(), todaysList);
         }
     }
 
     public double getEmissions(Date date) {
-        List<Foods> todaysList = this.userData.get(date);
+
+        for(String key : this.userData.keySet()){
+            System.out.println("datum keys: "+ key);
+        }
+
+        List<Foods> todaysList = this.userData.get(date.toString());
+        System.out.println("dagens datum: " + date);
         double emissions = 0;
         for (Foods food: todaysList) {
             emissions = emissions + food.getEmission();
@@ -50,7 +61,7 @@ public class UserData {
         return emissions;
     }
 
-    public Map<Date, List<Foods>> getUserData() {
+    public Map<String, List<Foods>> getUserData() {
         return this.userData;
     }
 

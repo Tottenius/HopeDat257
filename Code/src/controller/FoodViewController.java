@@ -18,10 +18,12 @@ import model.FoodPackage.FoodsEnum;
 import model.UserData;
 
 import java.net.URL;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+//import java.util.*;
 import javafx.scene.input.*;
 
 public class FoodViewController implements Initializable {
@@ -31,6 +33,7 @@ public class FoodViewController implements Initializable {
     }
 
     // Gives the date compared of today plus i in days
+    /*
     private Date getDate(int i) {
         try {
             return formatter.parse(formatter.format(new Date(this.date.getTime() + (1000 * 60 * 60 * 24) * i)));
@@ -40,11 +43,14 @@ public class FoodViewController implements Initializable {
         }
         return this.date;
     }
+    */
 
     //Current user
     private UserData user;
     // Date
     private Date date;
+    //Today
+    private long today =System.currentTimeMillis();
     // Dateformat without time
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     // Barchart emission class
@@ -57,12 +63,37 @@ public class FoodViewController implements Initializable {
     private TextField breakfastTextField;
 
     @FXML
+    private Label dateTextField;
+    @FXML
+    private Button nextDayButton;
+    @FXML
+    private Button previousDayButton;
+
+    private int dayOffset = 0;
+
+    @FXML
+    private void nextDayButtonClick(){
+        dayOffset++;
+        this.date.setTime(today + dayOffset * (1000*60*60*24));
+        this.dateTextField.setText(""+ this.date);
+    }
+
+    @FXML
+    private void previousDayButtonClick(){
+        dayOffset--;
+        this.date.setTime(today + dayOffset * (1000*60*60*24));
+        this.dateTextField.setText(""+ this.date);
+    }
+
+
+
+    @FXML
     private void breakfastTextFieldAction() {
         System.out.println(this.breakfastTextField.getText());
     }
 
     @FXML
-    TreeView <FoodsEnum> treeviewID;
+    private TreeView <FoodsEnum> treeviewID;
 
     @FXML
     private Button drawGraphs;
@@ -73,57 +104,36 @@ public class FoodViewController implements Initializable {
     @FXML
     public void drawGraphMethod() throws ParseException {
         this.updateBarChart();
-        // För test
+        // Til llistan längst ner till vänster
         this.addToList();
-        /*
-        // Add emissions today
-        Date today = this.getDate(0);
-        this.user.addToEmissions(45, today);
-        // Add emissions tomorrow
-        Date tomorrow = this.getDate(1);
-        this.user.addToEmissions(27, tomorrow);
-        // Paint to chart today
-        this.barChartEmissions.addToChart(today, this.user.getEmissions(today));
-        // Paint to chart tomorrow
-        this.barChartEmissions.addToChart(tomorrow, this.user.getEmissions(tomorrow));
+    }
 
-         */
-    }
-    /*public void drawGraphMethod() {
-        new BarChartExample(barChartOne);
-    }
-    */
     private void updateBarChart(){
         // get the map with values
-        Map<Date,List<Foods>> userData = this.user.getUserData();
+        Map<String, List<Foods>> userData = this.user.getUserData();
         // Get the
         Set keys = userData.keySet();
         // Temp date
-        Date tempDate;
+        String tempDate;
         Iterator i = keys.iterator();
         // Loop through map
         while (i.hasNext()){
-            tempDate = (Date) i.next();
+            tempDate = (String) i.next();
 
             //List<Foods> todaysList = userData.get(tempDate);
-            double todaysEmission = user.getEmissions(tempDate);
+            Date convDate = Date.valueOf(tempDate);
+            double todaysEmission = user.getEmissions(convDate);
 
             // paint the days that exist
-            this.barChartEmissions.addToChart(tempDate, todaysEmission);
+            this.barChartEmissions.addToChart(convDate, todaysEmission);
         }
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("init chart and menu");
 
-        // Set to today's date;
-        try {
-            this.date = formatter.parse(formatter.format(new Date()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Something went wrong with the dateparsing");
-        }
+        this.date = new Date(today);
+        this.dayOffset = 0;
         //Connect our fxml barchart to the class for easier modifications
         this.barChartEmissions = new BarChartEmissions(this.barChartOne);
         // Update barchart with old values if there are any
@@ -196,7 +206,7 @@ public class FoodViewController implements Initializable {
 
             try {
                 loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
-                loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked));
+                loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked, this.date));
                 parent = loader.load();
             } catch (Exception e){
                 System.out.println("you fucked up");
@@ -213,7 +223,7 @@ public class FoodViewController implements Initializable {
 
     private void addToList(){
        double emissions = this.user.getEmissions(this.date);
-        insertedItemsList.getItems().add(emissions);
+       insertedItemsList.getItems().add(emissions);
     }
 
     public UserData getUserData(){
