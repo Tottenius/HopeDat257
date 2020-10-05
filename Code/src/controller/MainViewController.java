@@ -73,7 +73,7 @@ public class MainViewController implements Initializable {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/settingsView.fxml"));
         //Set it's controller to the right one
-        //loader.setControllerFactory( c-> new SettingsViewController());
+        loader.setControllerFactory( c-> new SettingsViewController(this.userDATA));
         // Load it in to the ScrollPane
         this.rightPane.setContent(loader.load());
     }

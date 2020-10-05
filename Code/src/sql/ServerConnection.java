@@ -40,6 +40,36 @@ public class ServerConnection {
             return "{\"success registration\":false, \"error\":\""+getError(e)+"\"}";
         }
     }
+
+    public String changePassword(String userName, String oldPassword,  String newPassword){
+
+        try{
+            // Hämta gamla lösenordet
+            PreparedStatement input1 = conn.prepareStatement( "SELECT password FROM users WHERE name = ?");
+            input1.setString(1, userName);
+            ResultSet rs = input1.executeQuery();
+            // Få nästa i setet
+            rs.next();
+            String boolPassword = rs.getString("password");
+            System.out.println("Gamla lösenordet från query: " + boolPassword);
+            // Om det är rätt lösenord byt
+            if(boolPassword.equals(oldPassword)) {
+                PreparedStatement input2 = conn.prepareStatement("UPDATE users SET password = ? WHERE name = ?");
+                input2.setString(1, newPassword);
+                input2.setString(2, userName);
+                input2.executeUpdate();
+                return ("{\"success password change\":true}");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Wrong password!","Error",JOptionPane.ERROR_MESSAGE);
+                return ("{\"failed password change\":false}");
+            }
+
+        } catch (SQLException e) {
+            return "{\"failed password change\":false, \"error\":\""+getError(e)+"\"}";
+        }
+    }
+
     public boolean login( String userName, String password){
         Statement stmt = null;
         String realPassword = "";

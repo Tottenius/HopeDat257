@@ -7,13 +7,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane id="mainWindow" prefHeight="400.0" prefWidth="600.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsViewController">
    <children>
-      <Label layoutX="113.0" layoutY="105.0" prefHeight="191.0" prefWidth="462.0" text="Settings">
-         <font>
-            <Font size="96.0" />
-         </font>
-      </Label>
+      <VBox prefHeight="400.0" prefWidth="618.0">
+         <children>
+            <HBox prefHeight="32.0" prefWidth="618.0">
+               <children>
+                  <Label prefHeight="32.0" prefWidth="238.0" text="Old password" />
+                  <PasswordField fx:id="oldPassword" prefHeight="32.0" prefWidth="60.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="22.0" prefWidth="618.0">
+               <children>
+                  <Label prefHeight="36.0" prefWidth="237.0" text="New password" />
+                  <PasswordField fx:id="newPassword" prefHeight="32.0" prefWidth="88.0" />
+                  <Button fx:id="changePasswordButton" mnemonicParsing="false" onAction="#changePasswordButtonClick" prefHeight="32.0" prefWidth="63.0" styleClass="generalButton" text="Apply" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
