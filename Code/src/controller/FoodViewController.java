@@ -1,22 +1,22 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import main.BarChartExample;
 import model.BarChartEmissions;
-import model.CustomCell;
+import model.FoodPackage.Foods;
+import model.FoodPackage.FoodsEnum;
 import model.UserData;
 
-import java.awt.event.ActionListener;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -62,7 +62,7 @@ public class FoodViewController implements Initializable {
     }
 
     @FXML
-    TreeView <String> treeviewID;
+    TreeView <FoodsEnum> treeviewID;
 
     @FXML
     private Button drawGraphs;
@@ -95,17 +95,21 @@ public class FoodViewController implements Initializable {
     */
     private void updateBarChart(){
         // get the map with values
-        Map hm = this.user.getEmissionsMap();
+        Map<Date,List<Foods>> userData = this.user.getUserData();
         // Get the
-        Set keys = hm.keySet();
+        Set keys = userData.keySet();
         // Temp date
         Date tempDate;
         Iterator i = keys.iterator();
         // Loop through map
         while (i.hasNext()){
             tempDate = (Date) i.next();
+
+            //List<Foods> todaysList = userData.get(tempDate);
+            double todaysEmission = user.getEmissions(tempDate);
+
             // paint the days that exist
-            this.barChartEmissions.addToChart(tempDate, this.user.getEmissions(tempDate));
+            this.barChartEmissions.addToChart(tempDate, todaysEmission);
         }
 
     }
@@ -127,14 +131,14 @@ public class FoodViewController implements Initializable {
 
         //Treeviewer that can be used for longer list of food items etc.. //Anton
 
+        /*
         TreeItem<String> mainroot = new TreeItem<>("x");
 
         TreeItem<String> root = new TreeItem<>("Meats");
 
         TreeItem<String> nodeA = new TreeItem<>("Beef");
-        //nodeA.setValue("0,0144");
+
         TreeItem<String> nodeB = new TreeItem<>("Chicken");
-        //nodeB.setValue("0,0025");
         TreeItem<String> nodeC = new TreeItem<>("Lamb");
 
         TreeItem<String> root2 = new TreeItem<>("Spices");
@@ -152,22 +156,63 @@ public class FoodViewController implements Initializable {
         TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
 
 
-
-        barChartOne.setTitle("Carbon emissions from your meal");
-
         mainroot.getChildren().addAll(root,root2,root3);
-        root.getChildren().addAll(nodeA,nodeB,nodeC);
+        root.getChildren().addAll(beef,nodeB,nodeC);
         root2.getChildren().addAll(nodeA2,nodeB2,nodeC2,nodeD2,nodeE2);
         root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
+        */
 
-        treeviewID.setCellFactory(e -> new CustomCell(this.user));
+        EventHandler<MouseEvent> mouseEventHandle = this::handleMouseClicked;
+
+        treeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
+
+        TreeItem<FoodsEnum> mainRoot = new TreeItem<>();
+
+        for (FoodsEnum foods : FoodsEnum.values()) {
+            TreeItem<FoodsEnum> food = new TreeItem<>(foods);
+            mainRoot.getChildren().add(food);
+        }
+
+        treeviewID.setRoot(mainRoot);
+        treeviewID.setShowRoot(false);
+
+        barChartOne.setTitle("Carbon emissions from your meal");
 
         //foodView.getChildren().add(treeviewID);
     }
+
+    private void handleMouseClicked(MouseEvent event) {
+        Node node = event.getPickResult().getIntersectedNode();
+        // Accept clicks only on node cells, and not on empty spaces of the TreeView
+        if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
+            FoodsEnum foodClicked = (FoodsEnum) ((TreeItem)treeviewID.getSelectionModel().getSelectedItem()).getValue();
+            System.out.println("Node click: " + foodClicked.getEmission());
+
+            FXMLLoader loader;
+            Parent parent = null;
+            Scene scene;
+
+            try {
+                loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
+                loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked));
+                parent = loader.load();
+            } catch (Exception e){
+                System.out.println("you fucked up");
+            }
+            scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+
+
+        }
+    }
+
     private void addToList(){
-       int emissions = this.user.getEmissionsMap().get(this.getDate(0));
+       double emissions = this.user.getEmissions(this.date);
         insertedItemsList.getItems().add(emissions);
     }
 
