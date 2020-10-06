@@ -18,7 +18,7 @@ public class MainViewController implements Initializable {
     protected static ServerConnection c;
 
     //Database on
-    private boolean dbON = true;
+    private boolean dbON = false;
 
     // Default User
     private UserData user = new UserData("Anton");
@@ -50,6 +50,7 @@ public class MainViewController implements Initializable {
         }
         else {
             loader.setControllerFactory(c -> new FoodViewController(this.user));
+            this.user.setLoggedIn(true);
             this.rightPane.setContent(loader.load());
 
         }
