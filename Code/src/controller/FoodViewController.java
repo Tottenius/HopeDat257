@@ -148,8 +148,15 @@ public class FoodViewController implements Initializable {
 
         TreeItem<String> nodeA = new TreeItem<>("Beef");
 
-        TreeItem<String> nodeB = new TreeItem<>("Chicken");
-        TreeItem<String> nodeC = new TreeItem<>("Lamb");
+        //nodeA.setValue("0,0144");
+        TreeItem<String> nodeB = new TreeItem<>("Pork");
+        TreeItem<String> nodeC = new TreeItem<>("Chicken");
+        //nodeB.setValue("0,0025");
+        TreeItem<String> nodeD = new TreeItem<>("Lamb");
+        TreeItem<String> nodeE = new TreeItem<>("Veal");
+        TreeItem<String> nodeF = new TreeItem<>("Venison");
+        TreeItem<String> nodeG = new TreeItem<>("Fish");
+
 
         TreeItem<String> root2 = new TreeItem<>("Spices");
 
@@ -163,13 +170,25 @@ public class FoodViewController implements Initializable {
 
         TreeItem<String> nodeA3 = new TreeItem<>("Pasta");
         TreeItem<String> nodeB3 = new TreeItem<>("Rice");
-        TreeItem<String> nodeC3 = new TreeItem<>("Mashed Potatoes");
+        TreeItem<String> nodeC3 = new TreeItem<>("Potatoes");
+        TreeItem<String> nodeD3 = new TreeItem<>("Noodles");
+
+        TreeItem<String> root4 = new TreeItem<>("Dairy");
+        TreeItem<String> nodeA4 = new TreeItem<>("Milk");
+        TreeItem<String> nodeB4 = new TreeItem<>("Cream");
+        TreeItem<String> nodeC4 = new TreeItem<>("Butter");
+        TreeItem<String> nodeD4 = new TreeItem<>("Yoghurt");
 
 
-        mainroot.getChildren().addAll(root,root2,root3);
-        root.getChildren().addAll(beef,nodeB,nodeC);
+
+        barChartOne.setTitle("Carbon emissions from your meal");
+
+        mainroot.getChildren().addAll(root,root2,root3,root4);
+        root.getChildren().addAll(nodeA,nodeB,nodeC,nodeD,nodeE,nodeF,nodeG);
+
         root2.getChildren().addAll(nodeA2,nodeB2,nodeC2,nodeD2,nodeE2);
-        root3.getChildren().addAll(nodeA3,nodeB3,nodeC3);
+        root3.getChildren().addAll(nodeA3,nodeB3,nodeC3,nodeD3);
+        root4.getChildren().addAll(nodeA4,nodeB4,nodeC4,nodeD4);
         treeviewID.setRoot(mainroot);
         treeviewID.setShowRoot(false);
         */
