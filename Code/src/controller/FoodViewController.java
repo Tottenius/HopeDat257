@@ -94,13 +94,7 @@ public class FoodViewController implements Initializable {
     }
 
     @FXML
-    private TreeView <FoodsEnum> breakfastTreeviewID;
-
-    @FXML
-    private TreeView <FoodsEnum> lunchTreeviewID;
-
-    @FXML
-    private TreeView <FoodsEnum> dinnerTreeviewID;
+    private TreeView <FoodsEnum> treeviewID;
 
     @FXML
     private Button drawGraphs;
@@ -214,9 +208,7 @@ public class FoodViewController implements Initializable {
 
         EventHandler<MouseEvent> mouseEventHandle = this::handleMouseClicked;
 
-        breakfastTreeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
-        lunchTreeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
-        dinnerTreeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
+        treeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
 
         TreeItem<FoodsEnum> mainRoot = new TreeItem<>();
 
@@ -225,14 +217,10 @@ public class FoodViewController implements Initializable {
             mainRoot.getChildren().add(food);
         }
 
-        breakfastTreeviewID.setRoot(mainRoot);
-        breakfastTreeviewID.setShowRoot(false);
+        treeviewID.setRoot(mainRoot);
+        treeviewID.setShowRoot(false);
 
-        lunchTreeviewID.setRoot(mainRoot);
-        lunchTreeviewID.setShowRoot(false);
 
-        dinnerTreeviewID.setRoot(mainRoot);
-        dinnerTreeviewID.setShowRoot(false);
 
         barChartOne.setTitle("Carbon emissions from your meal");
 
@@ -242,26 +230,20 @@ public class FoodViewController implements Initializable {
     private void handleMouseClicked(MouseEvent event) {
         Node node = event.getPickResult().getIntersectedNode();
         // Accept clicks only on node cells, and not on empty spaces of the TreeView
-        FoodsEnum foodClicked = null;
+
         if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
-           if(node.getParent() == breakfastTreeviewID) {
-               foodClicked = (FoodsEnum) ((TreeItem) breakfastTreeviewID.getSelectionModel().getSelectedItem()).getValue();
+
+               FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();
                System.out.println("Node click: " + foodClicked.getEmission());
-           } else if (node.getParent() == lunchTreeviewID){
-               foodClicked = (FoodsEnum) ((TreeItem) lunchTreeviewID.getSelectionModel().getSelectedItem()).getValue();
-               System.out.println("Node click: " + foodClicked.getEmission());
-           } else if (node.getParent() == dinnerTreeviewID){
-               foodClicked = (FoodsEnum) ((TreeItem) dinnerTreeviewID.getSelectionModel().getSelectedItem()).getValue();
-               System.out.println("Node click: " + foodClicked.getEmission());
-           }
+
             FXMLLoader loader;
             Parent parent = null;
             Scene scene;
 
             try {
                 loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
-                FoodsEnum finalFoodClicked = foodClicked;
-                loader.setControllerFactory(c -> new WeightViewController(this.user, finalFoodClicked, this.date));
+
+                loader.setControllerFactory(c -> new WeightViewController(this.user,  foodClicked, this.date));
                 parent = loader.load();
             } catch (Exception e){
                 System.out.println("you fucked up");
