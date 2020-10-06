@@ -22,7 +22,7 @@ public class UserData {
     private String user;
 
     // Logged in?
-    private boolean loggedIn = false;
+    private boolean loggedIn = true;
 
     // Dateformat without time
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");

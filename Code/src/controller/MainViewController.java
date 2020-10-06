@@ -18,7 +18,7 @@ public class MainViewController implements Initializable {
     protected static ServerConnection c;
 
     //Database on
-    private boolean dbON = false;
+    private boolean dbON = true;
 
     // Default User
     private UserData user = new UserData("Anton");
@@ -40,7 +40,7 @@ public class MainViewController implements Initializable {
     @FXML
     private void foodsClick() throws IOException {
         //Load in the new fxml document
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodViewRework.fxml"));
         //Set it's controller to the right one
         if(dbON){
             if(userDATA.getLoggedIn()) {
