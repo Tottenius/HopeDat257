@@ -43,6 +43,7 @@ public class Server {
     private String[] receiver() throws Exception {
         serverSocket = new ServerSocket(9999);
         socket = serverSocket.accept();
+        System.out.println("ny connection");
         DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
         String message = dataInputStream.readUTF();
         return message.split("\\s");
@@ -67,9 +68,15 @@ public class Server {
         }
     }
 
-    private void register(String[] requests) {
-
-
-        System.out.println("registrera");
+    private void register(String[] registerInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO users VALUES ( 1, ?, ?) ");
+            preparedStatement.setString(1, registerInfo[1]);
+            preparedStatement.setString(2, registerInfo[2]);
+            preparedStatement.executeUpdate();
+            sender("success");
+        } catch (SQLException e) {
+            sender("fail");
+        }
     }
 }
