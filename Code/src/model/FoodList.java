@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class FoodList {
     
-    //Används inte i nuläget
+    //Används inte i nuläget, ta ej bort ännu
 
     public FoodList() {
         initFoodNames();
