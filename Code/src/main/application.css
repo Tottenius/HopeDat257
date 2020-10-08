@@ -2,12 +2,13 @@
 	-fx-background-color: rgba(0, 0, 0, 0.6);
 }
 
-.menu-bar{
-	-fx-background-color: #1a936f;
-}
 
 #mainWindow{
 	-fx-background-color: #C6DABF;
+}
+
+#mainVbox{
+	-fx-background-color: #3A506B ;
 }
 
 .tree-cell{
@@ -23,7 +24,7 @@
 	-fx-font-size: 17;
 }
 .generalButton {
-	-fx-background-color: #1a936f;
+	-fx-background-color: #3A506B;
 	/*
 	-fx-pref-width: 237px;
 	*/
@@ -38,12 +39,40 @@
 	font-family:Arial;
 	font-size:17px;
 	padding:16px 31px;
+	-fx-text-fill: #ffffff;
 	text-decoration:none;
 }
+
 .generalButton:hover{
-	-fx-background-color: #44bf82;
+	-fx-background-color: #1C2541;
 }
 .generalButton:focused{
-	-fx-background-color: #44bf82;
+	-fx-background-color: #1C2541;
 }
 
+.tab,.tab-header-background{
+	-fx-background-color: #3A506B;
+
+	-fx-pref-width: 250px;
+
+	-fx-pref-width: 88px;
+	-fx-border:1px  ;
+	-fx-border-radius: none;
+	-fx-background-radius:none ;
+	-fx-end-margin:1px;
+	display:inline-block;
+	-fx-cursor:hand;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	-fx-text-fill: #ffffff;
+	text-decoration:none;
+}
+
+.tab-label{
+	-fx-text-fill: #ffffff;
+}
+.tab:selected{
+	-fx-background-color: #1C2541;
+}

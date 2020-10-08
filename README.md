@@ -22,6 +22,3 @@ Här samlas teamets reflektioner
 
 ### Trello
 https://trello.com/b/kyad6viz/agile-sprint-board
-
-### Diary
-https://docs.google.com/document/d/1BR731M1xWUF955NLs_FjlNHKughzpJiAHlj1ncU_v58/edit?usp=sharing
