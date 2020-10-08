@@ -3,7 +3,7 @@ package model;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BarChartEmissions {
     // The series
@@ -17,10 +17,8 @@ public class BarChartEmissions {
     }
 
     public synchronized void addToChart(Date date, double emission){
-        //emissionSeries.getData().addAll(new XYChart.Data("" +date, emission));
-        int index = this.emissionSeries.getData().size();
         XYChart.Data newData = new XYChart.Data("" +date, emission);
-        emissionSeries.getData().add(index ,newData);
+        emissionSeries.getData().add(newData);
 
     }
 }

@@ -39,17 +39,15 @@ public class UserData {
     }
 
     public double getEmissions(Date date) {
-        //For debug
-        for(String key : this.userData.keySet()){
-            System.out.println("datum keys: "+ key);
-        }
-
+        // Get todays list of foods
         List<Foods> todaysList = this.userData.get(date.toString());
-        System.out.println("dagens datum: " + date);
+
         double emissions = 0;
+        // add all of the emissions of the day together
         for (Foods food: todaysList) {
             emissions = emissions + food.getEmission();
         }
+        // Return the sum of all emissions for the day
         return emissions;
     }
 

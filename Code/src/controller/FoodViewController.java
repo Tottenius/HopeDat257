@@ -215,7 +215,7 @@ public class FoodViewController implements Initializable {
 
         //foodView.getChildren().add(treeviewID);
     }
-    private synchronized void loadInWeightView(){
+    private void loadInWeightView(){
         // cast the enum
         FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();
         System.out.println("Node click: " + foodClicked.getEmission());
@@ -244,6 +244,7 @@ public class FoodViewController implements Initializable {
         // Show it
         stage.show();
 
+        /*
         // When stage is "closed"
         stage.setOnHidden(windowEvent -> {
             Platform.runLater(()->{
@@ -253,9 +254,11 @@ public class FoodViewController implements Initializable {
                 this.addToList();
             });
         });
+
+         */
     }
 
-    //Listner for the add food menu
+    //Listener for the add food menu
     private void handleMouseClicked(MouseEvent event) {
         Node node = event.getPickResult().getIntersectedNode();
         // Accept clicks only on node cells, and not on empty spaces of the TreeView
@@ -273,8 +276,7 @@ public class FoodViewController implements Initializable {
             emissions = this.user.getEmissions(this.date);
         }
         // Else use 0 as because nothing exists
-       insertedItemsList.getItems().clear();
-       insertedItemsList.getItems().add(emissions);
+       insertedItemsList.getItems().add("" + date + ": " + emissions);
     }
 
 }
