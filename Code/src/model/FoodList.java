@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class FoodList {
+    
+    //Används inte i nuläget
 
     public FoodList() {
         initFoodNames();
