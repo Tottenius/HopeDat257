@@ -10,9 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
@@ -21,11 +23,10 @@ import model.UserData;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 //import java.util.*;
-import javafx.scene.input.*;
 
 public class FoodViewController implements Initializable {
 
@@ -72,9 +73,6 @@ public class FoodViewController implements Initializable {
         this.date.setTime(today + dayOffset * (1000*60*60*24));
         this.dateTextField.setText(""+ this.date);
     }
-
-
-
 
     @FXML
     private void breakfastTextFieldAction() {
@@ -217,35 +215,53 @@ public class FoodViewController implements Initializable {
 
         //foodView.getChildren().add(treeviewID);
     }
+    private synchronized void loadInWeightView(){
+        // cast the enum
+        FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();
+        System.out.println("Node click: " + foodClicked.getEmission());
 
+        FXMLLoader loader;
+        Parent parent = null;
+        Scene scene;
+
+        // Try to load in the view and the controller
+        try {
+            loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
+
+            loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked, this.date, this.barChartEmissions, this.insertedItemsList));
+            parent = loader.load();
+        } catch (Exception e){
+            System.out.println("you fucked up");
+        }
+        // Create scene
+        scene = new Scene(parent);
+        // Create stage
+        Stage stage = new Stage();
+        // Put the scene in the stage
+        stage.setScene(scene);
+        // Make it modal
+        stage.initModality(Modality.APPLICATION_MODAL);
+        // Show it
+        stage.show();
+
+        // When stage is "closed"
+        stage.setOnHidden(windowEvent -> {
+            Platform.runLater(()->{
+                //Add the bargraph
+                this.barChartEmissions.addToChart(this.date, this.user.getEmissions(this.date));
+                //Add it to the list in the left corner
+                this.addToList();
+            });
+        });
+    }
+
+    //Listner for the add food menu
     private void handleMouseClicked(MouseEvent event) {
         Node node = event.getPickResult().getIntersectedNode();
         // Accept clicks only on node cells, and not on empty spaces of the TreeView
-
         if (node instanceof Text || (node instanceof TreeCell && ((TreeCell) node).getText() != null)) {
-
-               FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();
-               System.out.println("Node click: " + foodClicked.getEmission());
-
-            FXMLLoader loader;
-            Parent parent = null;
-            Scene scene;
-
-            try {
-                loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
-
-                loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked, this.date));
-                parent = loader.load();
-            } catch (Exception e){
-                System.out.println("you fucked up");
-            }
-            scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-
-
+            //load in the view
+            loadInWeightView();
         }
     }
 
@@ -257,15 +273,8 @@ public class FoodViewController implements Initializable {
             emissions = this.user.getEmissions(this.date);
         }
         // Else use 0 as because nothing exists
+       insertedItemsList.getItems().clear();
        insertedItemsList.getItems().add(emissions);
     }
 
-    public UserData getUserData(){
-        return this.getUserData();
-    }
-
-
-    public void setUserData(UserData data){
-       this.user = data;
-    }
 }

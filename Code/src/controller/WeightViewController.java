@@ -1,11 +1,15 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.chart.BarChart;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
 import model.UserData;
@@ -20,30 +24,36 @@ import java.util.ResourceBundle;
 
 public class WeightViewController implements Initializable {
 
-    private int calculatorValue = 0;
+    private ListView insertedItemList;
+    private BarChartEmissions chart;
     private UserData user;
     private FoodsEnum foodsEnum;
     private Date date;
-    private long today =System.currentTimeMillis();
 
-    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-    public WeightViewController(UserData user, FoodsEnum foodsEnum, Date date) {
+    public WeightViewController(UserData user, FoodsEnum foodsEnum, Date date, BarChartEmissions chart, ListView insertedItemList) {
         this.user = user;
         this.foodsEnum = foodsEnum;
         this.date = date;
+        this.chart = chart;
+        this.insertedItemList = insertedItemList;
     }
 
-    private Date getDate(int i) {
-        date = new Date(today + i * (1000*60*60*24));
-        return this.date;
+    // Add to the list in the bottom right corner.
+    private void addToList(){
+        double emissions = 0;
+        // If there are any outputs for the day, print them out
+        if(this.user.getUserData().containsKey(this.date.toString())) {
+            emissions = this.user.getEmissions(this.date);
+        }
+        // Else use 0 as because nothing exists
+        insertedItemList.getItems().add(""+this.date+ ": " + emissions);
     }
 
     @FXML
-    TextField weightInput;
+    private TextField weightInput;
 
     @FXML
-    public void submitButton(ActionEvent actionEvent){
+    public synchronized void submitButton(ActionEvent actionEvent){
         // Get the input
         String input = weightInput.getText();
         // Parse the input
@@ -52,13 +62,12 @@ public class WeightViewController implements Initializable {
         // Puts the value from the text field in the local variable
         this.user.addToUserData(this.date, new Foods(value, foodsEnum));
 
+        // get node
         Node  source = (Node)  actionEvent.getSource();
+        // get stage
         Stage stage  = (Stage) source.getScene().getWindow();
+        // close stage
         stage.close();
-    }
-
-    public double calculator(int value) {
-        return value * foodsEnum.getEmission();
     }
 
     @Override

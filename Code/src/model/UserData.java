@@ -24,14 +24,6 @@ public class UserData {
     // Logged in?
     private boolean loggedIn = true;
 
-    // Dateformat without time
-    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-    //Today's date
-    private Date date;
-
-
-
     public Map<String, List<Foods>> userData = new HashMap<>();
 
     public void addToUserData(Date date, Foods food) {
