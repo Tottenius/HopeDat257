@@ -47,7 +47,7 @@ public class UserData {
     }
 
     public double getEmissions(Date date) {
-
+        //For debug
         for(String key : this.userData.keySet()){
             System.out.println("datum keys: "+ key);
         }

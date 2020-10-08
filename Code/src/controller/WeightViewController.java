@@ -35,17 +35,7 @@ public class WeightViewController implements Initializable {
     }
 
     private Date getDate(int i) {
-
         date = new Date(today + i * (1000*60*60*24));
-        /*
-        try {
-            return formatter.parse(formatter.format(new Date(this.date.getTime() + (1000 * 60 * 60 * 24) * i)));
-        }
-        catch (ParseException e){
-            System.out.println("Fel i parse av datum returnar dagens datum");
-        }
-        */
-
         return this.date;
     }
 
@@ -53,7 +43,7 @@ public class WeightViewController implements Initializable {
     TextField weightInput;
 
     @FXML
-    public void submitButton(ActionEvent actionEvent) throws ParseException, IOException {
+    public void submitButton(ActionEvent actionEvent){
         // Get the input
         String input = weightInput.getText();
         // Parse the input
@@ -73,15 +63,5 @@ public class WeightViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //this.date = new Date(today);
-        // Set to today's date;
-        /*
-        try {
-            this.date = formatter.parse(formatter.format(new Date()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            System.out.println("Something went wrong with the dateparsing");
-        }
-         */
     }
 }

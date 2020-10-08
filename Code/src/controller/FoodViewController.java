@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,19 +33,6 @@ public class FoodViewController implements Initializable {
         this.user = user;
     }
 
-    // Gives the date compared of today plus i in days
-    /*
-    private Date getDate(int i) {
-        try {
-            return formatter.parse(formatter.format(new Date(this.date.getTime() + (1000 * 60 * 60 * 24) * i)));
-        }
-        catch (ParseException e){
-            System.out.println("Fel i parse av datum returnar dagens datum");
-        }
-        return this.date;
-    }
-    */
-
     //Current user
     private UserData user;
     // Date
@@ -72,7 +60,7 @@ public class FoodViewController implements Initializable {
     private int dayOffset = 0;
 
     @FXML
-    private void nextDayButtonClick(){
+    private void nextDayButtonClick() {
         dayOffset++;
         this.date.setTime(today + dayOffset * (1000*60*60*24));
         this.dateTextField.setText(""+ this.date);
@@ -113,30 +101,33 @@ public class FoodViewController implements Initializable {
 
 
     @FXML
-    public void drawGraphMethod() throws ParseException {
-        this.updateBarChart();
-        // Til llistan längst ner till vänster
+    public void drawGraphMethod() {
+        // Till listan längst ner till vänster
         this.addToList();
+        // Update the graph
+        this.updateBarChart();
     }
 
     private void updateBarChart(){
         // get the map with values
         Map<String, List<Foods>> userData = this.user.getUserData();
-        // Get the
+        // Get the dates
         Set keys = userData.keySet();
         // Temp date
-        String tempDate;
+        String stringDate;
         Iterator i = keys.iterator();
         // Loop through map
         while (i.hasNext()){
-            tempDate = (String) i.next();
+            stringDate = (String) i.next();
 
             //List<Foods> todaysList = userData.get(tempDate);
-            Date convDate = Date.valueOf(tempDate);
+            Date convDate = Date.valueOf(stringDate);
             double todaysEmission = user.getEmissions(convDate);
 
             // paint the days that exist
             this.barChartEmissions.addToChart(convDate, todaysEmission);
+
+
         }
 
     }
@@ -243,7 +234,7 @@ public class FoodViewController implements Initializable {
             try {
                 loader = new FXMLLoader(getClass().getResource("/viewer/weightView.fxml"));
 
-                loader.setControllerFactory(c -> new WeightViewController(this.user,  foodClicked, this.date));
+                loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked, this.date));
                 parent = loader.load();
             } catch (Exception e){
                 System.out.println("you fucked up");
@@ -258,8 +249,14 @@ public class FoodViewController implements Initializable {
         }
     }
 
+    // Add to the list in the bottom right corner.
     private void addToList(){
-       double emissions = this.user.getEmissions(this.date);
+        double emissions = 0;
+        // If there are any outputs for the day, print them out
+        if(this.user.getUserData().containsKey(this.date.toString())) {
+            emissions = this.user.getEmissions(this.date);
+        }
+        // Else use 0 as because nothing exists
        insertedItemsList.getItems().add(emissions);
     }
 

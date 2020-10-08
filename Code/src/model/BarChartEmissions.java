@@ -17,7 +17,9 @@ public class BarChartEmissions {
     }
 
     public void addToChart(Date date, double emission){
-        emissionSeries.getData().add(new XYChart.Data("" +date, emission));
+        //emissionSeries.getData().addAll(new XYChart.Data("" +date, emission));
+        XYChart.Data newData = new XYChart.Data("" +date, emission);
+        emissionSeries.getData().add(newData);
 
     }
 }
