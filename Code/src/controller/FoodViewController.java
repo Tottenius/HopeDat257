@@ -106,7 +106,7 @@ public class FoodViewController implements Initializable {
         this.updateBarChart();
     }
 
-    private void updateBarChart(){
+    private synchronized void updateBarChart(){
         // get the map with values
         Map<String, List<Foods>> userData = this.user.getUserData();
         // Get the dates
@@ -249,12 +249,12 @@ public class FoodViewController implements Initializable {
         stage.setOnHidden(windowEvent -> {
             Platform.runLater(()->{
                 //Add the bargraph
+                this.updateBarChart();
                 this.barChartEmissions.addToChart(this.date, this.user.getEmissions(this.date));
                 //Add it to the list in the left corner
                 this.addToList();
             });
         });
-
          */
     }
 
@@ -278,5 +278,4 @@ public class FoodViewController implements Initializable {
         // Else use 0 as because nothing exists
        insertedItemsList.getItems().add("" + date + ": " + emissions);
     }
-
 }

@@ -9,6 +9,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.Main;
 import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
@@ -61,11 +62,8 @@ public class WeightViewController implements Initializable {
         System.out.println("när vi klickar på knappen: " + value);
         // Puts the value from the text field in the local variable
         this.user.addToUserData(this.date, new Foods(value, foodsEnum));
-
-        // Take the data from the user and add it to the graph
-        this.chart.addToChart(this.date, this.user.getEmissions(this.date));
-        //Add it to the list in the left corner
-        this.addToList();
+        // Update the graph and infobox with a task
+        startTask();
 
         // get node
         Node  source = (Node)  actionEvent.getSource();
@@ -73,6 +71,34 @@ public class WeightViewController implements Initializable {
         Stage stage  = (Stage) source.getScene().getWindow();
         // close stage
         stage.close();
+    }
+
+    private void startTask(){
+        // Create a Runnable
+        Runnable task = () -> runTask();
+        // Run the task in a background thread
+        Thread backgroundThread = new Thread(task);
+        // Terminate the running thread if the application exits
+        backgroundThread.setDaemon(true);
+        // Start the thread
+        backgroundThread.start();
+    }
+
+    private void updateGraph(){
+        // Take the data from the user and add it to the graph
+        this.chart.addToChart(this.date, this.user.getEmissions(this.date));
+        //Add it to the list in the left corner
+        this.addToList();
+    }
+
+    private void runTask(){
+        try{
+            Platform.runLater(() -> updateGraph());
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e ){
+            e.printStackTrace();
+        }
     }
 
     @Override

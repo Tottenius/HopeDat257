@@ -26,7 +26,7 @@ public class UserData {
 
     public Map<String, List<Foods>> userData = new HashMap<>();
 
-    public synchronized void addToUserData(Date date, Foods food) {
+    public void addToUserData(Date date, Foods food) {
         if (!userData.containsKey(date.toString())) {
             List<Foods> todaysList = new ArrayList<>();
             todaysList.add(food);
