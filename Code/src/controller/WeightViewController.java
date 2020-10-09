@@ -63,6 +63,7 @@ public class WeightViewController implements Initializable {
         // Puts the value from the text field in the local variable
         this.user.addToUserData(this.date, new Foods(value, foodsEnum));
         // Update the graph and infobox with a task
+
         startTask();
 
         // get node

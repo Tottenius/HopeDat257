@@ -107,6 +107,8 @@ public class FoodViewController implements Initializable {
     }
 
     private synchronized void updateBarChart(){
+        //Reset the barchart values
+        this.barChartEmissions.clearEmissionCollection();
         // get the map with values
         Map<String, List<Foods>> userData = this.user.getUserData();
         // Get the dates
@@ -250,12 +252,13 @@ public class FoodViewController implements Initializable {
             Platform.runLater(()->{
                 //Add the bargraph
                 this.updateBarChart();
-                this.barChartEmissions.addToChart(this.date, this.user.getEmissions(this.date));
+                //this.barChartEmissions.addToChart(this.date, this.user.getEmissions(this.date));
                 //Add it to the list in the left corner
                 this.addToList();
             });
         });
-         */
+        */
+
     }
 
     //Listener for the add food menu
