@@ -63,8 +63,8 @@ public class WeightViewController implements Initializable {
         // Puts the value from the text field in the local variable
         this.user.addToUserData(this.date, new Foods(value, foodsEnum));
         // Update the graph and infobox with a task
-
-        startTask();
+        this.updateGraph();
+        //startTask();
 
         // get node
         Node  source = (Node)  actionEvent.getSource();
@@ -74,32 +74,11 @@ public class WeightViewController implements Initializable {
         stage.close();
     }
 
-    private void startTask(){
-        // Create a Runnable
-        Runnable task = () -> runTask();
-        // Run the task in a background thread
-        Thread backgroundThread = new Thread(task);
-        // Terminate the running thread if the application exits
-        backgroundThread.setDaemon(true);
-        // Start the thread
-        backgroundThread.start();
-    }
-
     private void updateGraph(){
         // Take the data from the user and add it to the graph
         this.chart.addToChart(this.date, this.user.getEmissions(this.date));
         //Add it to the list in the left corner
         this.addToList();
-    }
-
-    private void runTask(){
-        try{
-            Platform.runLater(() -> updateGraph());
-            Thread.sleep(1000);
-        }
-        catch(InterruptedException e ){
-            e.printStackTrace();
-        }
     }
 
     @Override

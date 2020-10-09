@@ -1,14 +1,13 @@
 package model;
 
-import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 
+import java.awt.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BarChartEmissions {
     // The series
@@ -50,7 +49,10 @@ public class BarChartEmissions {
         this.emissionSeries.getData().clear();
         // add the updated one
         this.emissionSeries.getData().addAll(samples);
-
+        //Set colour
+        for(Node n:barChart.lookupAll(".default-color0.chart-bar")) {
+            n.setStyle("-fx-bar-fill: #3A506B;");
+        }
 
 
 
