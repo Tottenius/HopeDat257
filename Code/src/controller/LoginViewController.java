@@ -34,6 +34,7 @@ public class LoginViewController implements Initializable {
     private TextField passwordTextField;
 
     // Anropar contactServer för att fråga servern om login uppgifterna stämmer och loggar isf in
+    /*
     @FXML
     private void loginClick() throws IOException {
         if(userTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
@@ -82,9 +83,9 @@ public class LoginViewController implements Initializable {
     }
 
 
+*/
 
 
-/*
     @FXML
     private void loginClick() throws IOException {
         System.out.println("Klickat på login");
@@ -107,7 +108,7 @@ public class LoginViewController implements Initializable {
         System.out.println("Klickat på register");
         MainViewController.c.register(1,userTextField.getText(), passwordTextField.getText());
     }
-*/
+
 
 
 

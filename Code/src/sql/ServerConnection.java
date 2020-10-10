@@ -108,46 +108,44 @@ public class ServerConnection {
             input.setString(1, toUser);
             ResultSet rs = input.executeQuery();
 
-            if(!rs.next()){
+            if(!rs.next()) {
 
-                JOptionPane.showMessageDialog(null,"No person exist with the given Username","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No person exist with the given Username", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
 
+            System.out.println("am here  kompis1");
             PreparedStatement input2 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
             input2.setString(1, toUser);
-            ResultSet toUserID = input.executeQuery();
+            ResultSet toUserID = input2.executeQuery();
 
+            System.out.println("am here  kompis2");
             PreparedStatement input3 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
             input3.setString(1, fromUser);
-            ResultSet fromUserID = input.executeQuery();
+            ResultSet fromUserID = input3.executeQuery();
 
+            if(!toUserID.next() || !fromUserID.next()) {
 
-            //Check if they are already friends
-            PreparedStatement input4 = conn.prepareStatement("SELECT friendshipstatus  FROM friends WHERE fromuserid = ? AND touserid = ?");
-            input4.setInt(1,fromUserID.getInt(1) );
-            input4.setInt(2, toUserID.getInt(1));
-            ResultSet rsStatus = input.executeQuery();
-
-            if(!rsStatus.getBoolean(1)){
-
-                JOptionPane.showMessageDialog(null,"You are already friend with given user","Wait!",JOptionPane.INFORMATION_MESSAGE);
                 return false;
             }
 
-            else{
-
-                PreparedStatement input5 = conn.prepareStatement("UPDATE friends SET fromuserid = ? AND touserid = ?");
-                input5.setInt(1, fromUserID.getInt(1));
-                input5.setInt(2, toUserID.getInt(1));
-                input5.executeUpdate();
-                return true;
-
-            }
+                System.out.println("am here  kompis3");
+                //Check if they are already friends
+                PreparedStatement input4 = conn.prepareStatement("SELECT friendshipstatus  FROM friends WHERE fromuserid = ? AND touserid = ?");
+                input4.setInt(1, toUserID.getInt(1));
+                input4.setInt(2, fromUserID.getInt(1));
+                ResultSet rsStatus = input4.executeQuery();
 
 
+            System.out.println("am here mannen");
+            PreparedStatement input5 = conn.prepareStatement("INSERT INTO friends VALUES (?,?,?)");
+            input5.setInt(1, fromUserID.getInt(1));
+            input5.setInt(2, toUserID.getInt(1));
+            input5.setBoolean(3,true);
+            input5.executeUpdate();
+               return true;
 
-        } catch (SQLException e) {
+            }catch (SQLException e) {
             return false;
         }
     }
