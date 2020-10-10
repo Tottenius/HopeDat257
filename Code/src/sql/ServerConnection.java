@@ -99,6 +99,61 @@ public class ServerConnection {
     }
 
 
+    public boolean addFriend(String fromUser, String toUser) {
+
+        try {
+
+            //Check if user you wanna add exist
+            PreparedStatement input = conn.prepareStatement("SELECT *  FROM Users WHERE name = ?");
+            input.setString(1, toUser);
+            ResultSet rs = input.executeQuery();
+
+            if(!rs.next()){
+
+                JOptionPane.showMessageDialog(null,"No person exist with the given Username","Error",JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+            PreparedStatement input2 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
+            input2.setString(1, toUser);
+            ResultSet toUserID = input.executeQuery();
+
+            PreparedStatement input3 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
+            input3.setString(1, fromUser);
+            ResultSet fromUserID = input.executeQuery();
+
+
+            //Check if they are already friends
+            PreparedStatement input4 = conn.prepareStatement("SELECT friendshipstatus  FROM friends WHERE fromuserid = ? AND touserid = ?");
+            input4.setInt(1,fromUserID.getInt(1) );
+            input4.setInt(2, toUserID.getInt(1));
+            ResultSet rsStatus = input.executeQuery();
+
+            if(!rsStatus.getBoolean(1)){
+
+                JOptionPane.showMessageDialog(null,"You are already friend with given user","Wait!",JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
+
+            else{
+
+                PreparedStatement input5 = conn.prepareStatement("UPDATE friends SET fromuserid = ? AND touserid = ?");
+                input5.setInt(1, fromUserID.getInt(1));
+                input5.setInt(2, toUserID.getInt(1));
+                input5.executeUpdate();
+                return true;
+
+            }
+
+
+
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+
+
     // This is a hack to turn an SQLException into a JSON string error message. No need to change.
     public static String getError(SQLException e){
         String message = e.getMessage();
