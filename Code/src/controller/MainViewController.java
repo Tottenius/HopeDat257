@@ -63,7 +63,7 @@ public class MainViewController implements Initializable {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/friendsView.fxml"));
         //Set it's controller to the right one
-        //loader.setControllerFactory( c-> new FriendsViewController());
+        loader.setControllerFactory( c-> new FriendsViewController(this.userDATA));
         // Load it in to the ScrollPane
         System.out.println("other user name: " + this.user.getUser());
         this.rightPane.setContent(loader.load());
