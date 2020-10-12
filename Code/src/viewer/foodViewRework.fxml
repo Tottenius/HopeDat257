@@ -17,13 +17,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FoodViewController">
+<BorderPane prefHeight="761.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FoodViewController">
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="950.0">
+      <AnchorPane prefHeight="500.0" prefWidth="750.0">
          <children>
             <FlowPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <VBox prefHeight="487.0" prefWidth="271.0" spacing="10.0" styleClass="tab-pane">
+                  <VBox prefHeight="670.0" prefWidth="271.0" spacing="10.0" styleClass="tab-pane">
                      <children>
                         <TabPane prefHeight="253.0" prefWidth="330.0" styleClass=".tab" stylesheets="@../main/application.css" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
@@ -31,7 +31,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="223.0">
                                        <children>
-                                          <TreeView fx:id="treeviewID" prefHeight="234.0" prefWidth="271.0" />
+                                          <TreeView fx:id="treeviewID" prefHeight="219.0" prefWidth="271.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
@@ -56,7 +56,7 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <ListView fx:id="insertedItemsList" prefHeight="229.0" prefWidth="271.0">
+                        <ListView fx:id="insertedItemsList" prefHeight="411.0" prefWidth="271.0">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -65,19 +65,19 @@
                   </VBox>
                </children>
             </FlowPane>
-            <HBox layoutX="271.0" prefHeight="30.0" prefWidth="502.0">
+            <HBox layoutX="271.0" prefHeight="30.0" prefWidth="712.0">
                <children>
-                  <ButtonBar prefHeight="30.0" prefWidth="502.0" style="-fx-background-color: #3A506B;">
+                  <ButtonBar prefHeight="30.0" prefWidth="712.0" style="-fx-background-color: #3A506B;">
                     <buttons>
-                      <Button fx:id="previousDayButton" mnemonicParsing="false" onAction="#previousDayButtonClick" styleClass="generalButton" text="Previous" />
-                        <Label fx:id="dateTextField" minWidth="72.0" prefHeight="18.0" prefWidth="130.0" text="Date" />
+                      <Button fx:id="previousDayButton" minWidth="0.0" mnemonicParsing="false" onAction="#previousDayButtonClick" prefHeight="26.0" prefWidth="323.0" styleClass="generalButton" text="Previous" />
+                        <Label fx:id="dateTextField" minWidth="72.0" prefHeight="18.0" prefWidth="130.0" style="-fx-text-fill: #ffffff" text="Date" />
                         <Button fx:id="nextDayButton" layoutX="122.0" layoutY="12.0" mnemonicParsing="false" onAction="#nextDayButtonClick" styleClass="generalButton" text="Next" />
                         <Button fx:id="drawGraphs" layoutX="202.0" layoutY="12.0" mnemonicParsing="false" onAction="#drawGraphMethod" prefHeight="26.0" prefWidth="111.0" styleClass="generalButton" text="Draw Graph" />
                     </buttons>
                   </ButtonBar>
                </children>
             </HBox>
-            <BarChart fx:id="barChartOne" layoutX="272.0" layoutY="55.0" prefHeight="431.0" prefWidth="500.0">
+            <BarChart fx:id="barChartOne" layoutX="272.0" layoutY="55.0" prefHeight="646.0" prefWidth="681.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
