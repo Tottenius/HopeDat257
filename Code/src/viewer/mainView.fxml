@@ -12,7 +12,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1075.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+
+<GridPane id="mainWindow" maxHeight="800.0" maxWidth="1075.0" minHeight="800.0" minWidth="1075.0" prefHeight="800.0" prefWidth="1075.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="799.0" minWidth="10.0" prefWidth="90.2" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="1119.8000183105469" minWidth="0.0" prefWidth="985.3999999999999" />
@@ -79,6 +80,6 @@
             </HBox>
          </children>
       </VBox>
-      <ScrollPane fx:id="rightPane" prefHeight="800.0" prefWidth="924.0" GridPane.columnIndex="1" />
+      <ScrollPane fx:id="rightPane" fitToHeight="true" fitToWidth="true" prefHeight="800.0" prefWidth="924.0" GridPane.columnIndex="1" />
    </children>
 </GridPane>
