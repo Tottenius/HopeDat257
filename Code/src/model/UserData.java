@@ -45,7 +45,7 @@ public class UserData {
         double emissions = 0;
         // add all of the emissions of the day together
         for (Foods food: todaysList) {
-            emissions = emissions + food.getEmission();
+            emissions = food.getEmission();
         }
         // Return the sum of all emissions for the day
         return emissions;
