@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,14 +14,14 @@
 
 <GridPane id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="799.0" minWidth="10.0" prefWidth="169.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1118.0" minWidth="0.0" prefWidth="1031.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="799.0" minWidth="10.0" prefWidth="88.6" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1119.8000183105469" minWidth="0.0" prefWidth="1111.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="800.0" minHeight="10.0" prefHeight="697.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox id="mainVbox" prefHeight="800.0" prefWidth="202.0" GridPane.hgrow="NEVER">
+      <VBox id="mainVbox" prefHeight="800.0" prefWidth="97.0" GridPane.hgrow="NEVER">
          <children>
             <HBox prefHeight="27.0" prefWidth="262.0">
                <children>
@@ -37,6 +36,9 @@
                      <tooltip>
                         <Tooltip opacity="0.9" text="Graphs" />
                      </tooltip>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Button>
                </children>
                <VBox.margin>
@@ -77,10 +79,6 @@
             </HBox>
          </children>
       </VBox>
-      <ScrollPane fx:id="rightPane" prefHeight="761.0" prefWidth="984.0" GridPane.columnIndex="1">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
+      <ScrollPane fx:id="rightPane" minWidth="-Infinity" prefHeight="761.0" prefWidth="800.0" GridPane.columnIndex="1" />
    </children>
 </GridPane>
