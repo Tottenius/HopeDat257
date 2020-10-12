@@ -29,6 +29,7 @@ public class MainViewController implements Initializable {
     @FXML
     private ScrollPane rightPane;
 
+
     //Left side
     @FXML
     private Button foods;
@@ -108,3 +109,4 @@ public class MainViewController implements Initializable {
 
 
 }
+

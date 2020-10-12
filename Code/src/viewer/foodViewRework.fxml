@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="761.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FoodViewController">
@@ -27,7 +28,7 @@
                      <children>
                         <TabPane prefHeight="253.0" prefWidth="330.0" styleClass=".tab" stylesheets="@../main/application.css" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab fx:id="breakfastTab" text="Breakfast">
+                            <Tab fx:id="breakfastTab" text="Food">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="223.0">
                                        <children>
@@ -36,24 +37,6 @@
                                     </AnchorPane>
                               </content>
                             </Tab>
-                              <Tab fx:id="lunchTab" text="Lunch">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="223.0">
-                                       <children>
-                                          <TreeView prefHeight="234.0" prefWidth="271.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab fx:id="dinnerTab" text="Dinner">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="136.0" prefWidth="223.0">
-                                       <children>
-                                          <TreeView prefHeight="234.0" prefWidth="271.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
                           </tabs>
                         </TabPane>
                         <ListView fx:id="insertedItemsList" prefHeight="411.0" prefWidth="271.0">
@@ -67,17 +50,18 @@
             </FlowPane>
             <HBox layoutX="271.0" prefHeight="30.0" prefWidth="712.0">
                <children>
-                  <ButtonBar prefHeight="30.0" prefWidth="712.0" style="-fx-background-color: #3A506B;">
+                  <ButtonBar prefHeight="30.0" prefWidth="954.0" style="-fx-background-color: #3A506B;">
                     <buttons>
+                        <Region prefHeight="30.0" prefWidth="200.0" />
                       <Button fx:id="previousDayButton" minWidth="0.0" mnemonicParsing="false" onAction="#previousDayButtonClick" prefHeight="26.0" prefWidth="323.0" styleClass="generalButton" text="Previous" />
                         <Label fx:id="dateTextField" minWidth="72.0" prefHeight="18.0" prefWidth="130.0" style="-fx-text-fill: #ffffff" text="Date" />
                         <Button fx:id="nextDayButton" layoutX="122.0" layoutY="12.0" mnemonicParsing="false" onAction="#nextDayButtonClick" styleClass="generalButton" text="Next" />
-                        <Button fx:id="drawGraphs" layoutX="202.0" layoutY="12.0" mnemonicParsing="false" onAction="#drawGraphMethod" prefHeight="26.0" prefWidth="111.0" styleClass="generalButton" text="Draw Graph" />
+                        <Region minWidth="0.0" prefHeight="30.0" prefWidth="260.0" />
                     </buttons>
                   </ButtonBar>
                </children>
             </HBox>
-            <BarChart fx:id="barChartOne" layoutX="272.0" layoutY="55.0" prefHeight="646.0" prefWidth="681.0">
+            <BarChart fx:id="barChartOne" layoutX="272.0" layoutY="55.0" legendVisible="false" prefHeight="646.0" prefWidth="681.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -85,6 +69,7 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
+            <Label layoutX="288.0" layoutY="46.0" text="CO2e (kg)" />
          </children>
       </AnchorPane>
    </center>
