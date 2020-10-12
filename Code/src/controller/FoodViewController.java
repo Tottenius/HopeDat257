@@ -143,59 +143,6 @@ public class FoodViewController implements Initializable {
 
         this.date.setTime(today + dayOffset * (1000*60*60*24));
         this.dateTextField.setText(""+ this.date);
-        //Treeviewer that can be used for longer list of food items etc.. //Anton
-
-        /*
-        TreeItem<String> mainroot = new TreeItem<>("x");
-
-        TreeItem<String> root = new TreeItem<>("Meats");
-
-        TreeItem<String> nodeA = new TreeItem<>("Beef");
-
-        //nodeA.setValue("0,0144");
-        TreeItem<String> nodeB = new TreeItem<>("Pork");
-        TreeItem<String> nodeC = new TreeItem<>("Chicken");
-        //nodeB.setValue("0,0025");
-        TreeItem<String> nodeD = new TreeItem<>("Lamb");
-        TreeItem<String> nodeE = new TreeItem<>("Veal");
-        TreeItem<String> nodeF = new TreeItem<>("Venison");
-        TreeItem<String> nodeG = new TreeItem<>("Fish");
-
-
-        TreeItem<String> root2 = new TreeItem<>("Spices");
-
-        TreeItem<String> nodeA2 = new TreeItem<>("Salt");
-        TreeItem<String> nodeB2 = new TreeItem<>("Pepper");
-        TreeItem<String> nodeC2 = new TreeItem<>("Sugar");
-        TreeItem<String> nodeD2 = new TreeItem<>("Oregano");
-        TreeItem<String> nodeE2 = new TreeItem<>("Basil");
-
-        TreeItem<String> root3 = new TreeItem<>("Carbs");
-
-        TreeItem<String> nodeA3 = new TreeItem<>("Pasta");
-        TreeItem<String> nodeB3 = new TreeItem<>("Rice");
-        TreeItem<String> nodeC3 = new TreeItem<>("Potatoes");
-        TreeItem<String> nodeD3 = new TreeItem<>("Noodles");
-
-        TreeItem<String> root4 = new TreeItem<>("Dairy");
-        TreeItem<String> nodeA4 = new TreeItem<>("Milk");
-        TreeItem<String> nodeB4 = new TreeItem<>("Cream");
-        TreeItem<String> nodeC4 = new TreeItem<>("Butter");
-        TreeItem<String> nodeD4 = new TreeItem<>("Yoghurt");
-
-
-
-        barChartOne.setTitle("Carbon emissions from your meal");
-
-        mainroot.getChildren().addAll(root,root2,root3,root4);
-        root.getChildren().addAll(nodeA,nodeB,nodeC,nodeD,nodeE,nodeF,nodeG);
-
-        root2.getChildren().addAll(nodeA2,nodeB2,nodeC2,nodeD2,nodeE2);
-        root3.getChildren().addAll(nodeA3,nodeB3,nodeC3,nodeD3);
-        root4.getChildren().addAll(nodeA4,nodeB4,nodeC4,nodeD4);
-        treeviewID.setRoot(mainroot);
-        treeviewID.setShowRoot(false);
-        */
 
         EventHandler<MouseEvent> mouseEventHandle = this::handleMouseClicked;
 
