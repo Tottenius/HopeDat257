@@ -3,7 +3,8 @@ package sql;
 import java.io.*;
 import java.net.*;
 import java.sql.*;
-import java.util.*;
+import java.util.Objects;
+import java.util.Properties;
 
 public class Server {
 
@@ -33,6 +34,10 @@ public class Server {
             switch (Objects.requireNonNull(request)[0]) {
                 case "login" -> login(request);
                 case "register" -> register(request);
+                case "addEmission" -> addEmission(request);
+                case "removeEmission" -> removeEmission(request);
+                case "changePassword" -> changePassword(request);
+                case "addFriend" -> addFriend(request);
             }
             serverSocket.close();
         }
@@ -57,7 +62,7 @@ public class Server {
 
     // Kollar om användarnamnet och lösenordet stämmer för en registrerad användare och anropar sender för att skicka tillbaka true eller false till klienten
     private void login(String[] loginInfo) throws Exception {
-        PreparedStatement preparedStatement = sqlConnection.prepareStatement( "SELECT *  FROM Users WHERE name = ? AND password = ? ");
+        PreparedStatement preparedStatement = sqlConnection.prepareStatement( "SELECT *  FROM Users WHERE username = ? AND password = ? ");
         preparedStatement.setString(1, loginInfo[1]);
         preparedStatement.setString(2, loginInfo[2]);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -70,7 +75,7 @@ public class Server {
 
     private void register(String[] registerInfo) throws IOException {
         try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO users VALUES ( 1, ?, ?) ");
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO users VALUES ( ?, ?) ");
             preparedStatement.setString(1, registerInfo[1]);
             preparedStatement.setString(2, registerInfo[2]);
             preparedStatement.executeUpdate();
@@ -80,4 +85,61 @@ public class Server {
         }
     }
 
+    private void addEmission(String[] addInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?)");
+            preparedStatement.setString(1, addInfo[1]);
+            preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
+            preparedStatement.setInt(3, Integer.parseInt(addInfo[3]));
+            preparedStatement.executeUpdate();
+            sender("success");
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
+
+    private void removeEmission(String[] addInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("DELETE FROM EmissionData WHERE userid = ? AND date = ?");
+            preparedStatement.setString(1, addInfo[1]);
+            preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
+            int result = preparedStatement.executeUpdate();
+            if(result > 0) {
+                sender("success");
+            } else {
+                sender("fail");
+            }
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
+
+    private void changePassword(String[] passwordInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("UPDATE Users SET password = ? WHERE username = ? AND password = ?");
+            preparedStatement.setString(1, passwordInfo[1]);
+            preparedStatement.setString(2, passwordInfo[2]);
+            preparedStatement.setString(3, passwordInfo[3]);
+            int result = preparedStatement.executeUpdate();
+            if(result > 0) {
+                sender("success");
+            } else {
+                sender("fail");
+            }
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
+
+    private void addFriend(String[] passwordInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO Friends VALUES (?, ?)");
+            preparedStatement.setString(1, passwordInfo[1]);
+            preparedStatement.setString(2, passwordInfo[2]);
+            preparedStatement.executeUpdate();
+            sender("success");
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
 }
