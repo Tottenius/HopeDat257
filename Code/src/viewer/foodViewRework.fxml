@@ -69,6 +69,7 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
+            <Label layoutX="288.0" layoutY="46.0" text="CO2e (kg)" />
          </children>
       </AnchorPane>
    </center>
