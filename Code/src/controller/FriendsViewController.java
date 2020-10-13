@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.UserData;
+import sql.DatabaseClient;
+import java.io.IOException;
 
 /**
  * Text
@@ -26,10 +28,16 @@ public class FriendsViewController {
     private TextField addFriendTextID;
 
     @FXML
-    private void addFriendButtonClick(){
-
-        MainViewController.c.addFriend(this.data.getUser(), addFriendTextID.getText());
-        System.out.println(addFriendTextID.getText());
+    private void addFriendButtonClick() throws IOException {
+        if(addFriendTextID.getText().isEmpty()) {
+            System.out.println("Field is empty");
+            return;
+        }
+        boolean passChangeOutcome = DatabaseClient.addFriend(data.getUser(), addFriendTextID.getText());
+        if(passChangeOutcome) {
+            System.out.println("succes, friend was added");
+        } else {
+            System.out.println("failure, friend could not be added");
+        }
     }
-
 }

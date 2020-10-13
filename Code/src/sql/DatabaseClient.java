@@ -47,6 +47,10 @@ public class DatabaseClient {
         }
     }
 
+    public static boolean getEmission(String username, String date) {
+        return false;
+    }
+
     public static boolean removeEmission(String username, String date, String food) throws IOException {
         String message = "removeEmission " + username + " " + date +  " " + food;
         String response = contactServer(message);
