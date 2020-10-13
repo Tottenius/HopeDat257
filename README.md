@@ -15,10 +15,6 @@ Detta är repot för Hope gruppens projekt i kursen DAT257 HT-2020.
 Här ligger källkoden
 ### Documents
 Här samlar vi våra dokument. Reflektioner, Social contract och rapporten ligger här.
-#### personal_reflection
-Här samlas våra individuella reflektioner med en mapp per person
-#### TeamReflections
-Här samlas teamets reflektioner
 
 ### Trello
 https://trello.com/b/kyad6viz/agile-sprint-board
