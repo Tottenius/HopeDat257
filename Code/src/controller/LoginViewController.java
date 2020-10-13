@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import main.RunMain;
 import model.UserData;
+import sql.DatabaseClient;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -38,21 +39,17 @@ public class LoginViewController implements Initializable {
     private TextField passwordTextField;
 
     // Anropar contactServer för att fråga servern om login uppgifterna stämmer och loggar isf in
-    /*
     @FXML
     private void loginClick() throws IOException {
         if(userTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
             System.out.println("Empty field");
             return;
         }
-        String message = "login " + userTextField.getText() + " " + passwordTextField.getText();
-        String response = contactServer(message);
-        if(response.equals("true")) {
-            // Gör vad som ska göras om en login lyckades
+        boolean loginOutcome = DatabaseClient.login(userTextField.getText(), passwordTextField.getText());
+        if(loginOutcome) {
             MainViewController.setUserData(new UserData(this.userTextField.getText()));
             System.out.println("successful login");
-        } else if(response.equals("false")) {
-            // Gör vad som ska göras om en login misslyckades
+        } else {
             System.out.println("faulty credentials");
             this.passwordTextField.setText("");
         }
@@ -64,32 +61,15 @@ public class LoginViewController implements Initializable {
             System.out.println("Empty field");
             return;
         }
-        String message = "register " + userTextField.getText() + " " + passwordTextField.getText();
-        String response = contactServer(message);
-        if(response.equals("success")) {
+        boolean registerOutcome = DatabaseClient.register(userTextField.getText(), passwordTextField.getText());
+        if(registerOutcome) {
             System.out.println("registered");
-        } else if(response.equals("fail")) {
+        } else {
             System.out.println("register failed");
         }
     }
 
-
-
-    // Skickar ett meddelande (message) till servern och returnerar ett svar från servern
-    private String contactServer(String message) throws IOException {
-        Socket socket = new Socket("217.209.131.86", 9999);
-        DataOutputStream output = new DataOutputStream(socket.getOutputStream());
-        DataInputStream input = new DataInputStream(socket.getInputStream());
-        output.writeUTF(message);
-        String response = input.readUTF();
-        socket.close();
-        return response;
-    }
-
-
-*/
-
-
+/*
     @FXML
     private void loginClick() throws IOException {
         System.out.println("Klickat på login");
@@ -112,9 +92,7 @@ public class LoginViewController implements Initializable {
         System.out.println("Klickat på register");
         MainViewController.c.register(1,userTextField.getText(), passwordTextField.getText());
     }
-
-
-
+*/
 
     private MainViewController loadRootController()  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/mainView.fxml"));
