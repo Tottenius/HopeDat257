@@ -36,9 +36,9 @@ public class DatabaseClient {
         }
     }
 
-    public static boolean addEmission(String username, String date, int emission) throws IOException {
+    public static boolean addEmission(String username, String date, String food, int emission) throws IOException {
         // String message = "addEmission " + "Jonathan" + " " + "2020-10-10" + " " + "500";
-        String message = "addEmission " + username + " " + date + " " + emission;
+        String message = "addEmission " + username + " " + date + " " + food + " " + emission;
         String response = contactServer(message);
         if(response.equals("success")) {
             return true;
@@ -47,8 +47,8 @@ public class DatabaseClient {
         }
     }
 
-    public static boolean removeEmission(String username, String date) throws IOException {
-        String message = "removeEmission " + username + " " + date;
+    public static boolean removeEmission(String username, String date, String food) throws IOException {
+        String message = "removeEmission " + username + " " + date +  " " + food;
         String response = contactServer(message);
         if(response.equals("success")) {
             return true;

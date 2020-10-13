@@ -10,8 +10,8 @@ SELECT fromUserID AS UserID ,toUserID AS FriendID
     WHERE u.id = '1';
 
 CREATE VIEW FriendsView AS
-    SELECT username, toUserID FROM Users
-         JOIN Friends ON(Users.username = Friends.fromUserID);
+    SELECT username, toUser FROM Users
+         JOIN Friends ON(Users.username = Friends.fromUser);
 
 CREATE VIEW UserView AS
     SELECT * FROM Users;

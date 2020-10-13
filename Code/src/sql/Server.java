@@ -87,10 +87,11 @@ public class Server {
 
     private void addEmission(String[] addInfo) throws IOException {
         try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?)");
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?, ?)");
             preparedStatement.setString(1, addInfo[1]);
             preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
-            preparedStatement.setInt(3, Integer.parseInt(addInfo[3]));
+            preparedStatement.setString(3, addInfo[3]);
+            preparedStatement.setInt(4, Integer.parseInt(addInfo[4]));
             preparedStatement.executeUpdate();
             sender("success");
         } catch (SQLException e) {
@@ -100,9 +101,10 @@ public class Server {
 
     private void removeEmission(String[] addInfo) throws IOException {
         try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("DELETE FROM EmissionData WHERE userid = ? AND date = ?");
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("DELETE FROM EmissionData WHERE username = ? AND date = ? AND food = ?");
             preparedStatement.setString(1, addInfo[1]);
             preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
+            preparedStatement.setString(3, addInfo[3]);
             int result = preparedStatement.executeUpdate();
             if(result > 0) {
                 sender("success");
