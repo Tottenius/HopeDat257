@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 
 //test1234
 
+/**
+ * Main class.
+ */
+
 public class Main extends Application {
 
     @Override

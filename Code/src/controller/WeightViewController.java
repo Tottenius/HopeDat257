@@ -23,6 +23,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+/**
+ * Text
+ */
 public class WeightViewController implements Initializable {
 
     private ListView insertedItemList;

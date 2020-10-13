@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.sql.*;
 import java.util.Properties;
 
+/**
+ * Thhis class handles handles communication between client and server.
+ */
+
 public class ServerConnection {
     // For connecting to the portal database on your local machine
     static final String DATABASE = "jdbc:postgresql://localhost/postgres";

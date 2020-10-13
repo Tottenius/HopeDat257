@@ -16,6 +16,10 @@ import java.net.MalformedURLException;
 import java.net.*;
 import java.util.ResourceBundle;
 
+/**
+ * This class communicates with the server for login.
+ */
+
 public class LoginViewController implements Initializable {
 
     public LoginViewController(){

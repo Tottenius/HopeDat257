@@ -1,5 +1,9 @@
 package model.FoodPackage;
 
+/**
+ * This class keeps track of different foods and their CO2e emission per kg.
+ */
+
 public enum FoodsEnum {
     //Protein
     Beef(0.0481), Pork(0.0042), Chicken(0.00206), Lamb(0.0454),

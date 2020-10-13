@@ -5,6 +5,10 @@ import java.net.*;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * This class handles the server.
+ */
+
 public class Server {
 
     private Connection sqlConnection;

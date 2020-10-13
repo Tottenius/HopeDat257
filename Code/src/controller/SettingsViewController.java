@@ -5,6 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.UserData;
 
+/**
+ * This class is for settings. You can currently only change password here.
+ */
+
 public class SettingsViewController {
 
     private UserData data;

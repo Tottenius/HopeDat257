@@ -19,7 +19,7 @@ public class MainViewController implements Initializable {
     protected static ServerConnection c;
 
     //Database on
-    private boolean dbON = true;
+    private boolean dbON = false;
 
     // Default User
     private UserData user = new UserData("Anton");
