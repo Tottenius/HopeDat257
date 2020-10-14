@@ -137,6 +137,7 @@ public class Server {
         } catch (SQLException e) {
             sender("fail");
         }
+
     }
 
     private void changePassword(String[] passwordInfo) throws IOException {
