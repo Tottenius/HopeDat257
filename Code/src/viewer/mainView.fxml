@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <GridPane id="mainWindow" maxHeight="800.0" maxWidth="1075.0" minHeight="800.0" minWidth="1075.0" prefHeight="800.0" prefWidth="1075.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="799.0" minWidth="10.0" prefWidth="90.2" />
@@ -22,7 +21,7 @@
     <RowConstraints maxHeight="800.0" minHeight="10.0" prefHeight="697.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox id="mainVbox" prefHeight="800.0" prefWidth="97.0" GridPane.hgrow="NEVER">
+      <VBox id="mainVbox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="97.0" GridPane.hgrow="NEVER">
          <children>
             <HBox prefHeight="27.0" prefWidth="262.0">
                <children>
@@ -80,6 +79,6 @@
             </HBox>
          </children>
       </VBox>
-      <ScrollPane fx:id="rightPane" fitToHeight="true" fitToWidth="true" prefHeight="800.0" prefWidth="924.0" GridPane.columnIndex="1" />
+      <ScrollPane fx:id="rightPane" fitToHeight="true" fitToWidth="true" focusTraversable="false" prefHeight="800.0" prefWidth="924.0" style="-fx-focus-color: #3A506B; -fx-faint-focus-color: #3A506B;" GridPane.columnIndex="1" />
    </children>
 </GridPane>

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="mainWindow" prefHeight="783.0" prefWidth="947.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsViewController">
+<AnchorPane id="mainWindow" prefHeight="761.0" prefWidth="983.0" stylesheets="@../main/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsViewController">
    <children>
-      <VBox layoutX="-3.0" layoutY="1.0" prefHeight="788.0" prefWidth="986.0">
+      <VBox layoutX="-3.0" layoutY="1.0" prefHeight="794.0" prefWidth="986.0">
          <children>
             <HBox disable="true" layoutX="10.0" layoutY="74.0" prefHeight="257.0" prefWidth="986.0" style="-fx-background-color: #3A506B;">
                <opaqueInsets>
@@ -45,7 +45,7 @@
                      </HBox.margin></Button>
                </children>
             </HBox>
-            <HBox disable="true" layoutX="10.0" layoutY="10.0" prefHeight="258.0" prefWidth="986.0" style="-fx-background-color: #3A506B;">
+            <HBox disable="true" layoutX="10.0" layoutY="10.0" prefHeight="270.0" prefWidth="986.0" style="-fx-background-color: #3A506B;">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
