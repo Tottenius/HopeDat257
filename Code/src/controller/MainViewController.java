@@ -19,7 +19,7 @@ public class MainViewController implements Initializable {
     protected static ServerConnection c;
 
     //Database on
-    private boolean dbON = false;
+    private boolean dbON = true;
 
     // Default User
     private UserData user = new UserData("Anton");
@@ -46,7 +46,7 @@ public class MainViewController implements Initializable {
         //Set it's controller to the right one
         if(dbON){
             if(userDATA.getLoggedIn()) {
-                loader.setControllerFactory(c -> new FoodViewController(this.userDATA));
+                loader.setControllerFactory(c -> new FoodViewController(userDATA));
                 this.rightPane.setContent(loader.load());
             }
         }
@@ -65,10 +65,12 @@ public class MainViewController implements Initializable {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/friendsView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c-> new FriendsViewController(this.userDATA));
-        // Load it in to the ScrollPane
-        System.out.println("other user name: " + this.user.getUser());
-        this.rightPane.setContent(loader.load());
+        if(userDATA.getLoggedIn()) {
+            loader.setControllerFactory(c -> new FriendsViewController(userDATA));
+            // Load it in to the ScrollPane
+            // System.out.println("other user name: " + user.getUser());
+            rightPane.setContent(loader.load());
+        }
     }
 
     @FXML
@@ -76,9 +78,11 @@ public class MainViewController implements Initializable {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/settingsView.fxml"));
         //Set it's controller to the right one
-        loader.setControllerFactory( c-> new SettingsViewController(this.userDATA));
-        // Load it in to the ScrollPane
-        this.rightPane.setContent(loader.load());
+        if(userDATA.getLoggedIn()) {
+            loader.setControllerFactory(c -> new SettingsViewController(userDATA));
+            // Load it in to the ScrollPane
+            rightPane.setContent(loader.load());
+        }
     }
 
     @Override

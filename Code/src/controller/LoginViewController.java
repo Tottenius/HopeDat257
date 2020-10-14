@@ -60,6 +60,9 @@ public class LoginViewController implements Initializable {
         if(userTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
             System.out.println("Empty field");
             return;
+        } else if(userTextField.getText().contains(" ") || passwordTextField.getText().contains(" ")) {
+            System.out.println("Contains whitespaces");
+            return;
         }
         boolean registerOutcome = DatabaseClient.register(userTextField.getText(), passwordTextField.getText());
         if(registerOutcome) {
@@ -96,8 +99,7 @@ public class LoginViewController implements Initializable {
 
     private MainViewController loadRootController()  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/mainView.fxml"));
-        MainViewController controller = loader.getController();
-        return controller;
+         return loader.getController();
     }
 
     @Override

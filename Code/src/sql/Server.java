@@ -32,6 +32,8 @@ public class Server {
     }
 
     // Anropar receiver för att ta emot ett meddelande och kallar på aktuell metod för att hantera meddelandet
+
+    @SuppressWarnings("InfiniteLoopStatement")
     private void requestHandler() throws Exception {
         while(true) {
             String[] request = receiver();
@@ -39,6 +41,7 @@ public class Server {
                 case "login" -> login(request);
                 case "register" -> register(request);
                 case "addEmission" -> addEmission(request);
+                case "getEmission" -> getEmission(request);
                 case "removeEmission" -> removeEmission(request);
                 case "changePassword" -> changePassword(request);
                 case "addFriend" -> addFriend(request);
@@ -91,13 +94,29 @@ public class Server {
 
     private void addEmission(String[] addInfo) throws IOException {
         try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?, ?)");
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?, ?, 1)");
             preparedStatement.setString(1, addInfo[1]);
             preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
             preparedStatement.setString(3, addInfo[3]);
             preparedStatement.setInt(4, Integer.parseInt(addInfo[4]));
             preparedStatement.executeUpdate();
             sender("success");
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
+
+    private void getEmission(String[] getInfo) throws IOException {
+        try{
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT emission FROM EmissionData WHERE username = ? AND date = ?");
+            preparedStatement.setString(1, getInfo[1]);
+            preparedStatement.setDate(2, Date.valueOf(getInfo[2]));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            StringBuilder result = new StringBuilder();
+            while(resultSet.next()) {
+                result.append(resultSet.getString(1)).append(" ");
+            }
+            sender(result.toString());
         } catch (SQLException e) {
             sender("fail");
         }

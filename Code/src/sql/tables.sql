@@ -11,7 +11,8 @@ CREATE TABLE EmissionData(
   	date DATE,
   	food VARCHAR(64),
     emission INT,
-    PRIMARY KEY(username, date, food),
+    id INT,
+    PRIMARY KEY(username, date, food, id),
     FOREIGN KEY (username) REFERENCES Users(username)
 );
 
