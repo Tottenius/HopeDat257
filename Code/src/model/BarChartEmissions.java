@@ -42,7 +42,7 @@ public class BarChartEmissions {
                 return;
             }
         }
-        System.out.println("Kommer vi hit?");
+       // System.out.println("Kommer vi hit?");
         //Otherwise add it
         this.samples.add(newData);
         // Remove the old series

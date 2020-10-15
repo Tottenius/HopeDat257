@@ -29,7 +29,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        System.out.println("Test");
+        //System.out.println("Test");
         //Method that starts the program as a JavaFx application
         launch(args);
     }

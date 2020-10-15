@@ -45,9 +45,10 @@ public class LoginViewController implements Initializable {
             System.out.println("Empty field");
             return;
         }
-        boolean loginOutcome = DatabaseClient.login(userTextField.getText(), passwordTextField.getText());
+        String username = userTextField.getText().toLowerCase();
+        boolean loginOutcome = DatabaseClient.login(username, passwordTextField.getText());
         if(loginOutcome) {
-            MainViewController.setUserData(new UserData(this.userTextField.getText()));
+            MainViewController.setUserData(new UserData(username));
             System.out.println("successful login");
         } else {
             System.out.println("faulty credentials");
@@ -64,7 +65,8 @@ public class LoginViewController implements Initializable {
             System.out.println("Contains whitespaces");
             return;
         }
-        boolean registerOutcome = DatabaseClient.register(userTextField.getText(), passwordTextField.getText());
+        String username = userTextField.getText().toLowerCase();
+        boolean registerOutcome = DatabaseClient.register(username, passwordTextField.getText());
         if(registerOutcome) {
             System.out.println("registered");
         } else {
