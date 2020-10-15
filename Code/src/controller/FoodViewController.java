@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +13,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
 import model.UserData;
+import sql.DatabaseClient;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -31,6 +31,7 @@ import java.util.*;
 /**
  * Text
  */
+
 public class FoodViewController implements Initializable {
 
     public FoodViewController(UserData user){
@@ -42,7 +43,7 @@ public class FoodViewController implements Initializable {
     // Date
     private Date date;
     //Today
-    private long today =System.currentTimeMillis();
+    private long today = System.currentTimeMillis();
     // Dateformat without time
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     // Barchart emission class
@@ -111,9 +112,9 @@ public class FoodViewController implements Initializable {
 
     private synchronized void updateBarChart(){
         //Reset the barchart values
-        this.barChartEmissions.clearEmissionCollection();
+        barChartEmissions.clearEmissionCollection();
         // get the map with values
-        Map<String, List<Foods>> userData = this.user.getUserData();
+        Map<String, List<Foods>> userData = user.getUserData();
         // Get the dates
         Set keys = userData.keySet();
         // Temp date
@@ -128,24 +129,21 @@ public class FoodViewController implements Initializable {
             double todaysEmission = user.getEmissions(convDate);
 
             // paint the days that exist
-            this.barChartEmissions.addToChart(convDate, todaysEmission);
-
-
+            barChartEmissions.addToChart(convDate, todaysEmission);
         }
-
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.date = new Date(today);
-        this.dayOffset = 0;
+        date = new Date(today);
+        dayOffset = 0;
         //Connect our fxml barchart to the class for easier modifications
-        this.barChartEmissions = new BarChartEmissions(this.barChartOne);
+        barChartEmissions = new BarChartEmissions(barChartOne);
         // Update barchart with old values if there are any
-        this.updateBarChart();
+        updateBarChart();
 
-        this.date.setTime(today + dayOffset * (1000*60*60*24));
-        this.dateTextField.setText(""+ this.date);
+        date.setTime(today + dayOffset * (1000*60*60*24));
+        dateTextField.setText(""+ date);
 
         EventHandler<MouseEvent> mouseEventHandle = this::handleMouseClicked;
 
@@ -161,12 +159,47 @@ public class FoodViewController implements Initializable {
         treeviewID.setRoot(mainRoot);
         treeviewID.setShowRoot(false);
 
-
-
         barChartOne.setTitle("Carbon emissions from your meal");
 
+        try {
+            for(int i = 0; i < 7; i++) {
+                previousDayButtonClick();
+            }
+            for(int i = 0; i < 20; i++) {
+                initData(date);
+                nextDayButtonClick();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //foodView.getChildren().add(treeviewID);
     }
+
+
+    public void initData(Date date) throws IOException {
+        String[] emission = DatabaseClient.getEmission(user.getUser(), date.toString());
+        String[] food = DatabaseClient.getFood(user.getUser(), date.toString());
+
+        if(food[0].isEmpty()) {
+            return;
+        }
+        for(int i = 0; i < emission.length; i++) {
+            FoodsEnum foodsEnum = null;
+            for(int j = 0; j < treeviewID.getRoot().getChildren().size(); j++) {
+                foodsEnum = treeviewID.getRoot().getChildren().get(j).getValue();
+                if(Arrays.toString(food).equals(food[i])) {
+                    break;
+                }
+            }
+            user.addToUserData(this.date, new Foods(Integer.parseInt(emission[i]), foodsEnum));
+            addToList();
+            new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph();
+        }
+    }
+
+
+
+
     private void loadInWeightView(){
         // cast the enum
         FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();

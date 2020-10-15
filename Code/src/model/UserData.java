@@ -1,8 +1,12 @@
 package model;
 
+import javafx.scene.control.TreeItem;
 import model.FoodPackage.Foods;
+import model.FoodPackage.FoodsEnum;
+import sql.DatabaseClient;
 
 //import java.text.DateFormat;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,9 +26,10 @@ public class UserData {
     private String user;
 
     // Logged in?
-    private boolean loggedIn = true;
+    private boolean loggedIn = false;
 
     public Map<String, List<Foods>> userData = new HashMap<>();
+
 
     public void addToUserData(Date date, Foods food) {
         if (!userData.containsKey(date.toString())) {
@@ -55,7 +60,6 @@ public class UserData {
         return this.userData;
     }
 
-
     public String getUser(){
         return this.user;
     }
@@ -66,7 +70,4 @@ public class UserData {
     public void setLoggedIn(boolean b){
         this.loggedIn = b;
     }
-
-
-
 }

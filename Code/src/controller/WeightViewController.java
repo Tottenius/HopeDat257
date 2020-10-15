@@ -14,6 +14,7 @@ import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
 import model.UserData;
+import sql.DatabaseClient;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,12 +58,17 @@ public class WeightViewController implements Initializable {
     private TextField weightInput;
 
     @FXML
-    public synchronized void submitButton(ActionEvent actionEvent){
+    public synchronized void submitButton(ActionEvent actionEvent) throws IOException {
         // Get the input
         String input = weightInput.getText();
         // Parse the input
         int value = Integer.parseInt(input);
-        System.out.println("när vi klickar på knappen: " + value);
+
+        if(DatabaseClient.addEmission(user.getUser(), date.toString(), foodsEnum.toString(), value)) {
+            System.out.println("food was added");
+        }
+
+   //     System.out.println("när vi klickar på knappen: " + value);
         // Puts the value from the text field in the local variable
         this.user.addToUserData(this.date, new Foods(value, foodsEnum));
         // Update the graph and infobox with a task
@@ -77,7 +83,7 @@ public class WeightViewController implements Initializable {
         stage.close();
     }
 
-    private void updateGraph(){
+    public void updateGraph(){
         // Take the data from the user and add it to the graph
         this.chart.addToChart(this.date, this.user.getEmissions(this.date));
         //Add it to the list in the left corner

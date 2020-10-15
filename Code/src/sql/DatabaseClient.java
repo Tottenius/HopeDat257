@@ -7,7 +7,7 @@ public class DatabaseClient {
 
     // Skickar ett meddelande (message) till servern och returnerar ett svar från servern
     public static String contactServer(String message) throws IOException {
-        Socket socket = new Socket("217.209.131.86", 9999);
+        Socket socket = new Socket("217.209.131.86", 9998);
         DataOutputStream output = new DataOutputStream(socket.getOutputStream());
         DataInputStream input = new DataInputStream(socket.getInputStream());
         output.writeUTF(message);
@@ -36,9 +36,19 @@ public class DatabaseClient {
     }
 
     // returnerar en string array med alla emmision värden för specificerat username och date
+    public static String[] getFood(String username, String date) throws IOException {
+        String message = "getFood " + username + " " + date;
+        String response = contactServer(message);
+        return response.split("\\s");
+    }
+
+    // returnerar en string array med alla emmision värden för specificerat username och date
     public static String[] getEmission(String username, String date) throws IOException {
         String message = "getEmission " + username + " " + date;
         String response = contactServer(message);
+        if(response.equals("fail")) {
+            System.out.println("hej hej hej hej");
+        }
         return response.split("\\s");
     }
 

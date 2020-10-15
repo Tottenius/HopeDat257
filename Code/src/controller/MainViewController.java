@@ -89,29 +89,28 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/loginView.fxml"));
         // om databasen är på så skickar vi med användaren till login för att kunna skapa en ny
-        if(this.dbON) {
-            loader.setControllerFactory(c -> new LoginViewController());
+        loader.setControllerFactory(c -> new LoginViewController());
+        try {
+            rightPane.setContent(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        /*
         try {
             c = new ServerConnection();
-            this.rightPane.setContent(loader.load());
+            rightPane.setContent(loader.load());
         } catch (IOException | SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
-
-
+        */
     }
 
     public static void setUserData ( UserData d){
         userDATA = d;
         d.setLoggedIn(true);
-
     }
 
     public UserData getUserData() {
         return user;
     }
-
-
 }
-
