@@ -1,7 +1,7 @@
 # Customer Value and Scope
 ### The chosen scope of the application under development including the priority of features and for whom you are creating value
 Over the course of the project we have had some issues regarding what we should focus on, and which features are the most important to get done. 
-But this week we stated and agreed on the most important features we wanted and discussed what to finish this week.
+But this week we stated and agreed on the most important features we wanted and discussed what to finish this week. Since the project was nearing the end prioritizing specific parts of the program and what our goals were with the program was very important. We as a team did reach an agreement on what should be left to the backlog and what needed to be completed for the final delivery. 
 ### The success criteria for the team in terms of what you want to achieve within the project (this can include the application, 
 but also your learning outcomes, your teamwork, or your effort)
 ### The main goal this week was to firstly decide and go through what we should complete, since this was the last week of the project. 
