@@ -184,13 +184,17 @@ public class FoodViewController implements Initializable {
             return;
         }
         for(int i = 0; i < emission.length; i++) {
-            FoodsEnum foodsEnum = null;
+            //FoodsEnum foodsEnum = null;
+            //Convert String to enum
+            FoodsEnum foodsEnum = FoodsEnum.valueOf(food[i]);
+            /*
             for(int j = 0; j < treeviewID.getRoot().getChildren().size(); j++) {
                 foodsEnum = treeviewID.getRoot().getChildren().get(j).getValue();
                 if(Arrays.toString(food).equals(food[i])) {
                     break;
                 }
             }
+             */
             user.addToUserData(this.date, new Foods(Integer.parseInt(emission[i]), foodsEnum));
             addToList();
             new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph();
