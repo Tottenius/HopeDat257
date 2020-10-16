@@ -43,12 +43,9 @@ public class DatabaseClient {
     }
 
     // returnerar en string array med alla emmision värden för specificerat username och date
-    public static String[] getEmission(String username, String date) throws IOException {
-        String message = "getEmission " + username + " " + date;
+    public static String[] getEmission(String username) throws IOException {
+        String message = "getEmissions " + username;
         String response = contactServer(message);
-        if(response.equals("fail")) {
-            System.out.println("hej hej hej hej");
-        }
         return response.split("\\s");
     }
 
@@ -75,5 +72,4 @@ public class DatabaseClient {
         String response = contactServer(message);
         return response.split("\\s");
     }
-
 }
