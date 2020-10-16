@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -44,14 +45,14 @@ public class WeightViewController implements Initializable {
     }
 
     // Add to the list in the bottom right corner.
-    private void addToList(){
+    private void addToList(String date, String food){
         double emissions = 0;
         // If there are any outputs for the day, print them out
-        if(this.user.getUserData().containsKey(this.date.toString())) {
-            emissions = this.user.getEmissions(this.date);
+        if(user.getUserData().containsKey(date)) {
+            emissions = user.getEmissions(date);
         }
         // Else use 0 as because nothing exists
-        insertedItemList.getItems().add(""+this.date+ ": " + emissions);
+        insertedItemList.getItems().add(date+  ": " + food + ":  " + new DecimalFormat("#.###").format(emissions));
     }
 
     @FXML
@@ -70,9 +71,9 @@ public class WeightViewController implements Initializable {
 
    //     System.out.println("när vi klickar på knappen: " + value);
         // Puts the value from the text field in the local variable
-        this.user.addToUserData(this.date, new Foods(value, foodsEnum));
+        this.user.addToUserData(date.toString(), new Foods(value, foodsEnum));
         // Update the graph and infobox with a task
-        this.updateGraph();
+        this.updateGraph(date.toString(), foodsEnum.toString());
         //startTask();
 
         // get node
@@ -83,11 +84,11 @@ public class WeightViewController implements Initializable {
         stage.close();
     }
 
-    public void updateGraph(){
+    public void updateGraph(String date, String food){
         // Take the data from the user and add it to the graph
-        this.chart.addToChart(this.date, this.user.getEmissions(this.date));
+        this.chart.addToChart(date, user.getEmissions(date));
         //Add it to the list in the left corner
-        this.addToList();
+        this.addToList(date, food);
     }
 
     @Override

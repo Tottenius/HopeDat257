@@ -31,22 +31,21 @@ public class UserData {
     public Map<String, List<Foods>> userData = new HashMap<>();
 
 
-    public void addToUserData(Date date, Foods food) {
-        if (!userData.containsKey(date.toString())) {
+    public void addToUserData(String date, Foods food) {
+        if (!userData.containsKey(date)) {
             List<Foods> todaysList = new ArrayList<>();
             todaysList.add(food);
-            userData.put(date.toString() , todaysList);
+            userData.put(date , todaysList);
         } else {
-            List<Foods> todaysList = userData.get(date.toString());
+            List<Foods> todaysList = userData.get(date);
             todaysList.add(food);
-            userData.put(date.toString(), todaysList);
+            userData.put(date, todaysList);
         }
     }
 
-    public double getEmissions(Date date) {
+    public double getEmissions(String date) {
         // Get todays list of foods
-        List<Foods> todaysList = this.userData.get(date.toString());
-
+        List<Foods> todaysList = this.userData.get(date);
         double emissions = 0;
         // add all of the emissions of the day together
         for (Foods food: todaysList) {

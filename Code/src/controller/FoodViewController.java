@@ -102,14 +102,14 @@ public class FoodViewController implements Initializable {
     @FXML
     private Tab dinnerTab;
 
-
+/*
     @FXML
     public void drawGraphMethod() {
         // Till listan längst ner till vänster
         this.addToList();
         // Update the graph
         this.updateBarChart();
-    }
+    }*/
 
     private synchronized void updateBarChart(){
         //Reset the barchart values
@@ -127,10 +127,10 @@ public class FoodViewController implements Initializable {
 
             //List<Foods> todaysList = userData.get(tempDate);
             Date convDate = Date.valueOf(stringDate);
-            double todaysEmission = user.getEmissions(convDate);
+            double todaysEmission = user.getEmissions(convDate.toString());
 
             // paint the days that exist
-            barChartEmissions.addToChart(convDate, todaysEmission);
+            barChartEmissions.addToChart(convDate.toString(), todaysEmission);
         }
     }
     @Override
@@ -164,34 +164,22 @@ public class FoodViewController implements Initializable {
 
         try {
             initData();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         //foodView.getChildren().add(treeviewID);
     }
 
 
-    public void initData() throws IOException, ParseException {
+    public void initData() throws IOException {
         String[] emission = DatabaseClient.getEmission(user.getUser());
-    //    String[] food = DatabaseClient.getFood(user.getUser(), date.toString());
         if(emission[0].isEmpty()) {
             return;
         }
         for(int i = 0; i < emission.length; i += 3) {
-            System.out.println(emission[i]);
-            System.out.println(emission[i + 1]);
-            System.out.println(emission[i + 2]);
-
-            System.out.println(date);
-            System.out.println(Date.valueOf("2020-10-16"));
-
-
             FoodsEnum foodsEnum = FoodsEnum.valueOf(emission[i]);
-
-
-            user.addToUserData(Date.valueOf(emission[i + 2]), new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
-            addToList();
-            new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph();
+            user.addToUserData(emission[i + 2], new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
+            new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph(emission[i + 2], emission[i]);
         }
     }
 
@@ -250,7 +238,7 @@ public class FoodViewController implements Initializable {
     }
 
     // Add to the list in the bottom right corner.
-    private void addToList(){
+  /*  private void addToList(){
         double emissions = 0;
         // If there are any outputs for the day, print them out
         if(this.user.getUserData().containsKey(this.date.toString())) {
@@ -258,5 +246,5 @@ public class FoodViewController implements Initializable {
         }
         // Else use 0 as because nothing exists
        insertedItemsList.getItems().add("" + date + ": " + emissions);
-    }
+    }*/
 }

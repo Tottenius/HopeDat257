@@ -28,7 +28,7 @@ public class BarChartEmissions {
         this.samples.clear();
     }
 
-    public void addToChart(Date date, double emission){
+    public void addToChart(String date, double emission){
 
         XYChart.Data newData = new XYChart.Data(date.toString(), emission);
         //Loop through the existing data
