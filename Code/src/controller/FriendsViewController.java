@@ -66,6 +66,11 @@ public class FriendsViewController {
 
         String[] friends = DatabaseClient.getFriends(data.getUser());
 
+        if(friends.length == 0){
+
+            return;
+        }
+
         List<String> friendsList = new ArrayList<String>(Arrays.asList(friends));
         ListProperty<String> listProperty = new SimpleListProperty<>();
 
