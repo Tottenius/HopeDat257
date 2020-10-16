@@ -8,7 +8,7 @@ import sql.DatabaseClient;
 import java.io.IOException;
 
 /**
- * Text
+ * Controller for the friends tab in the program. Currently handles the single function of adding another user as a friend.
  */
 
 public class FriendsViewController {
