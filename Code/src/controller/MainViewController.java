@@ -5,18 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import model.UserData;
-import sql.ServerConnection;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    protected static ServerConnection c;
 
     //Database on
     private boolean dbON = true;

@@ -63,6 +63,7 @@ public class FriendsViewController {
     @FXML
     private void showFriendsButtonClick() throws IOException {
 
+
         String[] friends = DatabaseClient.getFriends(data.getUser());
 
         List<String> friendsList = new ArrayList<String>(Arrays.asList(friends));
