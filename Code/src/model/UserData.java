@@ -1,15 +1,8 @@
 package model;
 
 import model.FoodPackage.Foods;
-
-//import java.text.DateFormat;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-//import java.util.*;
+import java.util.*;
 
 public class UserData {
 
@@ -27,19 +20,20 @@ public class UserData {
 
 
     public void addToUserData(String date, Foods food) {
-        if (!userData.containsKey(toString())) {
+        if (!userData.containsKey(date)) {
             List<Foods> todaysList = new ArrayList<>();
             todaysList.add(food);
-            userData.put(toString() , todaysList);
+            userData.put(date , todaysList);
         } else {
-            List<Foods> todaysList = userData.get(toString());
+            List<Foods> todaysList = userData.get(date);
             todaysList.add(food);
-            userData.put(toString(), todaysList);
+            userData.put(date, todaysList);
         }
     }
 
     public double getEmissions(String date) {
         // Get todays list of foods
+
         List<Foods> todaysList = this.userData.get(date);
 
         double emissions = 0;
@@ -47,8 +41,6 @@ public class UserData {
         for (Foods food: todaysList) {
             emissions = food.getEmission();
         }
-
-
         // Return the sum of all emissions for the day
         return emissions;
     }

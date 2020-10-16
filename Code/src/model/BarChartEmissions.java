@@ -28,13 +28,13 @@ public class BarChartEmissions {
         this.samples.clear();
     }
 
-    public void addToChart(Date date, double emission){
+    public void addToChart(String date, double emission){
 
-        XYChart.Data newData = new XYChart.Data(date.toString(), emission);
+        XYChart.Data newData = new XYChart.Data(date, emission);
         //Loop through the existing data
         for(XYChart.Data<String,Double> data : samples){
             // If there is a value on the day update it
-            if(data.getXValue().equals(date.toString())){
+            if(data.getXValue().equals(date)){
                 // add the new emission to the old one
                 double newY = data.getYValue() + emission;
                 data.setYValue(newY);
