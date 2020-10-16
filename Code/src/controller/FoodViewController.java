@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -162,47 +163,37 @@ public class FoodViewController implements Initializable {
         barChartOne.setTitle("Carbon emissions from your meal");
 
         try {
-            for(int i = 0; i < 7; i++) {
-                previousDayButtonClick();
-            }
-            for(int i = 0; i < 20; i++) {
-                initData(date);
-                nextDayButtonClick();
-            }
-        } catch (IOException e) {
+            initData();
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         //foodView.getChildren().add(treeviewID);
     }
 
 
-    public void initData(Date date) throws IOException {
-        String[] emission = DatabaseClient.getEmission(user.getUser(), date.toString());
-        String[] food = DatabaseClient.getFood(user.getUser(), date.toString());
-
-        if(food[0].isEmpty()) {
+    public void initData() throws IOException, ParseException {
+        String[] emission = DatabaseClient.getEmission(user.getUser());
+    //    String[] food = DatabaseClient.getFood(user.getUser(), date.toString());
+        if(emission[0].isEmpty()) {
             return;
         }
-        for(int i = 0; i < emission.length; i++) {
-            //FoodsEnum foodsEnum = null;
-            //Convert String to enum
-            FoodsEnum foodsEnum = FoodsEnum.valueOf(food[i]);
-            /*
-            for(int j = 0; j < treeviewID.getRoot().getChildren().size(); j++) {
-                foodsEnum = treeviewID.getRoot().getChildren().get(j).getValue();
-                if(Arrays.toString(food).equals(food[i])) {
-                    break;
-                }
-            }
-             */
-            user.addToUserData(this.date, new Foods(Integer.parseInt(emission[i]), foodsEnum));
+        for(int i = 0; i < emission.length; i += 3) {
+            System.out.println(emission[i]);
+            System.out.println(emission[i + 1]);
+            System.out.println(emission[i + 2]);
+
+            System.out.println(date);
+            System.out.println(Date.valueOf("2020-10-16"));
+
+
+            FoodsEnum foodsEnum = FoodsEnum.valueOf(emission[i]);
+
+
+            user.addToUserData(Date.valueOf(emission[i + 2]), new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
             addToList();
             new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph();
         }
     }
-
-
-
 
     private void loadInWeightView(){
         // cast the enum
