@@ -45,13 +45,14 @@ public class FriendsViewController {
         }
     }
 
-    /*
+
     @FXML
     private void showFriendsButtonClick() throws IOException {
 
         String[] friends = DatabaseClient.getFriends(data.getUser());
 
         for (String s : friends) {
+            System.out.println(friends);
             this.currentFriendsTableColumn.setText(s);
 
         }
@@ -59,5 +60,5 @@ public class FriendsViewController {
 
     }
 
-     */
+
 }
