@@ -1,14 +1,9 @@
 package model;
 
-import javafx.scene.control.TreeItem;
 import model.FoodPackage.Foods;
-import model.FoodPackage.FoodsEnum;
-import sql.DatabaseClient;
 
 //import java.text.DateFormat;
-import java.io.IOException;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,27 +26,29 @@ public class UserData {
     public Map<String, List<Foods>> userData = new HashMap<>();
 
 
-    public void addToUserData(Date date, Foods food) {
-        if (!userData.containsKey(date.toString())) {
+    public void addToUserData(String date, Foods food) {
+        if (!userData.containsKey(toString())) {
             List<Foods> todaysList = new ArrayList<>();
             todaysList.add(food);
-            userData.put(date.toString() , todaysList);
+            userData.put(toString() , todaysList);
         } else {
-            List<Foods> todaysList = userData.get(date.toString());
+            List<Foods> todaysList = userData.get(toString());
             todaysList.add(food);
-            userData.put(date.toString(), todaysList);
+            userData.put(toString(), todaysList);
         }
     }
 
-    public double getEmissions(Date date) {
+    public double getEmissions(String date) {
         // Get todays list of foods
-        List<Foods> todaysList = this.userData.get(date.toString());
+        List<Foods> todaysList = this.userData.get(date);
 
         double emissions = 0;
         // add all of the emissions of the day together
         for (Foods food: todaysList) {
             emissions = food.getEmission();
         }
+
+
         // Return the sum of all emissions for the day
         return emissions;
     }

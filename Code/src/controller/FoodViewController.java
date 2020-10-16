@@ -127,7 +127,7 @@ public class FoodViewController implements Initializable {
 
             //List<Foods> todaysList = userData.get(tempDate);
             Date convDate = Date.valueOf(stringDate);
-            double todaysEmission = user.getEmissions(convDate);
+            double todaysEmission = user.getEmissions(convDate.toString());
 
             // paint the days that exist
             barChartEmissions.addToChart(convDate, todaysEmission);
@@ -185,11 +185,14 @@ public class FoodViewController implements Initializable {
             System.out.println(date);
             System.out.println(Date.valueOf("2020-10-16"));
 
+            System.out.println(Date.valueOf(emission[i + 2]));
+
 
             FoodsEnum foodsEnum = FoodsEnum.valueOf(emission[i]);
 
 
-            user.addToUserData(Date.valueOf(emission[i + 2]), new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
+
+            user.addToUserData(emission[i + 2], new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
             addToList();
             new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph();
         }
@@ -254,7 +257,7 @@ public class FoodViewController implements Initializable {
         double emissions = 0;
         // If there are any outputs for the day, print them out
         if(this.user.getUserData().containsKey(this.date.toString())) {
-            emissions = this.user.getEmissions(this.date);
+            emissions = this.user.getEmissions(this.date.toString());
         }
         // Else use 0 as because nothing exists
        insertedItemsList.getItems().add("" + date + ": " + emissions);

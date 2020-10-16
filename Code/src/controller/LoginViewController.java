@@ -46,6 +46,7 @@ public class LoginViewController implements Initializable {
             return;
         }
         String username = userTextField.getText().toLowerCase();
+
         boolean loginOutcome = DatabaseClient.login(username, passwordTextField.getText());
         if(loginOutcome) {
             MainViewController.setUserData(new UserData(username));

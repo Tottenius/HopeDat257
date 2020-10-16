@@ -24,9 +24,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hope");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
-
 
     public static void main(String[] args) {
         //System.out.println("Test");

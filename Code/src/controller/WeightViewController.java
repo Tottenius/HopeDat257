@@ -48,7 +48,7 @@ public class WeightViewController implements Initializable {
         double emissions = 0;
         // If there are any outputs for the day, print them out
         if(this.user.getUserData().containsKey(this.date.toString())) {
-            emissions = this.user.getEmissions(this.date);
+            emissions = this.user.getEmissions(this.date.toString());
         }
         // Else use 0 as because nothing exists
         insertedItemList.getItems().add(""+this.date+ ": " + emissions);
@@ -70,7 +70,7 @@ public class WeightViewController implements Initializable {
 
    //     System.out.println("när vi klickar på knappen: " + value);
         // Puts the value from the text field in the local variable
-        this.user.addToUserData(this.date, new Foods(value, foodsEnum));
+        this.user.addToUserData(this.date.toString(), new Foods(value, foodsEnum));
         // Update the graph and infobox with a task
         this.updateGraph();
         //startTask();
@@ -85,7 +85,7 @@ public class WeightViewController implements Initializable {
 
     public void updateGraph(){
         // Take the data from the user and add it to the graph
-        this.chart.addToChart(this.date, this.user.getEmissions(this.date));
+        this.chart.addToChart(this.date, this.user.getEmissions(this.date.toString()));
         //Add it to the list in the left corner
         this.addToList();
     }
