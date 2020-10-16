@@ -1,8 +1,8 @@
 # Customer Value and Scope
-## The chosen scope of the application under development including the priority of features and for whom you are creating value
+*The chosen scope of the application under development including the priority of features and for whom you are creating value
 The scope of the application is moderate due to the limited time of the project. We will prioritize functionality like adding what you’ve eaten, 
 changing days and having personalized data in an external database. And if we have spare time we will implement additional functionalities. 
-## The success criteria for the team in terms of what you want to achieve within the project (this can include the application, but also your learning outcomes, your teamwork, or your effort)
+*The success criteria for the team in terms of what you want to achieve within the project (this can include the application, but also your learning outcomes, your teamwork, or your effort)
 As a team, the main goal for this week has been to finish the basic requirements for the graph drawing function of the application. 
 It has also been to re-create and finish the design of the application, by changing the colors and what not. 
 What we learn from this is mainly how JavaFX works and how to cooperate smoothly by agreeing about the design of the application.
