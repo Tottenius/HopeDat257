@@ -27,5 +27,4 @@ public enum FoodsEnum {
     public double getEmission() {
         return em;
     }
-
 }

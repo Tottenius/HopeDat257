@@ -18,13 +18,9 @@ import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
 import model.UserData;
 import sql.DatabaseClient;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 //import java.util.*;
@@ -40,13 +36,13 @@ public class FoodViewController implements Initializable {
     }
 
     //Current user
-    private UserData user;
+    private final UserData user;
     // Date
     private Date date;
     //Today
-    private long today = System.currentTimeMillis();
-    // Dateformat without time
-    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    private final long today = System.currentTimeMillis();
+    // DateFormat without time
+   // private final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     // Barchart emission class
     private BarChartEmissions barChartEmissions;
 
@@ -58,11 +54,11 @@ public class FoodViewController implements Initializable {
 
     @FXML
     private Label dateTextField;
-    @FXML
+/*    @FXML
     private Button nextDayButton;
     @FXML
     private Button previousDayButton;
-
+*/
     private int dayOffset = 0;
 
     @FXML
@@ -86,13 +82,13 @@ public class FoodViewController implements Initializable {
 
     @FXML
     private TreeView <FoodsEnum> treeviewID;
-
+/*
     @FXML
     private Button drawGraphs;
-
+*/
     @FXML
     private BarChart barChartOne;
-
+/*
     @FXML
     private Tab breakfastTab;
 
@@ -101,7 +97,7 @@ public class FoodViewController implements Initializable {
 
     @FXML
     private Tab dinnerTab;
-
+*/
 /*
     @FXML
     public void drawGraphMethod() {
@@ -120,10 +116,9 @@ public class FoodViewController implements Initializable {
         Set keys = userData.keySet();
         // Temp date
         String stringDate;
-        Iterator i = keys.iterator();
         // Loop through map
-        while (i.hasNext()){
-            stringDate = (String) i.next();
+        for (Object key : keys) {
+            stringDate = (String) key;
 
             //List<Foods> todaysList = userData.get(tempDate);
             Date convDate = Date.valueOf(stringDate);

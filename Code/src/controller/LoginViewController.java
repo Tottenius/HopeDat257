@@ -1,19 +1,11 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import main.RunMain;
 import model.UserData;
 import sql.DatabaseClient;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.*;
 import java.util.ResourceBundle;
 
@@ -25,14 +17,14 @@ public class LoginViewController implements Initializable {
 
     public LoginViewController(){
     }
-
+/*
     private UserData data;
 
     @FXML
     private Button loginButton;
     @FXML
     private Button registerButton;
-
+*/
     @FXML
     private TextField userTextField;
     @FXML
@@ -98,12 +90,12 @@ public class LoginViewController implements Initializable {
         MainViewController.c.register(1,userTextField.getText(), passwordTextField.getText());
     }
 */
-
+/*
     private MainViewController loadRootController()  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/mainView.fxml"));
          return loader.getController();
     }
-
+*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

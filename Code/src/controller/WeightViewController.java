@@ -1,28 +1,21 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.Main;
 import model.BarChartEmissions;
 import model.FoodPackage.Foods;
 import model.FoodPackage.FoodsEnum;
 import model.UserData;
 import sql.DatabaseClient;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 /**
@@ -30,11 +23,11 @@ import java.util.ResourceBundle;
  */
 public class WeightViewController implements Initializable {
 
-    private ListView insertedItemList;
-    private BarChartEmissions chart;
-    private UserData user;
-    private FoodsEnum foodsEnum;
-    private Date date;
+    private final ListView insertedItemList;
+    private final BarChartEmissions chart;
+    private final UserData user;
+    private final FoodsEnum foodsEnum;
+    private final Date date;
 
     public WeightViewController(UserData user, FoodsEnum foodsEnum, Date date, BarChartEmissions chart, ListView insertedItemList) {
         this.user = user;

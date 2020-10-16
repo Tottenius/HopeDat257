@@ -3,7 +3,6 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import model.UserData;
 
@@ -13,12 +12,12 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-
+/*
     //Database on
     private boolean dbON = true;
-
+*/
     // Default User
-    private UserData user = new UserData("Anton");
+  //  private UserData user = new UserData("Anton");
     //Change away static later
     private static UserData userDATA = new UserData("DEFAULT");
 
@@ -26,7 +25,7 @@ public class MainViewController implements Initializable {
     @FXML
     private ScrollPane rightPane;
 
-
+/*
     //Left side
     @FXML
     private Button foods;
@@ -34,24 +33,25 @@ public class MainViewController implements Initializable {
     private Button friends;
     @FXML
     private Button settings;
+    */
 
     @FXML
     private void foodsClick() throws IOException {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodViewRework.fxml"));
         //Set it's controller to the right one
-        if(dbON){
+   //     if(dbON){
             if(userDATA.getLoggedIn()) {
                 loader.setControllerFactory(c -> new FoodViewController(userDATA));
                 this.rightPane.setContent(loader.load());
             }
-        }
+   /*     }
         else {
             loader.setControllerFactory(c -> new FoodViewController(this.user));
             this.user.setLoggedIn(true);
             this.rightPane.setContent(loader.load());
 
-        }
+        }*/
         // Load it in to the ScrollPane
 
     }
@@ -106,7 +106,7 @@ public class MainViewController implements Initializable {
         d.setLoggedIn(true);
     }
 
-    public UserData getUserData() {
+ /*   public UserData getUserData() {
         return user;
-    }
+    }*/
 }

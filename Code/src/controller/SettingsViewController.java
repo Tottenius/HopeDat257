@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.UserData;
 import sql.DatabaseClient;
@@ -13,15 +12,15 @@ import java.io.IOException;
 
 public class SettingsViewController {
 
-    private UserData data;
+    private final UserData data;
 
     public SettingsViewController(UserData data){
         this.data = data;
     }
 
-    @FXML
+  /*  @FXML
     private Button changePasswordButton;
-
+*/
     @FXML
     private TextField oldPassword;
 
@@ -38,7 +37,7 @@ public class SettingsViewController {
         }
         boolean passChangeOutcome = DatabaseClient.changePassword(data.getUser(), oldPassword.getText(), newPassword.getText());
         if(passChangeOutcome) {
-            System.out.println("succes, password has changed");
+            System.out.println("success, password has changed");
         } else {
             System.out.println("failure, password could not be changed");
             System.out.println("Current username: " + this.data.getUser());
