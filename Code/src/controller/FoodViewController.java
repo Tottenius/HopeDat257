@@ -161,23 +161,21 @@ public class FoodViewController implements Initializable {
 
         try {
             initData();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         //foodView.getChildren().add(treeviewID);
     }
 
 
-    public void initData() throws IOException, ParseException {
+    public void initData() throws IOException {
         String[] emission = DatabaseClient.getEmission(user.getUser());
-    //    String[] food = DatabaseClient.getFood(user.getUser(), date.toString());
         if(emission[0].isEmpty()) {
             return;
         }
         for(int i = 0; i < emission.length; i += 3) {
             FoodsEnum foodsEnum = FoodsEnum.valueOf(emission[i]);
             user.addToUserData(emission[i + 2], new Foods(Integer.parseInt(emission[i + 1]), foodsEnum));
-        //    addToList(emission[i+2]);
             new WeightViewController(user, foodsEnum, date, barChartEmissions, insertedItemsList).updateGraph(emission[i+2], emission[i]);
         }
     }
