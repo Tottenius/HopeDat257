@@ -185,4 +185,30 @@ public class Server {
             sender("fail");
         }
     }
+
+    /*
+    private void getFriends(String[] getInfo) throws IOException {
+        try{
+
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT toUser FROM friends WHERE fromuserid = ?  ");
+            preparedStatement.setString(1, getInfo[1]);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            StringBuilder result = new StringBuilder();
+            while(resultSet.next()) {
+                result.append(resultSet.getString(1)).append(" ");
+            }
+            PreparedStatement preparedStatement2 = sqlConnection.prepareStatement("SELECT fromUser FROM friends WHERE touserid = ?  ");
+            preparedStatement.setString(1, getInfo[1]);
+            ResultSet resultSet2 = preparedStatement.executeQuery();
+            StringBuilder result2 = new StringBuilder();
+            while(resultSet2.next()) {
+                result2.append(resultSet2.getString(1)).append(" ");
+            }
+            sender(result2.toString());
+
+        } catch (SQLException e) {
+            sender("fail");
+        }
+    }
+*/
 }

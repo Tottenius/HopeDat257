@@ -69,4 +69,11 @@ public class DatabaseClient {
         String response = contactServer(message);
         return response.equals("success");
     }
+/*
+    public static String[] getFriends(String username)throws IOException{
+        String message = username;
+        String response = contactServer(message);
+        return response.split("\\s");
+    }
+    */
 }
