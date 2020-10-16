@@ -118,12 +118,10 @@ public class ServerConnection {
                 return false;
             }
 
-            System.out.println("am here  kompis1");
             PreparedStatement input2 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
             input2.setString(1, toUser);
             ResultSet toUserID = input2.executeQuery();
 
-            System.out.println("am here  kompis2");
             PreparedStatement input3 = conn.prepareStatement("SELECT id  FROM Users WHERE name = ?");
             input3.setString(1, fromUser);
             ResultSet fromUserID = input3.executeQuery();
@@ -133,15 +131,12 @@ public class ServerConnection {
                 return false;
             }
 
-                System.out.println("am here  kompis3");
-                //Check if they are already friends
-                PreparedStatement input4 = conn.prepareStatement("SELECT friendshipstatus  FROM friends WHERE fromuserid = ? AND touserid = ?");
-                input4.setInt(1, toUserID.getInt(1));
-                input4.setInt(2, fromUserID.getInt(1));
-                ResultSet rsStatus = input4.executeQuery();
+            //Check if they are already friends
+            PreparedStatement input4 = conn.prepareStatement("SELECT friendshipstatus  FROM friends WHERE fromuserid = ? AND touserid = ?");
+            input4.setInt(1, toUserID.getInt(1));
+            input4.setInt(2, fromUserID.getInt(1));
+            ResultSet rsStatus = input4.executeQuery();
 
-
-            System.out.println("am here mannen");
             PreparedStatement input5 = conn.prepareStatement("INSERT INTO friends VALUES (?,?,?)");
             input5.setInt(1, fromUserID.getInt(1));
             input5.setInt(2, toUserID.getInt(1));
