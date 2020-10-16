@@ -1,12 +1,21 @@
 package controller;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.UserData;
 import sql.DatabaseClient;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Controller for the friends tab in the program. Currently handles the single function of adding another user as a friend.
@@ -32,6 +41,10 @@ public class FriendsViewController {
     private TableColumn currentFriendsTableColumn;
 
     @FXML
+    private ListView currentFriendsListView;
+
+
+    @FXML
     private void addFriendButtonClick() throws IOException {
         if (addFriendTextID.getText().isEmpty()) {
             System.out.println("Field is empty");
@@ -51,9 +64,15 @@ public class FriendsViewController {
 
         String[] friends = DatabaseClient.getFriends(data.getUser());
 
+        List<String> friendsList = new ArrayList<String>(Arrays.asList(friends));
+        ListProperty<String> listProperty = new SimpleListProperty<>();
+
         for (String s : friends) {
-            System.out.println(friends);
-            this.currentFriendsTableColumn.setText(s);
+            System.out.println(s);
+
+            listProperty.set(FXCollections.observableArrayList(friendsList));
+
+            currentFriendsListView.itemsProperty().bind(listProperty);
 
         }
 

@@ -71,7 +71,7 @@ public class DatabaseClient {
     }
 
     public static String[] getFriends(String username)throws IOException{
-        String message = username;
+        String message = "getFriends " + username;
         String response = contactServer(message);
         return response.split("\\s");
     }
