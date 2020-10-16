@@ -50,7 +50,8 @@ public class FriendsViewController {
             System.out.println("Field is empty");
             return;
         }
-        boolean passChangeOutcome = DatabaseClient.addFriend(data.getUser(), addFriendTextID.getText());
+        String addFriendUsername = addFriendTextID.getText().toLowerCase();
+        boolean passChangeOutcome = DatabaseClient.addFriend(data.getUser(), addFriendUsername);
         if (passChangeOutcome) {
             System.out.println("succes, friend was added");
         } else {
