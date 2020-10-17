@@ -41,7 +41,6 @@ public class Server {
                 case "login" -> login(request);
                 case "register" -> register(request);
                 case "addEmission" -> addEmission(request);
-                case "getFood" -> getFood(request);
                 case "getEmission" -> getEmission(request);
                 case "removeEmission" -> removeEmission(request);
                 case "changePassword" -> changePassword(request);
@@ -107,31 +106,16 @@ public class Server {
         }
     }
 
-    private void getFood(String[] getInfo) throws IOException {
-        try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT food FROM EmissionData WHERE username = ? AND date = ?");
-            preparedStatement.setString(1, getInfo[1]);
-            preparedStatement.setDate(2, Date.valueOf(getInfo[2]));
-            ResultSet resultSet = preparedStatement.executeQuery();
-            StringBuilder result = new StringBuilder();
-            while(resultSet.next()) {
-                result.append(resultSet.getString(1)).append(" ");
-            }
-            sender(result.toString());
-        } catch (SQLException e) {
-            sender("fail");
-        }
-    }
-
     private void getEmission(String[] getInfo) throws IOException {
         try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT emission FROM EmissionData WHERE username = ? AND date = ?");
+            PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT food, emission, date FROM EmissionData WHERE username = ?");
             preparedStatement.setString(1, getInfo[1]);
-            preparedStatement.setDate(2, Date.valueOf(getInfo[2]));
             ResultSet resultSet = preparedStatement.executeQuery();
             StringBuilder result = new StringBuilder();
             while(resultSet.next()) {
                 result.append(resultSet.getString(1)).append(" ");
+                result.append(resultSet.getString(2)).append(" ");
+                result.append(resultSet.getString(3)).append(" ");
             }
             sender(result.toString());
         } catch (SQLException e) {

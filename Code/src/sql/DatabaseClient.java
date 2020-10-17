@@ -29,26 +29,19 @@ public class DatabaseClient {
     }
 
     public static boolean addEmission(String username, String date, String food, int emission) throws IOException {
-        // String message = "addEmission " + "Jonathan" + " " + "2020-10-10" + " " + "500";
         String message = "addEmission " + username + " " + date + " " + food + " " + emission;
         String response = contactServer(message);
         return response.equals("success");
     }
 
     // returnerar en string array med alla emmision värden för specificerat username och date
-    public static String[] getFood(String username, String date) throws IOException {
-        String message = "getFood " + username + " " + date;
-        String response = contactServer(message);
-        return response.split("\\s");
-    }
-
-    // returnerar en string array med alla emmision värden för specificerat username och date
     public static String[] getEmission(String username) throws IOException {
-        String message = "getEmissions " + username;
+        String message = "getEmission " + username;
         String response = contactServer(message);
         return response.split("\\s");
     }
 
+    // Kanske ej behövs
     public static boolean removeEmission(String username, String date, String food) throws IOException {
         String message = "removeEmission " + username + " " + date +  " " + food;
         String response = contactServer(message);

@@ -56,8 +56,11 @@ public class WeightViewController implements Initializable {
         // Get the input
         String input = weightInput.getText();
         // Parse the input
-        int value = Integer.parseInt(input);
 
+        if(!input.matches("\\d+")) {
+            return;
+        }
+        int value = Integer.parseInt(input);
         if(DatabaseClient.addEmission(user.getUser(), date.toString(), foodsEnum.toString(), value)) {
             System.out.println("food was added");
         }
