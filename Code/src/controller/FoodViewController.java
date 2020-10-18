@@ -23,8 +23,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.*;
 
-//import java.util.*;
-
 /**
  * Text
  */
@@ -41,8 +39,6 @@ public class FoodViewController implements Initializable {
     private Date date;
     //Today
     private final long today = System.currentTimeMillis();
-    // DateFormat without time
-   // private final DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     // Barchart emission class
     private BarChartEmissions barChartEmissions;
 
@@ -65,14 +61,29 @@ public class FoodViewController implements Initializable {
     private void nextDayButtonClick() {
         dayOffset++;
         this.date.setTime(today + dayOffset * (1000*60*60*24));
+
+        //Update the textfield of the date
         this.dateTextField.setText(""+ this.date);
+
+        // Set this date to the barchart
+        this.barChartEmissions.setDate(this.date);
+        //Update the barchart
+        this.barChartEmissions.updateBarChart( this.user, this.date);
+
     }
 
     @FXML
     private void previousDayButtonClick(){
         dayOffset--;
         this.date.setTime(today + dayOffset * (1000*60*60*24));
+
+        //Update the textfield of the date
         this.dateTextField.setText(""+ this.date);
+
+        // Set this date to the barchart
+        this.barChartEmissions.setDate(this.date);
+        //Update the barchart
+        this.barChartEmissions.updateBarChart( this.user, this.date);
     }
 
     @FXML
@@ -82,87 +93,50 @@ public class FoodViewController implements Initializable {
 
     @FXML
     private TreeView <FoodsEnum> treeviewID;
-/*
-    @FXML
-    private Button drawGraphs;
-*/
+
     @FXML
     private BarChart barChartOne;
-/*
-    @FXML
-    private Tab breakfastTab;
 
-    @FXML
-    private Tab lunchTab;
-
-    @FXML
-    private Tab dinnerTab;
-*/
-/*
-    @FXML
-    public void drawGraphMethod() {
-        // Till listan längst ner till vänster
-        this.addToList();
-        // Update the graph
-        this.updateBarChart();
-    }*/
-
-    private synchronized void updateBarChart(){
-        //Reset the barchart values
-        barChartEmissions.clearEmissionCollection();
-        // get the map with values
-        Map<String, List<Foods>> userData = user.getUserData();
-        // Get the dates
-        Set keys = userData.keySet();
-        // Temp date
-        String stringDate;
-        // Loop through map
-        for (Object key : keys) {
-            stringDate = (String) key;
-
-            //List<Foods> todaysList = userData.get(tempDate);
-            Date convDate = Date.valueOf(stringDate);
-            double todaysEmission = user.getEmissions(convDate.toString());
-
-            // paint the days that exist
-            barChartEmissions.addToChart(convDate.toString(), todaysEmission);
-        }
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Set date to today
         date = new Date(today);
+        // Set the day offset from today to 0
         dayOffset = 0;
         //Connect our fxml barchart to the class for easier modifications
-        barChartEmissions = new BarChartEmissions(barChartOne);
+        barChartEmissions = new BarChartEmissions(barChartOne, date);
         // Update barchart with old values if there are any
-        updateBarChart();
+        this.barChartEmissions.updateBarChart(this.user, this.date);
+        //this.updateBarChart();
+        // Set the text to graph
+        barChartOne.setTitle("Carbon emissions from your meal");
 
-        date.setTime(today + dayOffset * (1000*60*60*24));
+        // Set the date textfield to today's date
         dateTextField.setText(""+ date);
 
+        // Set up the mouseEvent to make the TreeView clickable
         EventHandler<MouseEvent> mouseEventHandle = this::handleMouseClicked;
-
+        // Connect it to the TreeView
         treeviewID.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
 
+        // Initialize the TreeView
         TreeItem<FoodsEnum> mainRoot = new TreeItem<>();
-
+        // Add all different foods to the TreeView
         for (FoodsEnum foods : FoodsEnum.values()) {
             TreeItem<FoodsEnum> food = new TreeItem<>(foods);
             mainRoot.getChildren().add(food);
         }
-
+        // Connect it to the root
         treeviewID.setRoot(mainRoot);
+        // Make the root not visible
         treeviewID.setShowRoot(false);
 
-        barChartOne.setTitle("Carbon emissions from your meal");
-
+        // Try to get the user's from the data from the server
         try {
-            initData();
+            this.initData();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //foodView.getChildren().add(treeviewID);
     }
 
 
@@ -207,19 +181,6 @@ public class FoodViewController implements Initializable {
         // Show it
         stage.show();
 
-        /*
-        // When stage is "closed"
-        stage.setOnHidden(windowEvent -> {
-            Platform.runLater(()->{
-                //Add the bargraph
-                this.updateBarChart();
-                //this.barChartEmissions.addToChart(this.date, this.user.getEmissions(this.date));
-                //Add it to the list in the left corner
-                this.addToList();
-            });
-        });
-        */
-
     }
 
     //Listener for the add food menu
@@ -231,15 +192,4 @@ public class FoodViewController implements Initializable {
             loadInWeightView();
         }
     }
-
-    // Add to the list in the bottom right corner.
-  /*  private void addToList(){
-        double emissions = 0;
-        // If there are any outputs for the day, print them out
-        if(this.user.getUserData().containsKey(this.date.toString())) {
-            emissions = this.user.getEmissions(this.date);
-        }
-        // Else use 0 as because nothing exists
-       insertedItemsList.getItems().add("" + date + ": " + emissions);
-    }*/
 }
