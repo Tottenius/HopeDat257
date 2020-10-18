@@ -22,7 +22,7 @@
             <HBox alignment="CENTER" prefHeight="173.0" prefWidth="984.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#showFriendsButtonClick" text="See Friends" />
-                  <ListView fx:id="currentFriendsListView" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="currentFriendsListView" prefHeight="174.0" prefWidth="208.0" />
                </children></HBox>
             <Region prefHeight="220.0" prefWidth="984.0" style="-fx-background-color: #3A506B;" />
          </children>
