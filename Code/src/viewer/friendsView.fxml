@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FriendsViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="788.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FriendsViewController">
    <children>
-      <VBox layoutY="-4.0" prefHeight="735.0" prefWidth="984.0">
+      <Region layoutY="-8.0" prefHeight="158.0" prefWidth="987.0" style="-fx-background-color: #3A506B;" />
+      <VBox alignment="CENTER" layoutY="149.0" prefHeight="486.0" prefWidth="978.0">
          <children>
-            <Region prefHeight="183.0" prefWidth="985.0" style="-fx-background-color: #3A506B;">
-               <VBox.margin>
-                  <Insets left="-1.0" />
-               </VBox.margin>
-            </Region>
-            <HBox alignment="CENTER" prefHeight="295.0" prefWidth="984.0">
+            <Region prefHeight="156.0" prefWidth="963.0" />
+            <HBox alignment="CENTER" prefHeight="226.0" prefWidth="957.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="104.0" text="Friends Username" />
-                  <TextField fx:id="addFriendTextID" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="167.0" />
-                  <Button fx:id="addFriendButtonID" mnemonicParsing="false" onAction="#addFriendButtonClick" prefHeight="26.0" prefWidth="101.0" styleClass="generalButton" stylesheets="@../main/application.css" text="Add Friend" />
+                  <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="104.0" text="Friends Username" />
+                  <TextField fx:id="addFriendTextID" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="246.0" />
+                  <Button fx:id="addFriendButtonID" mnemonicParsing="false" onAction="#addFriendButtonClick" prefHeight="26.0" prefWidth="106.0" styleClass="generalButton" stylesheets="@../main/application.css" text="Add Friend" />
                </children></HBox>
-            <HBox alignment="CENTER" prefHeight="173.0" prefWidth="984.0">
+            <HBox alignment="CENTER" prefHeight="229.0" prefWidth="963.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#showFriendsButtonClick" prefHeight="26.0" prefWidth="85.0" text="See Friends" />
-                  <ListView fx:id="currentFriendsListView" prefHeight="174.0" prefWidth="208.0" />
+                  <Region prefHeight="143.0" prefWidth="12.0" />
+                  <ListView fx:id="currentFriendsListView" prefHeight="218.0" prefWidth="343.0" />
                </children></HBox>
-            <Region prefHeight="205.0" prefWidth="984.0" style="-fx-background-color: #3A506B;" />
          </children>
       </VBox>
+      <Region layoutY="633.0" prefHeight="165.0" prefWidth="987.0" style="-fx-background-color: #3A506B;" />
    </children>
 </AnchorPane>
