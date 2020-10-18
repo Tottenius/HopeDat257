@@ -19,9 +19,8 @@
                   <TextField fx:id="addFriendTextID" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="167.0" />
                   <Button fx:id="addFriendButtonID" mnemonicParsing="false" onAction="#addFriendButtonClick" prefHeight="26.0" prefWidth="101.0" styleClass="generalButton" stylesheets="@../main/application.css" text="Add Friend" />
                </children></HBox>
-            <HBox prefHeight="173.0" prefWidth="984.0">
+            <HBox alignment="CENTER" prefHeight="173.0" prefWidth="984.0">
                <children>
-                  <Region prefHeight="160.0" prefWidth="369.0" style="-fx-background-color: #3A506B;" />
                   <Button mnemonicParsing="false" onAction="#showFriendsButtonClick" text="See Friends" />
                   <ListView fx:id="currentFriendsListView" prefHeight="200.0" prefWidth="200.0" />
                </children></HBox>
