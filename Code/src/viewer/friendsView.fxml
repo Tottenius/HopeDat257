@@ -4,11 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FriendsViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FriendsViewController">
    <children>
-      <VBox prefHeight="814.0" prefWidth="984.0">
+      <VBox layoutY="-4.0" prefHeight="735.0" prefWidth="984.0">
          <children>
-            <Region prefHeight="74.0" prefWidth="1017.0" style="-fx-background-color: #3A506B;">
+            <Region prefHeight="183.0" prefWidth="985.0" style="-fx-background-color: #3A506B;">
                <VBox.margin>
                   <Insets left="-1.0" />
                </VBox.margin>
@@ -24,7 +24,7 @@
                   <Button mnemonicParsing="false" onAction="#showFriendsButtonClick" prefHeight="26.0" prefWidth="85.0" text="See Friends" />
                   <ListView fx:id="currentFriendsListView" prefHeight="174.0" prefWidth="208.0" />
                </children></HBox>
-            <Region prefHeight="220.0" prefWidth="984.0" style="-fx-background-color: #3A506B;" />
+            <Region prefHeight="205.0" prefWidth="984.0" style="-fx-background-color: #3A506B;" />
          </children>
       </VBox>
    </children>

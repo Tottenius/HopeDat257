@@ -158,13 +158,13 @@ public class RequestHandler implements Runnable{
                 result.append(resultSet.getString(1)).append(" ");
             }
             PreparedStatement preparedStatement2 = sqlConnection.prepareStatement("SELECT fromUser FROM friends WHERE toUser = ?  ");
-            preparedStatement.setString(1, getInfo[1]);
-            ResultSet resultSet2 = preparedStatement.executeQuery();
-            StringBuilder result2 = new StringBuilder();
+            preparedStatement2.setString(1, getInfo[1]);
+            ResultSet resultSet2 = preparedStatement2.executeQuery();
+
             while(resultSet2.next()) {
-                result2.append(resultSet2.getString(1)).append(" ");
+                result.append(resultSet2.getString(1)).append(" ");
             }
-            sender(result2.toString());
+            sender(result.toString());
         } catch (SQLException e) {
             sender("fail");
         }

@@ -74,17 +74,7 @@ public class FriendsViewController {
         List<String> friendsList = new ArrayList<String>(Arrays.asList(friends));
         ListProperty<String> listProperty = new SimpleListProperty<>();
 
-        for (String s : friends) {
-            System.out.println(s);
-
-            listProperty.set(FXCollections.observableArrayList(friendsList));
-
-            currentFriendsListView.itemsProperty().bind(listProperty);
-
-        }
-
-
+        listProperty.set(FXCollections.observableArrayList(friendsList));
+        currentFriendsListView.itemsProperty().bind(listProperty);
     }
-
-
 }
