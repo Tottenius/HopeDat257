@@ -56,6 +56,6 @@ And with our DoD complete, it’s easier for us to “officially” complete use
 ### Best practices for learning and using new tools and technologies (IDEs, version control, scrum boards etc.; do not only describe which tools you used but focus on how you developed the expertise to use them)
 During the project we have learned how to improve our knowledge and use of Github and branches in the development of our product. 
 We read about how to use branches through documentation on Github and have since improved by testing and working with branches in the projekt. 
-If we have had any problems or lack of knowledge of our IDE intellij at any point we have together discussed and looked for solutions or ways to improve our use of intellij.
+If we have had any problems or lack of knowledge of our IDE intellij at any point we have together discussed and looked for solutions or ways to improve our use of intellij.Trial and error and constant revision about how we approached each program and each part of the project is something that we also did. The best practices for learning new systems and programs is therefore studying documentations, helping and bouncing idees of everyone in the team and just iterating and improving with each workday. 
 
 https://docs.google.com/document/d/19jYChOHl0E3xsHiOIOKu-jWqV7rcdVajme9I0skWrzg/edit?usp=sharing
