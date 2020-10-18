@@ -1,6 +1,5 @@
 package main;
 
-import javafx.scene.*;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 

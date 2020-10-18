@@ -50,11 +50,7 @@ public class FoodViewController implements Initializable {
 
     @FXML
     private Label dateTextField;
-/*    @FXML
-    private Button nextDayButton;
-    @FXML
-    private Button previousDayButton;
-*/
+
     private int dayOffset = 0;
 
     @FXML

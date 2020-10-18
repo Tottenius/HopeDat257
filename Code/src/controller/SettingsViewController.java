@@ -18,9 +18,6 @@ public class SettingsViewController {
         this.data = data;
     }
 
-  /*  @FXML
-    private Button changePasswordButton;
-*/
     @FXML
     private TextField oldPassword;
 

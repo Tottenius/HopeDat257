@@ -5,19 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import model.UserData;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-/*
-    //Database on
-    private boolean dbON = true;
-*/
-    // Default User
-  //  private UserData user = new UserData("Anton");
+
     //Change away static later
     private static UserData userDATA = new UserData("DEFAULT");
 
@@ -25,35 +19,16 @@ public class MainViewController implements Initializable {
     @FXML
     private ScrollPane rightPane;
 
-/*
-    //Left side
-    @FXML
-    private Button foods;
-    @FXML
-    private Button friends;
-    @FXML
-    private Button settings;
-    */
 
     @FXML
     private void foodsClick() throws IOException {
         //Load in the new fxml document
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewer/foodViewRework.fxml"));
         //Set it's controller to the right one
-   //     if(dbON){
             if(userDATA.getLoggedIn()) {
                 loader.setControllerFactory(c -> new FoodViewController(userDATA));
                 this.rightPane.setContent(loader.load());
             }
-   /*     }
-        else {
-            loader.setControllerFactory(c -> new FoodViewController(this.user));
-            this.user.setLoggedIn(true);
-            this.rightPane.setContent(loader.load());
-
-        }*/
-        // Load it in to the ScrollPane
-
     }
 
     @FXML
@@ -64,7 +39,6 @@ public class MainViewController implements Initializable {
         if(userDATA.getLoggedIn()) {
             loader.setControllerFactory(c -> new FriendsViewController(userDATA));
             // Load it in to the ScrollPane
-            // System.out.println("other user name: " + user.getUser());
             rightPane.setContent(loader.load());
         }
     }
@@ -91,22 +65,10 @@ public class MainViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        try {
-            c = new ServerConnection();
-            rightPane.setContent(loader.load());
-        } catch (IOException | SQLException | ClassNotFoundException e){
-            e.printStackTrace();
-        }
-        */
     }
 
     public static void setUserData ( UserData d){
         userDATA = d;
         d.setLoggedIn(true);
     }
-
- /*   public UserData getUserData() {
-        return user;
-    }*/
 }
