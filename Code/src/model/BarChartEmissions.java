@@ -9,6 +9,9 @@ import java.sql.Date;
 
 import java.util.*;
 
+/**
+ * This class handles the emission chart
+ */
 public class BarChartEmissions {
     // todays time
     private final long today = System.currentTimeMillis();

@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class handles the data of a user
+ */
 public class UserData {
 
     public UserData(String user) {

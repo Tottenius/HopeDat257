@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.sql.*;
 
+/**
+ * Handles requests to and from the server
+ */
 public class RequestHandler implements Runnable{
 
     Socket socket;

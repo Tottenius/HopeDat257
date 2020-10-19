@@ -1,5 +1,10 @@
 package model.FoodPackage;
 
+/**
+ * This class implements the food interface and
+ * calculates the emission by multiplying
+ * enum value and the amount in grams
+ */
 public class Foods implements FoodInterface {
 
     private FoodsEnum foodType;

@@ -3,6 +3,10 @@ package sql;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * Server stuff
+ */
+
 public class DatabaseClient {
 
     // Skickar ett meddelande (message) till servern och returnerar ett svar från servern
