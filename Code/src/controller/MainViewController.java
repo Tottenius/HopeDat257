@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class used for the main user window
+ */
 public class MainViewController implements Initializable {
 
 

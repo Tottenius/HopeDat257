@@ -19,7 +19,7 @@ import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 /**
- * Text
+ * This class handles adding foods to the list and updating the graph.
  */
 public class WeightViewController implements Initializable {
 

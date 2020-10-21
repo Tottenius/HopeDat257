@@ -24,7 +24,7 @@ import java.sql.Date;
 import java.util.*;
 
 /**
- * Text
+ * This class is a controller for the food view.
  */
 
 public class FoodViewController implements Initializable {
