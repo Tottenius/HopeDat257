@@ -17,8 +17,7 @@ Här ligger källkoden
 Här samlar vi våra dokument. Reflektioner, Social contract och rapporten ligger här.
 
 ### FinalReport
-PDF till rapporten ligger under Docments men kan också hittas här:
-https://docs.google.com/document/d/1zjnvRBKP-463O3MtMdzJYHT3u1onIbcluVBHgcKSlBk/edit
+PDF till rapporten ligger under Docments (Ej klar ännu), deadline 2020-10-30
 
 ## How to run
 Hämta hem JavaFX-sdk och lägg till i Project library. Kan hända att path behöver ändras i lib.xml.
