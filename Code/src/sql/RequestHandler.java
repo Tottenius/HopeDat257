@@ -19,29 +19,31 @@ public class RequestHandler implements Runnable{
         this.sqlConnection = sqlConnection;
     }
 
+    // Tar emot ett meddelande och splittar upp meddelandet, på alla mellanslag, till en string array
+    // och anropar mothodHanlder med string array:n
     public synchronized void run() {
         try {
             DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
             String message = dataInputStream.readUTF();
-            requestHandler(message.split("\\s"));
+            methodHandler(message.split("\\s"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void requestHandler(String[] request) throws Exception {
-        System.out.println("ny connection from: " + request[1]);
+    // Kollar string array:en och anropar rätt metod beroende på första elementet i string array:en
+    private void methodHandler(String[] request) throws Exception {
         switch (request[0]) {
             case "login" -> login(request);
             case "register" -> register(request);
             case "addEmission" -> addEmission(request);
             case "getEmission" -> getEmission(request);
-            case "removeEmission" -> removeEmission(request);
             case "changePassword" -> changePassword(request);
             case "addFriend" -> addFriend(request);
             case "getFriends" -> getFriends(request);
         }
     }
+
     // Skickar tillbaka ett meddelande "message" till klienten som kontaktat servern
     private void sender(String message) throws IOException {
         DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -61,6 +63,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
+    // Försöker registrera en ny användare och anropar sender för att skicka tillbaka true eller false till klienten
     private void register(String[] registerInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO users VALUES ( ?, ?) ");
@@ -73,6 +76,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
+    // Lägger till ett matvärde och anropar sender för att skicka tillbaka true eller false till klienten
     private void addEmission(String[] addInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO EmissionData VALUES ( ?, ?, ?, ?, 1)");
@@ -87,6 +91,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
+    // Hämtar alla matvärden för en användare och anropar sender för att skicka tillbaka en string med all nödvändig data
     private void getEmission(String[] getInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT food, emission, date FROM EmissionData WHERE username = ?");
@@ -104,24 +109,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
-    private void removeEmission(String[] addInfo) throws IOException {
-        try{
-            PreparedStatement preparedStatement = sqlConnection.prepareStatement("DELETE FROM EmissionData WHERE username = ? AND date = ? AND food = ?");
-            preparedStatement.setString(1, addInfo[1]);
-            preparedStatement.setDate(2, Date.valueOf(addInfo[2]));
-            preparedStatement.setString(3, addInfo[3]);
-            int result = preparedStatement.executeUpdate();
-            if(result > 0) {
-                sender("success");
-            } else {
-                sender("fail");
-            }
-        } catch (SQLException e) {
-            sender("fail");
-        }
-
-    }
-
+    // Byter lösenordet för en användare och anropar sender för att skicka tillbaka true eller false till klienten
     private void changePassword(String[] passwordInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("UPDATE Users SET password = ? WHERE username = ? AND password = ?");
@@ -139,6 +127,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
+    // Lägger till en vän för en användare och anropar sender för att skicka tillbaka true eller false till klienten
     private void addFriend(String[] passwordInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("INSERT INTO Friends VALUES (?, ?)");
@@ -151,6 +140,7 @@ public class RequestHandler implements Runnable{
         }
     }
 
+    // Hämtar alla vänner till en användare och anropar sender för att skicka tillbaka en string med alla användarnemn för vännerna
     private void getFriends(String[] getInfo) throws IOException {
         try{
             PreparedStatement preparedStatement = sqlConnection.prepareStatement("SELECT toUser FROM friends WHERE fromUser = ?  ");

@@ -30,6 +30,7 @@ public class Server {
         serverSocket = new ServerSocket(9998);
     }
 
+    // I en kontinuerlig loop så inväntas nya kontakter med körande program som sedan lämnas över till en ny tråd av RequestHandler
     private void receiver() throws IOException {
         while(true) {
             Socket socket = serverSocket.accept();
