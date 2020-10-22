@@ -13,7 +13,7 @@ import java.util.*;
  * This class handles the emission chart
  */
 public class BarChartEmissions {
-    // todays time
+    // today's time
     private final long today = System.currentTimeMillis();
     // The chosen date
     private Date chosenDate;
@@ -31,7 +31,10 @@ public class BarChartEmissions {
 
     }
 
-    // Set the date
+    /**
+     * Sets the date for the barchart
+     * @param date the new date
+     */
     public void setDate (Date date){
         this.chosenDate = date;
         this.setUpCollectionForDate();
@@ -46,6 +49,9 @@ public class BarChartEmissions {
         barChart.setAnimated(false);
     }
 
+    /**
+     *  Clears the samples in the barchart
+     */
     public void clearEmissionCollection(){
         this.samples.clear();
     }
@@ -63,6 +69,11 @@ public class BarChartEmissions {
         }
     }
 
+    /**
+     * Adds an emission to a date in the barchart
+     * @param date the date
+     * @param emission the mission
+     */
     public void addToChart(String date, double emission){
 
         XYChart.Data newData = new XYChart.Data(date.toString(), emission);
@@ -93,6 +104,12 @@ public class BarChartEmissions {
         }
     }
 
+    /**
+     * Updates the graph with the values from the user staring on the date
+     * given and seven days forward
+     * @param user The user which data you want to print out
+     * @param date The starting date
+     */
     public void updateBarChart(UserData user, Date date) {
         //Reset the barchart values
         this.clearEmissionCollection();
