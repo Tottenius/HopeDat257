@@ -70,6 +70,10 @@ public class MainViewController implements Initializable {
         }
     }
 
+    /**
+     * Sets the user data and the user as logged in
+     * @param d The user that gets logged in and gets its data loaded
+     */
     public static void setUserData ( UserData d){
         userDATA = d;
         d.setLoggedIn(true);

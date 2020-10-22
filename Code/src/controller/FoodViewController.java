@@ -135,8 +135,7 @@ public class FoodViewController implements Initializable {
         }
     }
 
-
-    public void initData() throws IOException {
+    private void initData() throws IOException {
         String[] emission = DatabaseClient.getEmission(user.getUser());
         if(emission[0].isEmpty() || emission[0].equals("fail")) {
             return;

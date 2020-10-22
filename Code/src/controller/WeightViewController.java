@@ -79,6 +79,11 @@ public class WeightViewController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Updates the graph with a new food on a set date
+     * @param date The date we add food to
+     * @param food The food added
+     */
     public void updateGraph(String date, String food){
         // Take the data from the user and add it to the graph
         this.chart.addToChart(date, user.getEmissions(date));
