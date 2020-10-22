@@ -83,11 +83,6 @@ public class FoodViewController implements Initializable {
     }
 
     @FXML
-    private void breakfastTextFieldAction() {
-        System.out.println(this.breakfastTextField.getText());
-    }
-
-    @FXML
     private TreeView <FoodsEnum> treeviewID;
 
     @FXML
@@ -150,7 +145,6 @@ public class FoodViewController implements Initializable {
     private void loadInWeightView(){
         // cast the enum
         FoodsEnum foodClicked = (FoodsEnum) ((TreeItem) treeviewID.getSelectionModel().getSelectedItem()).getValue();
-        System.out.println("Node click: " + foodClicked.getEmission());
 
         FXMLLoader loader;
         Parent parent = null;
@@ -163,7 +157,7 @@ public class FoodViewController implements Initializable {
             loader.setControllerFactory(c -> new WeightViewController(this.user, foodClicked, this.date, this.barChartEmissions, this.insertedItemsList));
             parent = loader.load();
         } catch (Exception e){
-            System.out.println("you fucked up");
+            System.out.println(e);
         }
         // Create scene
         scene = new Scene(parent);

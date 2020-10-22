@@ -45,30 +45,19 @@ public class FriendsViewController {
     @FXML
     private void addFriendButtonClick() throws IOException {
         if (addFriendTextID.getText().isEmpty()) {
-            System.out.println("Field is empty");
             return;
         }
         String addFriendUsername = addFriendTextID.getText().toLowerCase();
-        boolean passChangeOutcome = DatabaseClient.addFriend(data.getUser(), addFriendUsername);
-        if (passChangeOutcome) {
-            System.out.println("succes, friend was added");
-        } else {
-            System.out.println("failure, friend could not be added");
-        }
+        DatabaseClient.addFriend(data.getUser(), addFriendUsername);
     }
 
 
     @FXML
     private void showFriendsButtonClick() throws IOException {
-
-
         String[] friends = DatabaseClient.getFriends(data.getUser());
-
         if(friends.length == 0){
-
             return;
         }
-
         List<String> friendsList = new ArrayList<String>(Arrays.asList(friends));
         ListProperty<String> listProperty = new SimpleListProperty<>();
 

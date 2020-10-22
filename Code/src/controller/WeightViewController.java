@@ -61,9 +61,7 @@ public class WeightViewController implements Initializable {
             return;
         }
         int value = Integer.parseInt(input);
-        if(DatabaseClient.addEmission(user.getUser(), date.toString(), foodsEnum.toString(), value)) {
-            System.out.println("food was added");
-        }
+        DatabaseClient.addEmission(user.getUser(), date.toString(), foodsEnum.toString(), value);
 
         // Puts the value from the text field in the local variable
         this.user.addToUserData(date.toString(), new Foods(value, foodsEnum));

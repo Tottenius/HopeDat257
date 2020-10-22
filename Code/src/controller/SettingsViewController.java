@@ -27,17 +27,10 @@ public class SettingsViewController {
     @FXML
     private void changePasswordButtonClick() throws IOException {
         if(oldPassword.getText().isEmpty() || newPassword.getText().isEmpty()) {
-            System.out.println("Empty field");
             return;
         } else if(oldPassword.getText().equals(newPassword.getText())) {
-            System.out.println("old password is equal to new password");
+            return;
         }
-        boolean passChangeOutcome = DatabaseClient.changePassword(data.getUser(), oldPassword.getText(), newPassword.getText());
-        if(passChangeOutcome) {
-            System.out.println("success, password has changed");
-        } else {
-            System.out.println("failure, password could not be changed");
-            System.out.println("Current username: " + this.data.getUser());
-        }
+        DatabaseClient.changePassword(data.getUser(), oldPassword.getText(), newPassword.getText());
     }
 }
