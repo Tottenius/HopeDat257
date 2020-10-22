@@ -25,7 +25,7 @@ Pull:a koden och kör RunMain klassen.
 Programmet använder sig av en extern databas som hostas på en medlems dator, om du önskar att köra servern
 lokalt öppna DatabaseClient klassen och ändra IPn under contactServer till 127.0.0.1 och starta
 sedan servern från server klassen. 
-Detta kräver dock att du har Postgresql databsen på din dator.
+Detta kräver dock att du har Postgresql databasen på din dator.
 Så enklast är att kontakta Calle så startar han servern på sin dator.
 
 ### Trello
