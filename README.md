@@ -4,7 +4,7 @@ Detta är repot för Hope gruppens projekt i kursen DAT257 HT-2020.
 ## Gruppmedlemmar
 - Anton Ekman (OakmanByte)
 - Carl Andersson (carlhandersson)
-- [Emil Pettersson](emil.pettsson@hotmail.com) (Pettsson12)
+- Emil Pettersson (Pettsson12)
 - Joakim Lönnerstedt (cjal95)
 - Jonathan Lawrence (jonathanl97)
 - Thomas Solibi (Publicguy)
