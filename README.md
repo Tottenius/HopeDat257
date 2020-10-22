@@ -16,6 +16,9 @@ Här ligger källkoden
 ### Documents
 Här samlar vi våra dokument. Reflektioner, Social contract och rapporten ligger här.
 
+### FinalReport
+PDF till rapporten ligger under Docments (Ej klar ännu), deadline 2020-10-30
+
 ## How to run
 Hämta hem JavaFX-sdk och lägg till i Project library. Kan hända att path behöver ändras i lib.xml.
 Java-14 behövs för att köra koden.
@@ -31,6 +34,13 @@ Så enklast är att kontakta Calle så startar han servern på sin dator.
 ### Trello
 https://trello.com/b/kyad6viz/agile-sprint-board
 
-### FinalReport
-Här ligger vår slutgiltliga rapport:
-https://docs.google.com/document/d/1zjnvRBKP-463O3MtMdzJYHT3u1onIbcluVBHgcKSlBk/edit
+
+## Kontakt
+Vi kan nås via Canvas eller via email.
+- Anton Ekman antonskebaber@gmail.com
+- Carl Andersson carl_andersson_99@hotmail.com
+- Emil Pettersson emil.pettsson@hotmail.com
+- Joakim Lönnerstedt joalon@student.chalmers.se
+- Jonathan Lawrence jonathanl97@hotmail.se
+- Thomas Solibi tsolibi@gmail.com
+- Tor Clementz torsan.clementz@hotmail.com
