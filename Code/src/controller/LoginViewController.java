@@ -34,7 +34,12 @@ public class LoginViewController implements Initializable {
     @FXML
     private void loginClick() throws IOException {
         if(userTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
-            System.out.println("Empty field");
+            logLabel.setText("Empty feild");
+            regLabel.setText("");
+            return;
+        } else if(userTextField.getText().contains(" ") || passwordTextField.getText().contains(" ")) {
+            logLabel.setText("Has whitespace");
+            regLabel.setText("");
             return;
         }
         String username = userTextField.getText().toLowerCase();
@@ -43,9 +48,7 @@ public class LoginViewController implements Initializable {
             MainViewController.setUserData(new UserData(username));
             logLabel.setText("Logged In");
             regLabel.setText("");
-            System.out.println("successful login");
         } else {
-            System.out.println("faulty credentials");
 
             regLabel.setText("");
             logLabel.setText("Faulty credentials");
@@ -56,20 +59,20 @@ public class LoginViewController implements Initializable {
     @FXML
     private void registerClick() throws IOException {
         if(userTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
-            System.out.println("Empty field");
+            regLabel.setText("Empty feild");
+            logLabel.setText("");
             return;
         } else if(userTextField.getText().contains(" ") || passwordTextField.getText().contains(" ")) {
-            System.out.println("Contains whitespaces");
+            regLabel.setText("Has whitespace");
+            logLabel.setText("");
             return;
         }
         String username = userTextField.getText().toLowerCase();
         boolean registerOutcome = DatabaseClient.register(username, passwordTextField.getText());
         if(registerOutcome) {
-            System.out.println("registered");
             logLabel.setText("");
             regLabel.setText("Registered");
         } else {
-            System.out.println("register failed");
             logLabel.setText("");
             regLabel.setText("faulty credentials");
         }
